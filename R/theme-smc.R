@@ -36,8 +36,35 @@
 #' @importFrom ggplot2 theme
 theme_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 
-  font <- "sans" #"Arial"
-  title_font <- "serif" #"Georgia"
+  extrafont::loadfonts(quiet = T)
+
+  fonts <- names(grDevices::windowsFonts())
+
+  arial <- sum(grepl("^Arial$", fonts))
+  georgia <- sum(grepl("^Georgia$", fonts))
+
+  if(arial == 0 | georgia == 0) {
+
+    print("You need to install the Arial and Georgia fonts. Press 'y' to continue.")
+
+    extrafont::font_import()
+    extrafont::loadfonts(device = c("win", "postscript"), quiet = T)
+  }
+
+  if(sum(grepl("^Arial$", fonts)) == 0) {
+    font <- "serif"
+  } else {
+    font <- "Arial"
+  }
+
+  if(sum(grepl("^Georgia$", fonts)) == 0) {
+    title_font <- "sans"
+  } else {
+    title_font <- "Georgia"
+  }
+
+  #font <- "Arial"
+  #title_font <-  "Georgia"
 
   title_color <- "#17202A" # black
   caption_color <- "#566573" # dark grey
