@@ -44,7 +44,7 @@ theme_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
   title_color <- "#17202A" # black
   caption_color <- "#566573" # dark grey
   axis_color <- "#17202A" # black
-  grid_color <- "#EAECEE" # grid color
+  grid_color <- "#D5D8DC" # grid color
 
   if(missing(legend_loc)) {
     legend_loc <- "top"
