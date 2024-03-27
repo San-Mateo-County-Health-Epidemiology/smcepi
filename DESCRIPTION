@@ -1,11 +1,10 @@
 Package: smcepi
 Type: Package
-Title: package of useful functions for San Mateo County Epidemiologists 
+Title: Useful functions for San Mateo County Epidemiologists 
 Version: 0.1.0
-Author: c("Beth", "Jump")
+Author: person("Beth", "Jump", email = "ejump@smcgov.org", role = c("aut", "cre"))
 Maintainer: The package maintainer <ejump@smcgov.org>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Handy functions for use by San Mateo County epidemiologists. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
