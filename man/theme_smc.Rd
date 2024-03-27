@@ -2,13 +2,9 @@
 % Please edit documentation in R/theme-smc.R
 \name{theme_smc}
 \alias{theme_smc}
-\title{Title}
+\title{Using `theme_smc`}
 \usage{
-theme_smc(
-  plot,
-  plot_lines = c("horizontal", "vertical", "none", "both"),
-  legend_loc = c("top", "bottom", "none")
-)
+theme_smc(plot, plot_lines = "horizontal", legend_loc = "top")
 }
 \arguments{
 \item{plot}{this should be a ggplot2 object}
@@ -18,5 +14,5 @@ theme_smc(
 \item{legend_loc}{specify if you'd like the legend to appear at the top, bottom or to not appear at all (none)}
 }
 \description{
-Title
+Using `theme_smc`
 }

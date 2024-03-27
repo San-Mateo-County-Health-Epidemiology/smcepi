@@ -1,4 +1,4 @@
-#' Title
+#' Using `theme_smc`
 #'
 #' @param plot this should be a ggplot2 object
 #' @param plot_lines specify if you'd like horizontal, vertical, both (horizontal and vertical) or no (none) lines on the plot. the default is horizontal
@@ -8,7 +8,11 @@
 #' @export
 #'
 #' @examples
-theme_smc <- function(plot, plot_lines = c("horizontal", "vertical", "none", "both"), legend_loc = c("top", "bottom", "none")) {
+theme_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
+
+
+  # plot_lines = c("horizontal", "vertical", "none", "both")
+  #legend_loc = c("top", "bottom", "none")
 
   title_font <- "Georgia"
   font <- "Arial"
