@@ -14,3 +14,8 @@ BugReports: https://github.com/San-Mateo-County-Health-Epidemiology/smcepi/issue
 Depends: 
     extrafont,
     ggplot2
+Imports: 
+    magrittr
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

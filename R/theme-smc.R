@@ -4,8 +4,8 @@
 #' This function is meant to be used with `ggplot2` charts to quickly format them according to the San Mateo County Office of Epidemiology and Evaluation's style guide.
 #'
 #' @usage function(plot,
-#'          plot_lines = "horizontal",
-#'          legend_loc = "top")
+#'   plot_lines = "horizontal",
+#'   legend_loc = "top")
 #'
 #' @param plot This should be a `ggplot2` object
 #' @param plot_lines Specify which lines should appear on your chart.
@@ -16,7 +16,7 @@
 #'   * `"none"`: no lines on the plot
 #' @param legend_loc Specify the legend location. The default is for the legend to appear at the top, but you can override this using the arguments from `ggplot2::theme(legend.position)` argument. The available options are: “left”,“top”, “right”, “bottom” and "none"
 #'
-#' @return
+#' @return a ggplot2 object with custom formatting
 #'
 #' @examples
 #' # creating a jitter plot with `theme_smc`

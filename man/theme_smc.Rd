@@ -5,8 +5,8 @@
 \title{Using \code{theme_smc}}
 \usage{
 function(plot,
-         plot_lines = "horizontal",
-         legend_loc = "top")
+  plot_lines = "horizontal",
+  legend_loc = "top")
 }
 \arguments{
 \item{plot}{This should be a \code{ggplot2} object}
@@ -20,6 +20,9 @@ The default is horizontal lines, but you can also choose:
 }}
 
 \item{legend_loc}{Specify the legend location. The default is for the legend to appear at the top, but you can override this using the arguments from \code{ggplot2::theme(legend.position)} argument. The available options are: “left”,“top”, “right”, “bottom” and "none"}
+}
+\value{
+a ggplot2 object with custom formatting
 }
 \description{
 This function is meant to be used with \code{ggplot2} charts to quickly format them according to the San Mateo County Office of Epidemiology and Evaluation's style guide.
