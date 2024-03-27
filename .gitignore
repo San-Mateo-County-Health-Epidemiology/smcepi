@@ -4,3 +4,5 @@
 .httr-oauth
 .DS_Store
 .quarto
+
+R/load_smc_fonts.R
