@@ -1,9 +1,38 @@
+#' Download SMC Fonts
+#'
+#' @description This function uses the 'extrafont' package to download and enable Arial and Georgia which are the official fonts for the SMC style guide.
+#'
+#' @return this will enable all of the `extrafont` fonts on your computer.
+#' @export
+#'
+#' @examples
+#' load_smc_fonts()
+load_smc_fonts <- function() {
+
+  extrafont::loadfonts(device = "win")
+
+  fonts <- names(grDevices::windowsFonts())
+
+  arial <- sum(grepl("^Arial$", fonts))
+  georgia <- sum(grepl("^Georgia$", fonts))
+
+  if(arial == 0 | georgia == 0) {
+
+    print("You need to install the Arial and Georgia fonts. Press 'y' to continue.")
+
+    extrafont::font_import()
+    extrafont::loadfonts(device = "win")
+
+  }
+
+}
+
 #' Using `theme_smc`
 #'
 #' @description
 #' This function is meant to be used with `ggplot2` charts to quickly format them according to the San Mateo County Office of Epidemiology and Evaluation's style guide.
 #'
-#' @usage function(plot,
+#' @usage theme_smc(plot,
 #'   plot_lines = "horizontal",
 #'   legend_loc = "top")
 #'
@@ -15,7 +44,6 @@
 #'   * `"both"`: horizontal and vertical lines
 #'   * `"none"`: no lines on the plot
 #' @param legend_loc Specify the legend location. The default is for the legend to appear at the top, but you can override this using the arguments from `ggplot2::theme(legend.position)` argument. The available options are: “left”,“top”, “right”, “bottom” and "none"
-#'
 #' @return a ggplot2 object with custom formatting
 #'
 #' @examples
@@ -31,12 +59,12 @@
 #'   theme_smc()
 #'
 #' @md
+#'
 #' @export
+#' @importFrom ggplot2 theme
 theme_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 
-
-  # plot_lines = c("horizontal", "vertical", "none", "both")
-  #legend_loc = c("top", "bottom", "none")
+  load_smc_fonts()
 
   title_font <- "Georgia"
   font <- "Arial"
@@ -106,3 +134,4 @@ theme_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
   )
 
 }
+
