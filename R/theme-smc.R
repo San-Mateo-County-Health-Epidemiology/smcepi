@@ -1,32 +1,3 @@
-#' Download SMC Fonts
-#'
-#' @description This function uses the 'extrafont' package to download and enable Arial and Georgia which are the official fonts for the SMC style guide.
-#'
-#' @return this will enable all of the `extrafont` fonts on your computer.
-#' @export
-#'
-#' @examples
-#' load_smc_fonts()
-load_smc_fonts <- function() {
-
-  extrafont::loadfonts(device = "win")
-
-  fonts <- names(grDevices::windowsFonts())
-
-  arial <- sum(grepl("^Arial$", fonts))
-  georgia <- sum(grepl("^Georgia$", fonts))
-
-  if(arial == 0 | georgia == 0) {
-
-    print("You need to install the Arial and Georgia fonts. Press 'y' to continue.")
-
-    extrafont::font_import()
-    extrafont::loadfonts(device = "win")
-
-  }
-
-}
-
 #' Using `theme_smc`
 #'
 #' @description
@@ -56,6 +27,7 @@ load_smc_fonts <- function() {
 #'              alpha = 2/3) +
 #'   scale_y_continuous(limits = c(4, 8),
 #'                      breaks = seq(4, 8, 2)) +
+#'   labs(title = "Iris Jitter Plot") +
 #'   theme_smc()
 #'
 #' @md
@@ -64,10 +36,8 @@ load_smc_fonts <- function() {
 #' @importFrom ggplot2 theme
 theme_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 
-  load_smc_fonts()
-
-  title_font <- "Georgia"
-  font <- "Arial"
+  font <- "sans" #"Arial"
+  title_font <- "serif" #"Georgia"
 
   title_color <- "#17202A" # black
   caption_color <- "#566573" # dark grey
@@ -134,4 +104,3 @@ theme_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
   )
 
 }
-

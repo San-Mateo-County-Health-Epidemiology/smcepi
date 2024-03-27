@@ -12,9 +12,9 @@ RoxygenNote: 7.2.3
 URL: https://github.com/San-Mateo-County-Health-Epidemiology/smcepi
 BugReports: https://github.com/San-Mateo-County-Health-Epidemiology/smcepi/issues
 Depends: 
-    extrafont,
     ggplot2
 Imports: 
+    extrafont,
     magrittr
 Suggests: 
     testthat (>= 3.0.0)

@@ -4,7 +4,7 @@
 \alias{theme_smc}
 \title{Using \code{theme_smc}}
 \usage{
-function(plot,
+theme_smc(plot,
   plot_lines = "horizontal",
   legend_loc = "top")
 }
@@ -37,6 +37,7 @@ iris \%>\%
              alpha = 2/3) +
   scale_y_continuous(limits = c(4, 8),
                      breaks = seq(4, 8, 2)) +
+  labs(title = "Iris Jitter Plot") +
   theme_smc()
 
 }
