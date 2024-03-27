@@ -1,13 +1,37 @@
 #' Using `theme_smc`
 #'
-#' @param plot this should be a ggplot2 object
-#' @param plot_lines specify if you'd like horizontal, vertical, both (horizontal and vertical) or no (none) lines on the plot. the default is horizontal
-#' @param legend_loc specify if you'd like the legend to appear at the top, bottom or to not appear at all (none)
+#' @description
+#' This function is meant to be used with `ggplot2` charts to quickly format them according to the San Mateo County Office of Epidemiology and Evaluation's style guide.
+#'
+#' @usage function(plot,
+#'          plot_lines = "horizontal",
+#'          legend_loc = "top")
+#'
+#' @param plot This should be a `ggplot2` object
+#' @param plot_lines Specify which lines should appear on your chart.
+#'   The default is horizontal lines, but you can also choose:
+#'
+#'   * `"vertical"`: only vertical lines
+#'   * `"both"`: horizontal and vertical lines
+#'   * `"none"`: no lines on the plot
+#' @param legend_loc Specify the legend location. The default is for the legend to appear at the top, but you can override this using the arguments from `ggplot2::theme(legend.position)` argument. The available options are: “left”,“top”, “right”, “bottom” and "none"
 #'
 #' @return
 #' @export
 #'
 #' @examples
+#' # creating a jitter plot with `theme_smc`
+#' iris %>%
+#'   ggplot(aes(x = Species, y = Sepal.Length)) +
+#'   geom_point(position = position_jitter(w = 1/6, h = 0),
+#'              size = 4,
+#'              color = "#006cb6",
+#'              alpha = 2/3) +
+#'   scale_y_continuous(limits = c(4, 8),
+#'                      breaks = seq(4, 8, 2)) +
+#'   theme_smc()
+#'
+#' @md
 theme_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 
 
@@ -58,9 +82,9 @@ theme_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
     plot.subtitle = ggplot2::element_text(family = title_font, size = 12, hjust = 0, face = "bold", color = title_color),
     plot.caption = ggplot2::element_text(family = font, size = 8, color = caption_color, hjust = 0),
 
+    legend.position = legend_loc,
     legend.title = ggplot2::element_blank(),
     legend.text = ggplot2::element_text(family = font, size = 10, color = axis_color),
-    legend.position = legend_loc,
     legend.background = ggplot2::element_blank(),
     legend.key = ggplot2::element_blank(),
 

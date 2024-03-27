@@ -2,17 +2,38 @@
 % Please edit documentation in R/theme-smc.R
 \name{theme_smc}
 \alias{theme_smc}
-\title{Using `theme_smc`}
+\title{Using \code{theme_smc}}
 \usage{
-theme_smc(plot, plot_lines = "horizontal", legend_loc = "top")
+function(plot,
+         plot_lines = "horizontal",
+         legend_loc = "top")
 }
 \arguments{
-\item{plot}{this should be a ggplot2 object}
+\item{plot}{This should be a \code{ggplot2} object}
 
-\item{plot_lines}{specify if you'd like horizontal, vertical, both (horizontal and vertical) or no (none) lines on the plot. the default is horizontal}
+\item{plot_lines}{Specify which lines should appear on your chart.
+The default is horizontal lines, but you can also choose:
+\itemize{
+\item \code{"vertical"}: only vertical lines
+\item \code{"both"}: horizontal and vertical lines
+\item \code{"none"}: no lines on the plot
+}}
 
-\item{legend_loc}{specify if you'd like the legend to appear at the top, bottom or to not appear at all (none)}
+\item{legend_loc}{Specify the legend location. The default is for the legend to appear at the top, but you can override this using the arguments from \code{ggplot2::theme(legend.position)} argument. The available options are: “left”,“top”, “right”, “bottom” and "none"}
 }
 \description{
-Using `theme_smc`
+This function is meant to be used with \code{ggplot2} charts to quickly format them according to the San Mateo County Office of Epidemiology and Evaluation's style guide.
+}
+\examples{
+# creating a jitter plot with `theme_smc`
+iris \%>\%
+  ggplot(aes(x = Species, y = Sepal.Length)) +
+  geom_point(position = position_jitter(w = 1/6, h = 0),
+             size = 4,
+             color = "#006cb6",
+             alpha = 2/3) +
+  scale_y_continuous(limits = c(4, 8),
+                     breaks = seq(4, 8, 2)) +
+  theme_smc()
+
 }
