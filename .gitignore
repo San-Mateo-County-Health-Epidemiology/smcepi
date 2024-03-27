@@ -6,3 +6,4 @@
 .quarto
 
 R/load_smc_fonts.R
+man/load_smc_fonts.Rd
