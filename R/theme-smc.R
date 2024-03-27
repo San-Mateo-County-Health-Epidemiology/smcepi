@@ -17,7 +17,6 @@
 #' @param legend_loc Specify the legend location. The default is for the legend to appear at the top, but you can override this using the arguments from `ggplot2::theme(legend.position)` argument. The available options are: “left”,“top”, “right”, “bottom” and "none"
 #'
 #' @return
-#' @export
 #'
 #' @examples
 #' # creating a jitter plot with `theme_smc`
@@ -32,6 +31,7 @@
 #'   theme_smc()
 #'
 #' @md
+#' @export
 theme_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 
 
