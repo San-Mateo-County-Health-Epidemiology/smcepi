@@ -49,4 +49,4 @@ iris %>%
   theme_smc()
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-example-1.png" width="60%" style="display: block; margin: auto;" />

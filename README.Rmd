@@ -33,7 +33,7 @@ devtools::install_github("San-Mateo-County-Health-Epidemiology/smcepi")
 
 `theme_smc()` will format your `ggplot2` charts according to OEE style guidelines. In order to use the county's fonts, you'll need to run `load_smc_fonts()` once per session so that the fonts are available for use in the `theme_smc()` function. 
 
-```{r example}
+```{r example, out.width='60%', fig.align='center'}
 library(smcepi)
 
 load_smc_fonts()
