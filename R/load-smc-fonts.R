@@ -20,6 +20,10 @@ load_smc_fonts <- function() {
     extrafont::font_import()
     extrafont::loadfonts(device = "win", quiet = T)
 
+  } else {
+
+    print("You already have Arial and Georgia. No need to install anything new.")
+
   }
 
 }
