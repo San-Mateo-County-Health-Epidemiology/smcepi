@@ -112,7 +112,7 @@ theme_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
     panel.grid.major.y = panel.grid.major.y,
     panel.background = ggplot2::element_blank(),
 
-    strip.text = ggplot2::element_text(family = font, size = 22, hjust = 0),
+    strip.text = ggplot2::element_text(family = font, size = 12, hjust = 0),
     strip.background = ggplot2::element_rect(fill = "#FFFFFF")
   )
 
