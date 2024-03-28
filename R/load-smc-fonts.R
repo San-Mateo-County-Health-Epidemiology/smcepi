@@ -9,7 +9,7 @@
 #' # just run the function empty
 load_smc_fonts <- function() {
 
-  extrafont::loadfonts(quiet = T)
+  extrafont::loadfonts(device = "win", quiet = T)
 
   fonts <- names(grDevices::windowsFonts())
 
@@ -22,7 +22,7 @@ load_smc_fonts <- function() {
 
   } else {
 
-    print("You already have Arial and Georgia. No need to install anything new.")
+    print("You already have Arial and Georgia. You're good to go!")
 
   }
 
