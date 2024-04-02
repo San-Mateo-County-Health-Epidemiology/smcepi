@@ -1,9 +1,9 @@
-#' Using `theme_smc`
+#' Using `theme_gg_smc`
 #'
 #' @description
 #' This function is meant to be used with `ggplot2` charts to quickly format them according to the San Mateo County Office of Epidemiology and Evaluation's style guide.
 #'
-#' @usage theme_smc(plot,
+#' @usage theme_gg_smc(plot,
 #'   plot_lines = "horizontal",
 #'   legend_loc = "top")
 #'
@@ -18,7 +18,7 @@
 #' @return a ggplot2 object with custom formatting
 #'
 #' @examples
-#' # creating a jitter plot with `theme_smc`
+#' # creating a jitter plot with `theme_gg_smc`
 #' iris %>%
 #'   ggplot(aes(x = Species, y = Sepal.Length)) +
 #'   geom_point(position = position_jitter(w = 1/6, h = 0),
@@ -28,13 +28,13 @@
 #'   scale_y_continuous(limits = c(4, 8),
 #'                      breaks = seq(4, 8, 2)) +
 #'   labs(title = "Iris Jitter Plot") +
-#'   theme_smc()
+#'   theme_gg_smc()
 #'
 #' @md
 #'
 #' @export
 #' @importFrom ggplot2 theme
-theme_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
+theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 
   extrafont::loadfonts(quiet = T)
 
