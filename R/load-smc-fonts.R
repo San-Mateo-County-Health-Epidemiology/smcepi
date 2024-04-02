@@ -11,9 +11,7 @@ load_smc_fonts <- function() {
 
   extrafont::loadfonts(quiet = T)
 
-  fonts <- names(grDevices::windowsFonts())
-
-  if(sum(grepl("^Arial$", fonts)) == 0 | sum(grepl("^Georgia$", fonts)) == 0) {
+  if(sum(grepl("^Arial$", names(grDevices::windowsFonts()))) == 0 | sum(grepl("^Georgia$", names(grDevices::windowsFonts()))) == 0) {
 
     print("You need to install the Arial and Georgia fonts. Press 'y' to continue.")
 
@@ -21,8 +19,6 @@ load_smc_fonts <- function() {
     extrafont::loadfonts(quiet = T)
 
   } else {
-
-    print("You already have Arial and Georgia. You're good to go!")
 
   }
 

@@ -36,18 +36,15 @@
 #' @importFrom ggplot2 theme
 theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 
-  #extrafont::loadfonts(quiet = T)
   load_smc_fonts()
 
-  fonts <- names(grDevices::windowsFonts())
-
-  if(sum(grepl("^Arial$", fonts)) == 0) {
+  if(sum(grepl("^Arial$", names(grDevices::windowsFonts()))) == 0) {
     font <- "serif"
   } else {
     font <- "Arial"
   }
 
-  if(sum(grepl("^Georgia$", fonts)) == 0) {
+  if(sum(grepl("^Georgia$", names(grDevices::windowsFonts()))) == 0) {
     title_font <- "sans"
   } else {
     title_font <- "Georgia"
