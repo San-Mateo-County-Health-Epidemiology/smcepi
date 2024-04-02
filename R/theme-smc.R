@@ -36,7 +36,8 @@
 #' @importFrom ggplot2 theme
 theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 
-  extrafont::loadfonts(quiet = T)
+  #extrafont::loadfonts(quiet = T)
+  load_smc_fonts()
 
   fonts <- names(grDevices::windowsFonts())
 
