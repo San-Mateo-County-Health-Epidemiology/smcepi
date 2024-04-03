@@ -19,7 +19,9 @@ You can install the development version of smcepi from
 devtools::install_github("San-Mateo-County-Health-Epidemiology/smcepi")
 ```
 
-## Using `theme_gg_smc()`
+## Using formatting themes
+
+### `theme_gg_smc()`
 
 `theme_gg_smc()` will format your `ggplot2` charts according to OEE
 style guidelines. Embedded within the `theme_gg_smc()` is the
@@ -32,6 +34,7 @@ download them the first time you run either of those functions.
 
 ``` r
 library(smcepi)
+#> Loading required package: flextable
 #> Loading required package: ggplot2
 
 iris %>% 
@@ -51,4 +54,23 @@ iris %>%
   theme_gg_smc(plot_lines = "vertical")
 ```
 
-<img src="man/figures/README-example-1.png" width="60%" style="display: block; margin: auto;" />
+<img src="man/figures/README-theme_gg_smc example-1.png" width="60%" style="display: block; margin: auto;" />
+
+### `theme_ft_smc()`
+
+`theme_ft_smc()` will format your `flextable` charts according to OEE
+style guidelines. Like in the `smc_gg_theme()` function, the
+`load_smc_fonts()` is embedded within the `theme_ft_smc()` function.
+
+``` r
+library(smcepi)
+
+iris %>%
+  dplyr::slice(1:5) %>%
+  dplyr::select(Species, everything()) %>%
+  flextable() %>%
+  footnote(i = 1, j = 1, value = as_paragraph("footer test")) %>%
+  theme_ft_smc()
+```
+
+<img src="man/figures/README-theme_ft_smc example-1.png" width="60%" style="display: block; margin: auto;" />
