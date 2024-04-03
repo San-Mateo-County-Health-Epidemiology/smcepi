@@ -13,7 +13,7 @@ load_smc_fonts <- function() {
 
   if(sum(grepl("^Arial$", names(grDevices::windowsFonts()))) == 0 | sum(grepl("^Georgia$", names(grDevices::windowsFonts()))) == 0) {
 
-    print("You need to install the Arial and Georgia fonts. Press 'y' to continue.")
+    print("You need to install the Arial and Georgia fonts. You only need to do this once. Press 'y' to continue.")
 
     extrafont::font_import()
     extrafont::loadfonts(quiet = T)

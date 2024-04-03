@@ -115,3 +115,4 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
   )
 
 }
+
