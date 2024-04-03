@@ -138,16 +138,21 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 #' @import flextable
 #' @export
 theme_ft_smc <- function(ft) {
-  ft %>%
+
+  load_smc_fonts()
+
+  ft1 <- ft %>%
     # header
     flextable::font(fontname = "Georgia", part = "header") %>%
     flextable::bold(bold = T, part = "header") %>%
+
     # body
     flextable::font(fontname = "Arial", part = "body") %>%
     flextable::hline(part = "body", border = officer::fp_border(color = "#D5D8DC")) %>%
+
     # footer
     flextable::font(fontname = "Arial", part = "footer") %>%
     flextable::fontsize(size = 10, part = "footer") %>%
     flextable::color(color = "#566573", part = "footer")
-  ft
+  ft1
 }
