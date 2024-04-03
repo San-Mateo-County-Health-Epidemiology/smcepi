@@ -35,7 +35,8 @@ devtools::install_github("San-Mateo-County-Health-Epidemiology/smcepi")
 ### `theme_gg_smc()`
 
 `theme_gg_smc()` will format your `ggplot2` charts according to OEE style guidelines. Embedded within the `theme_gg_smc()` is the `load_smc_fonts()` function that will download and/or enable the fonts from the [extrafont](https://cran.r-project.org/web/packages/extrafont/extrafont.pdf) package. If you haven't already installed the extrafont fonts on your computer, the `theme_gg_smc()` and `load_smc_fonts()` functions will download them the first time you run either of those functions. 
-```{r theme_gg_smc example, out.width='60%', fig.align='center'}
+
+```{r theme_gg_smc-example, out.width='60%', fig.align='center'}
 library(smcepi)
 
 iris %>% 
@@ -60,7 +61,7 @@ iris %>%
 
 `theme_ft_smc()` will format your `flextable` charts according to OEE style guidelines. Like in the `smc_gg_theme()` function, the `load_smc_fonts()` is embedded within the `theme_ft_smc()` function. 
 
-```{r theme_ft_smc example, out.width='60%', fig.align='center'}
+```{r theme_ft_smc-example, out.width='60%', fig.align='center'}
 library(smcepi)
 
 iris %>%

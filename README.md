@@ -54,7 +54,7 @@ iris %>%
   theme_gg_smc(plot_lines = "vertical")
 ```
 
-<img src="man/figures/README-theme_gg_smc example-1.png" width="60%" style="display: block; margin: auto;" />
+<img src="man/figures/README-theme_gg_smc-example-1.png" width="60%" style="display: block; margin: auto;" />
 
 ### `theme_ft_smc()`
 
@@ -73,4 +73,4 @@ iris %>%
   theme_ft_smc()
 ```
 
-<img src="man/figures/README-theme_ft_smc example-1.png" width="60%" style="display: block; margin: auto;" />
+<img src="man/figures/README-theme_ft_smc-example-1.png" width="60%" style="display: block; margin: auto;" />

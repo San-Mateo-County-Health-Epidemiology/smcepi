@@ -141,17 +141,29 @@ theme_ft_smc <- function(ft) {
 
   load_smc_fonts()
 
+  if(sum(grepl("^Arial$", names(grDevices::windowsFonts()))) == 0) {
+    font <- "serif"
+  } else {
+    font <- "Arial"
+  }
+
+  if(sum(grepl("^Georgia$", names(grDevices::windowsFonts()))) == 0) {
+    title_font <- "sans"
+  } else {
+    title_font <- "Georgia"
+  }
+
   ft1 <- ft %>%
     # header
-    flextable::font(fontname = "Georgia", part = "header") %>%
+    flextable::font(fontname = title_font, part = "header") %>%
     flextable::bold(bold = T, part = "header") %>%
 
     # body
-    flextable::font(fontname = "Arial", part = "body") %>%
+    flextable::font(fontname = font, part = "body") %>%
     flextable::hline(part = "body", border = officer::fp_border(color = "#D5D8DC")) %>%
 
     # footer
-    flextable::font(fontname = "Arial", part = "footer") %>%
+    flextable::font(fontname = font, part = "footer") %>%
     flextable::fontsize(size = 10, part = "footer") %>%
     flextable::color(color = "#566573", part = "footer")
   ft1
