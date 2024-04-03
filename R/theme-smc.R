@@ -116,3 +116,38 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 
 }
 
+#' Using `theme_ft_smc`
+#'
+#' @description
+#' This function will format a flextable object according to the San Mateo County Office of Epidemiology and Evaluation's style guide.
+#'
+#' @usage theme_ft_smc(ft)
+#'
+#' @param ft This should be a `flextable` object
+#' @return a `flextable` object with custom formatting
+#'
+#' @examples
+#' iris %>%
+#'    dplyr::slice(1:5) %>%
+#'    dplyr::select(Species, everything()) %>%
+#'    flextable() %>%
+#'    footnote(i = 1, j = 1, value = as_paragraph("footer test")) %>%
+#'    theme_ft_smc()
+#'
+#' @md
+#' @import flextable
+#' @export
+theme_ft_smc <- function(ft) {
+  ft %>%
+    # header
+    flextable::font(fontname = "Georgia", part = "header") %>%
+    flextable::bold(bold = T, part = "header") %>%
+    # body
+    flextable::font(fontname = "Arial", part = "body") %>%
+    flextable::hline(part = "body", border = officer::fp_border(color = "#D5D8DC")) %>%
+    # footer
+    flextable::font(fontname = "Arial", part = "footer") %>%
+    flextable::fontsize(size = 10, part = "footer") %>%
+    flextable::color(color = "#566573", part = "footer")
+  ft
+}

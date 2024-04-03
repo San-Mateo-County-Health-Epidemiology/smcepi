@@ -2,6 +2,8 @@
 
 export("%>%")
 export(load_smc_fonts)
+export(theme_ft_smc)
 export(theme_gg_smc)
+import(flextable)
 importFrom(ggplot2,theme)
 importFrom(magrittr,"%>%")
