@@ -22,16 +22,17 @@ devtools::install_github("San-Mateo-County-Health-Epidemiology/smcepi")
 ## Using `theme_gg_smc()`
 
 `theme_gg_smc()` will format your `ggplot2` charts according to OEE
-style guidelines. In order to use the county’s fonts, you’ll need to run
-`load_smc_fonts()` once per session so that the fonts are available for
-use in the `theme_gg_smc()` function.
+style guidelines. Embedded within the `theme_gg_smc()` is the
+`load_smc_fonts()` function that will download and/or enable the fonts
+from the
+[extrafont](https://cran.r-project.org/web/packages/extrafont/extrafont.pdf)
+package. If you haven’t already installed the extrafont fonts on your
+computer, the `theme_gg_smc()` and `load_smc_fonts()` functions will
+download them the first time you run either of those functions.
 
 ``` r
 library(smcepi)
 #> Loading required package: ggplot2
-
-load_smc_fonts()
-#> [1] "You already have Arial and Georgia. You're good to go!"
 
 iris %>% 
   ggplot(aes(x = Species, 
@@ -47,7 +48,7 @@ iris %>%
     breaks = seq(4, 8, 2)
   ) + 
   labs(title = "Iris Jitter Plot") + 
-  theme_gg_smc()
+  theme_gg_smc(plot_lines = "vertical")
 ```
 
 <img src="man/figures/README-example-1.png" width="60%" style="display: block; margin: auto;" />
