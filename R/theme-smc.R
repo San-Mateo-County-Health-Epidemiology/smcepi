@@ -34,6 +34,7 @@
 #'
 #' @export
 #' @importFrom ggplot2 theme
+#' @importFrom ggtext element_markdown
 theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 
   load_smc_fonts()
@@ -87,9 +88,9 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
   }
 
   ggplot2::theme(
-    plot.title = ggplot2::element_text(family = title_font, size = 16, hjust = 0, face = "bold", color = title_color),
-    plot.subtitle = ggplot2::element_text(family = title_font, size = 12, hjust = 0, face = "bold", color = title_color),
-    plot.caption = ggplot2::element_text(family = font, size = 8, color = caption_color, hjust = 0),
+    plot.title = ggtext::element_markdown(family = title_font, size = 16, hjust = 0, face = "bold", color = title_color),
+    plot.subtitle = ggtext::element_markdown(family = title_font, size = 12, hjust = 0, face = "bold", color = title_color),
+    plot.caption = ggtext::element_markdown(family = font, size = 8, color = caption_color, hjust = 0),
 
     legend.position = legend_loc,
     legend.title = ggplot2::element_blank(),
