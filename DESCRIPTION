@@ -18,7 +18,8 @@ Depends:
 Imports: 
     extrafont,
     magrittr,
-    officer
+    officer,
+    stringr
 Suggests: 
     dplyr,
     testthat (>= 3.0.0)

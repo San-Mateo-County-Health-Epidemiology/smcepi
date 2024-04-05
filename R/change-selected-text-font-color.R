@@ -1,75 +1,78 @@
-# set up the inputs
-highlight_colors <- c("006cb6")
-highlight_text <- c("Brown")
-title <- "Brown and blue eyes were most common"
+#' Title
+#'
+#' @param title_text
+#' @param highlight_words
+#' @param highlight_colors
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' @importFrom stringr str_split_fixed
+gg_color_title <- function(title_text, highlight_words, highlight_colors) {
 
-# split the title into pieces with the breakpoints as the highlighted words ----
-list <- list()
-ct <- 0
-text_ct <- 0
-for(text in highlight_text) {
+  if(length(highlight_words) != length(highlight_colors)) {
 
-  text_ct <- text_ct + 1
+    print("The length of the highlight_words and highlight_colors vectors must match.")
 
-  first <- str_split_fixed(title, text, 2)[1]
-  title <- str_split_fixed(title, text, 2)[2]
-  print(first)
-  print(text)
+  }
 
-  ct <- ct + 1
-  list[[ct]] <- first
+  # split the title into pieces with the highlighted words as break points ----
+  ## inputs ----
+  list <- list()
+  ct <- 0
+  text_ct <- 0
 
-  ct <- ct + 1
-  list[[ct]] <- text
+  ## loop to split text ----
+  for(text in highlight_words) {
 
-  if(text_ct == length(highlight_text)) {
+    text_ct <- text_ct + 1
+
+    first <- stringr::str_split_fixed(title_text, text, 2)[1]
+    title_text <- stringr::str_split_fixed(title_text, text, 2)[2]
 
     ct <- ct + 1
-    list[[ct]] <- title
+    list[[ct]] <- first
+
+    ct <- ct + 1
+    list[[ct]] <- text
+
+    if(text_ct == length(highlight_words)) {
+
+      ct <- ct + 1
+      list[[ct]] <- title_text
+
+    }
 
   }
 
-}
+  words_list <- unlist(list)
 
-words_list <- unlist(list)
+  # add the colors to the highlighted words ----
+  ## inputs -----
+  list_ct <- 0
+  highlight_ct <- 0
 
-# add the colors to the highlighted words
-list_ct <- 0
-highlight_ct <- 0
+  colors_list <- words_list
 
-colors_list <- words_list
+  ## loop to assign colors ----
+  for(word in words_list) {
 
-for(word in words_list) {
+    list_ct <- list_ct + 1
 
-  list_ct <- list_ct + 1
-  print(word)
+    if(word %in% highlight_words) {
 
-  if(word %in% highlight_text) {
+      highlight_ct <- highlight_ct + 1
 
-    highlight_ct <- highlight_ct + 1
+      colors_list[list_ct] <- paste0("<span style='color:#", highlight_colors[highlight_ct], ";'>", word, "</span>")
 
-    colors_list[list_ct] <- paste0("<span style='color:#", highlight_colors[highlight_ct], ";'>", word, "</span>")
+    }
 
   }
 
+  title <- paste(colors_list, collapse = "")
+  title
+
 }
 
-colors_list
 
-title <- paste(colors_list, collapse = "")
-
-
-eye_plot <- eye_freq %>%
-  ggplot(aes(x = Eye,
-             y = freq,
-             fill = Eye)) +
-  scale_fill_manual(values = c("Brown" = "#006cb6",
-                               "Blue" = "#D5D8DC",
-                               "Hazel" = "#D5D8DC",
-                               "Green" = "#D5D8DC")) +
-  geom_bar(position = "dodge",
-           stat = "identity") +
-  labs(title = title) +
-  # labs(title = "<span style='color:#006cb6;'>Brown</span> eyes were the most common in this sample")+
-  theme_gg_smc()
-eye_plot
