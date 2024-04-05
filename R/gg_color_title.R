@@ -7,10 +7,26 @@
 #' @param highlight_words This is a vector of the words you want to highlight from the `title_text` string. This vector must be the same length as the `highlight_colors` vector
 #' @param highlight_colors This is a vector of the colors you want for each word in the `highlight_words` argument. The first color corresponds to the first word, the second color with the second word, etc. This vector must be the same length as the `highlight_words` vector
 #'
-#' @return
+#' @return # a string that can be used for a ggtext::element_markdown() title
 #' @export
 #'
 #' @examples
+#'title <- gg_color_title("Brown and blue eyes are most common",
+#'                        c("Brown", "blue"), c("873600", "006cb6"))
+#'HairEyeColor %>%
+#'  data.frame() %>%
+#'  dplyr::group_by(Eye) %>%
+#'  dplyr:: summarize(freq = sum(Freq),
+#'  .groups = "keep") %>%
+#'  dplyr:: ungroup() %>%
+#'  ggplot2::ggplot(aes(x = Eye,
+#'  y = freq,
+#'  fill = Eye)) +
+#'  geom_bar(position = "dodge",
+#'  stat = "identity") +
+#'  labs(title = title) +
+#'  ggplot2::theme(plot.title = ggtext::element_markdown(size = 16, hjust = 0, face = "bold"))
+#'
 #' @importFrom stringr str_split_fixed
 gg_color_title <- function(title_text, highlight_words, highlight_colors) {
 
