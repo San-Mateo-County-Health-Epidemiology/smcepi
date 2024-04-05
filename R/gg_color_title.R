@@ -1,8 +1,11 @@
-#' Title
+#' Using `gg_color_title()`
 #'
-#' @param title_text
-#' @param highlight_words
-#' @param highlight_colors
+#' @description
+#' This function allows you to selectively color words in the text of your `ggplot2` plot. In order for this to work, you'll need to use the `gg_text::element_markdown()` in the `ggplot2::theme` for the text you want to color.
+#'
+#' @param title_text This is a string that is the entire title (or subtitle or caption)
+#' @param highlight_words This is a vector of the words you want to highlight from the `title_text` string. This vector must be the same length as the `highlight_colors` vector
+#' @param highlight_colors This is a vector of the colors you want for each word in the `highlight_words` argument. The first color corresponds to the first word, the second color with the second word, etc. This vector must be the same length as the `highlight_words` vector
 #'
 #' @return
 #' @export
