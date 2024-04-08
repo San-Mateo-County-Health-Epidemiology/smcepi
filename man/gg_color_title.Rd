@@ -21,7 +21,7 @@ This function allows you to selectively color words in the text of your `ggplot2
 }
 \examples{
 title <- gg_color_title("Brown and blue eyes are most common",
-                       c("Brown", "blue"), c("873600", "006cb6"))
+                       c("Brown", "blue"), c("#873600", "#006cb6"))
 HairEyeColor \%>\%
  data.frame() \%>\%
  dplyr::group_by(Eye) \%>\%

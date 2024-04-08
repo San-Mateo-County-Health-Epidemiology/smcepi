@@ -36,6 +36,7 @@ download them the first time you run either of those functions.
 library(smcepi)
 #> Loading required package: flextable
 #> Loading required package: ggplot2
+#> Loading required package: ggtext
 
 iris %>% 
   ggplot(aes(x = Species, 
@@ -74,3 +75,45 @@ iris %>%
 ```
 
 <img src="man/figures/README-theme_ft_smc-example-1.png" width="60%" style="display: block; margin: auto;" />
+
+## Selectively coloring text
+
+### `gg_color_title()`
+
+`gg_color_title()` allows you to specify the color for specific words or
+phrases in your `ggplot2` title, subtitle or caption.
+
+In order for the `gg_color_title()` to render correctly in your chart,
+you should use the `ggtext::element_markdown()` in your
+`ggplot2::theme()` instead of using the standard `element_markdown()`.
+The `theme_gg_smc()` function uses `element_markdown()`.
+
+``` r
+library(ggtext)
+
+brown_color <- "#873600"
+blue_color <- "#006cb6"
+
+title <- gg_color_title("Brown and blue eyes are most common",
+                       c("Brown", "blue"), c(brown_color, blue_color))
+HairEyeColor %>%
+  data.frame() %>%
+  dplyr::group_by(Eye) %>%
+  dplyr:: summarize(freq = sum(Freq),
+                    .groups = "keep") %>%
+  dplyr:: ungroup() %>%
+  ggplot2::ggplot(aes(x = Eye,
+                      y = freq,
+                      fill = Eye)) +
+  scale_fill_manual(values = c("Brown" = brown_color,
+                               "Blue" = blue_color,
+                               "Hazel" = "#D5D8DC",
+                               "Green" = "#D5D8DC")) + 
+  geom_bar(position = "dodge",
+           stat = "identity") +
+  labs(title = title) +
+  theme_gg_smc() +
+  ggplot2::theme(plot.title = ggtext::element_markdown(size = 16, hjust = 0, face = "bold"))
+```
+
+<img src="man/figures/README-gg_color_title-example-1.png" width="60%" style="display: block; margin: auto;" />
