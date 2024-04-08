@@ -12,7 +12,7 @@
 #'
 #' @examples
 #'title <- gg_color_title("Brown and blue eyes are most common",
-#'                        c("Brown", "blue"), c("873600", "006cb6"))
+#'                        c("Brown", "blue"), c("#873600", "#006cb6"))
 #'HairEyeColor %>%
 #'  data.frame() %>%
 #'  dplyr::group_by(Eye) %>%
@@ -83,7 +83,7 @@ gg_color_title <- function(title_text, highlight_words, highlight_colors) {
 
       highlight_ct <- highlight_ct + 1
 
-      colors_list[list_ct] <- paste0("<span style='color:#", highlight_colors[highlight_ct], ";'>", word, "</span>")
+      colors_list[list_ct] <- paste0("<span style='color:", highlight_colors[highlight_ct], ";'>", word, "</span>")
 
     }
 
