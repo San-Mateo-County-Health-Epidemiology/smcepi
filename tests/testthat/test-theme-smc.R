@@ -49,8 +49,8 @@ test_that("theme_gg_smc legend bottom", {
 
 # test gg_color_title() -------------------------
 test_that("gg_color_title", {
-  title <- gg_color_title("Blue and yellow colors", c("Blue", "yellow"), c("006cb6", "fcee00"))
-  expect_equal(unlist(stringr::str_extract_all(title, "(?<=color\\:\\#)[A-Za-z0-9]{6}")), c("006cb6", "fcee00"))
+  title <- gg_color_title("Blue and yellow colors", c("Blue", "yellow"), c("#006cb6", "#fcee00"))
+  expect_equal(unlist(stringr::str_extract_all(title, "(?<=color\\:)[\\#A-Za-z0-9]{7}")), c("#006cb6", "#fcee00"))
   expect_equal(unlist(stringr::str_extract_all(title, "(?<=\\'\\>)[A-Za-z\\s]+(?=\\<\\/)")), c("Blue", "yellow"))
   expect_equal(unlist(stringr::str_extract_all(title, "(?<=span\\>)[A-Za-z\\s]+")), c(" and ", " colors"))
 })
