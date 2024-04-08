@@ -112,7 +112,7 @@ HairEyeColor %>%
   geom_bar(position = "dodge",
            stat = "identity") +
   labs(title = title) +
-  theme_gg_smc() +
+  theme_gg_smc(legend_loc = "none") +
   ggplot2::theme(plot.title = ggtext::element_markdown(size = 16, hjust = 0, face = "bold"))
 ```
 
