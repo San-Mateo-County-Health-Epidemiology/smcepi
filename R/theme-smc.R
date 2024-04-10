@@ -45,10 +45,10 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
     font <- "Arial"
   }
 
-  if(sum(grepl("^Georgia$", names(grDevices::windowsFonts()))) == 0) {
-    title_font <- "sans"
+  if(sum(grepl("^Arial Black$", names(grDevices::windowsFonts()))) == 0) {
+    title_font <- "serif"
   } else {
-    title_font <- "Georgia"
+    title_font <- "Arial Black"
   }
 
   title_color <- "#17202A" # black
