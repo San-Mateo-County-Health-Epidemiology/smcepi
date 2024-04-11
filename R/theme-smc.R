@@ -40,13 +40,13 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
   load_smc_fonts()
 
   if(sum(grepl("^Arial$", names(grDevices::windowsFonts()))) == 0) {
-    font <- "serif"
+    font <- "sans"
   } else {
     font <- "Arial"
   }
 
   if(sum(grepl("^Arial Black$", names(grDevices::windowsFonts()))) == 0) {
-    title_font <- "serif"
+    title_font <- "sans"
   } else {
     title_font <- "Arial Black"
   }
@@ -143,15 +143,15 @@ theme_ft_smc <- function(ft) {
   load_smc_fonts()
 
   if(sum(grepl("^Arial$", names(grDevices::windowsFonts()))) == 0) {
-    font <- "serif"
+    font <- "sans"
   } else {
     font <- "Arial"
   }
 
-  if(sum(grepl("^Georgia$", names(grDevices::windowsFonts()))) == 0) {
+  if(sum(grepl("^Arial Black$", names(grDevices::windowsFonts()))) == 0) {
     title_font <- "sans"
   } else {
-    title_font <- "Georgia"
+    title_font <- "Arial Black"
   }
 
   ft1 <- ft %>%
