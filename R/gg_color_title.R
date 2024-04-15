@@ -32,7 +32,13 @@ gg_color_title <- function(title_text, highlight_words, highlight_colors) {
 
   if(length(highlight_words) != length(highlight_colors)) {
 
-    print("The length of the highlight_words and highlight_colors vectors must match.")
+    stop("`highlight_words` and `highlight_colors` must be of the same length.")
+
+  }
+
+  if(sum(stringr::str_count(title_text, highlight_words)) != length(highlight_words)) {
+
+    stop("All `highlight_words` aren't in `title_text`")
 
   }
 
