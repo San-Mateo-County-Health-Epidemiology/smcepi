@@ -37,6 +37,13 @@
 #' @importFrom ggtext element_markdown
 theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 
+  # set colors -----------------------------------------
+  title_color <- "#17202A" # black
+  caption_color <- "#566573" # dark grey
+  axis_color <- "#17202A" # black
+  grid_color <- "#D5D8DC" # light grey
+
+  # get the fonts we need ------------------------------
   load_smc_fonts()
 
   if(sum(grepl("^Arial$", names(grDevices::windowsFonts()))) == 0) {
@@ -51,21 +58,13 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
     title_font <- "Arial Black"
   }
 
-  title_color <- "#17202A" # black
-  caption_color <- "#566573" # dark grey
-  axis_color <- "#17202A" # black
-  grid_color <- "#D5D8DC" # light grey
+  # legend ---------------------------------------------
+  legend_loc <- rlang::arg_match(legend_loc, c("top","left", "right", "bottom", "none"))
 
-  if(missing(legend_loc)) {
-    legend_loc <- "top"
-  }
+  # plot lines -----------------------------------------
+  plot_lines <- rlang::arg_match(plot_lines, c("horizontal","vertical", "both", "none"))
 
-  if(missing(plot_lines)) {
-
-    panel.grid.major.x <- ggplot2::element_blank()
-    panel.grid.major.y <- ggplot2::element_line(color = grid_color)
-
-  } else if(plot_lines == "horizontal") {
+  if(plot_lines == "horizontal") {
 
     panel.grid.major.x <- ggplot2::element_blank()
     panel.grid.major.y <- ggplot2::element_line(color = grid_color)
