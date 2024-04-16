@@ -5,7 +5,7 @@
 #'
 #' @usage read_tsv_cr(file)
 #'
-#' @param file this should be a string
+#' @param file this should be the file path of the .tsv file
 #'
 #' @return a data frame
 #' @export
