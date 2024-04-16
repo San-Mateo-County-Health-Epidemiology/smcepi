@@ -11,10 +11,11 @@
 #' @param plot_lines Specify which lines should appear on your chart.
 #'   The default is horizontal lines, but you can also choose:
 #'
+#'   * `"horizontal"`: only horizontal lines
 #'   * `"vertical"`: only vertical lines
 #'   * `"both"`: horizontal and vertical lines
 #'   * `"none"`: no lines on the plot
-#' @param legend_loc Specify the legend location. The default is for the legend to appear at the top, but you can override this using the arguments from `ggplot2::theme(legend.position)` argument. The available options are: “left”,“top”, “right”, “bottom” and "none"
+#' @param legend_loc Specify the legend location. The default is for the legend to appear at the top, but you can override this. The available options are: “left”,“top”, “right”, “bottom” and "none"
 #' @return a ggplot2 object with custom formatting
 #'
 #' @examples
