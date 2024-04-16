@@ -3,6 +3,7 @@
 export("%>%")
 export(gg_color_title)
 export(load_smc_fonts)
+export(read_tsv_cr)
 export(theme_ft_smc)
 export(theme_gg_smc)
 import(flextable)
