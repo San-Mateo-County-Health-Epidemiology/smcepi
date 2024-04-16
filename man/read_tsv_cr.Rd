@@ -7,7 +7,7 @@
 read_tsv_cr(file)
 }
 \arguments{
-\item{file}{this should be a string}
+\item{file}{the file path of the .tsv file}
 }
 \value{
 a data frame
