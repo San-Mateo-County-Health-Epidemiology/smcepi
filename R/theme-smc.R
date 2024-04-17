@@ -65,27 +65,19 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
   # plot lines -----------------------------------------
   plot_lines <- rlang::arg_match(plot_lines, c("horizontal","vertical", "both", "none"))
 
-  if(plot_lines == "horizontal") {
+  ## x lines ----
+  switch(plot_lines,
+         horizontal = {panel.grid.major.x <- ggplot2::element_blank()},
+         vertical = {panel.grid.major.x <- ggplot2::element_line(color = grid_color)},
+         both = {panel.grid.major.x <- ggplot2::element_line(color = grid_color)},
+         none = {panel.grid.major.x <- ggplot2::element_blank()})
 
-    panel.grid.major.x <- ggplot2::element_blank()
-    panel.grid.major.y <- ggplot2::element_line(color = grid_color)
-
-  } else if(plot_lines == "vertical") {
-
-    panel.grid.major.x <- ggplot2::element_line(color = grid_color)
-    panel.grid.major.y <- ggplot2::element_blank()
-
-  } else if(plot_lines == "none") {
-
-    panel.grid.major.x <- ggplot2::element_blank()
-    panel.grid.major.y <- ggplot2::element_blank()
-
-  } else if(plot_lines == "both") {
-
-    panel.grid.major.x <- ggplot2::element_line(color = grid_color)
-    panel.grid.major.y <- ggplot2::element_line(color = grid_color)
-
-  }
+  ## y lines ----
+  switch(plot_lines,
+         horizontal = {panel.grid.major.y <- ggplot2::element_line(color = grid_color)},
+         vertical = {panel.grid.major.y <-  ggplot2::element_blank()},
+         both = {panel.grid.major.y <- ggplot2::element_line(color = grid_color)},
+         none = {panel.grid.major.y <- ggplot2::element_blank()})
 
   ggplot2::theme(
     plot.title = ggtext::element_markdown(family = title_font, size = 16, hjust = 0, face = "bold", color = title_color),
