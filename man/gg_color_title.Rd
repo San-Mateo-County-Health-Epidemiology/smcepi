@@ -28,12 +28,12 @@ HairEyeColor \%>\%
  dplyr:: summarize(freq = sum(Freq),
  .groups = "keep") \%>\%
  dplyr:: ungroup() \%>\%
- ggplot2::ggplot(aes(x = Eye,
+ ggplot2::ggplot(ggplot2::aes(x = Eye,
  y = freq,
  fill = Eye)) +
- geom_bar(position = "dodge",
+ ggplot2::geom_bar(position = "dodge",
  stat = "identity") +
- labs(title = title) +
+ ggplot2::labs(title = title) +
  ggplot2::theme(plot.title = ggtext::element_markdown(size = 16, hjust = 0, face = "bold"))
 
 }

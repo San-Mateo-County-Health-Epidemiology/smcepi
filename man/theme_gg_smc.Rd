@@ -30,6 +30,9 @@ This function is meant to be used with \code{ggplot2} charts to quickly format t
 }
 \examples{
 # creating a jitter plot with `theme_gg_smc`
+\dontrun{
+library(ggplot2)
+
 iris \%>\%
   ggplot(aes(x = Species, y = Sepal.Length)) +
   geom_point(position = position_jitter(w = 1/6, h = 0),
@@ -40,5 +43,5 @@ iris \%>\%
                      breaks = seq(4, 8, 2)) +
   labs(title = "Iris Jitter Plot") +
   theme_gg_smc()
-
+}
 }

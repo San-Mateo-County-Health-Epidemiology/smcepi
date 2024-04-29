@@ -20,6 +20,9 @@
 #'
 #' @examples
 #' # creating a jitter plot with `theme_gg_smc`
+#' \dontrun{
+#' library(ggplot2)
+#'
 #' iris %>%
 #'   ggplot(aes(x = Species, y = Sepal.Length)) +
 #'   geom_point(position = position_jitter(w = 1/6, h = 0),
@@ -30,7 +33,7 @@
 #'                      breaks = seq(4, 8, 2)) +
 #'   labs(title = "Iris Jitter Plot") +
 #'   theme_gg_smc()
-#'
+#'}
 #' @md
 #'
 #' @export
@@ -136,14 +139,43 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 #'
 #'   *`"tozero"`: axis starts at 0
 #'   *`"none"`: axis starts wherever plotly decides
-#' @param title: a string of text for the plot title
-#' @param x_lab: a string of text for the x-axis label
-#' @param y_lab: a string of tect for the y-axis label
+#' @param title a string of text for the plot title
+#' @param x_lab a string of text for the x-axis label
+#' @param y_lab a string of tect for the y-axis label
+#' @return a plotly object with custom formatting
 #'
-#' @return
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' library(plotly)
+#' library(dplyr)
+#'
+#' title <- "Sepal Lengths of Iris Species"
+#' x <- "Species"
+#' y <- "Sepal Length"
+#'
+#' iris_vals <- iris %>%
+#'   distinct(Species) %>%
+#'   mutate(number = as.numeric(Species))
+#'
+#' iris %>%
+#'   plot_ly() %>%
+#'   add_markers(x = ~jitter(as.numeric(Species)), y = ~Sepal.Length,
+#'               color = ~Species,
+#'               marker = list(size = 6),
+#'               hoverinfo = "text",
+#'               text = ~paste0("Group: ", Species,
+#'                              "<br>xval: ", Sepal.Length),
+#'               showlegend = FALSE) %>%
+#'               layout(xaxis = list(tickvals = iris_vals$number,
+#'                                   ticktext = iris_vals$Species)) %>%
+#'   theme_pl_smc(plot_lines = "vertical",
+#'                title = title,
+#'                x_lab = x,
+#'                y_lab = y)
+#'}
+
 theme_pl_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top", ystart = "tozero", title = NULL, x_lab = NULL, y_lab = NULL) {
 
   title_color <- "#17202A" # black
@@ -276,15 +308,20 @@ theme_pl_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top", ys
 #' @return a `flextable` object with custom formatting
 #'
 #' @examples
+#' \dontrun{
+#'
+#' library(flextable)
+#' library(dplyr)
+#'
 #' iris %>%
-#'    dplyr::slice(1:5) %>%
-#'    dplyr::select(Species, everything()) %>%
+#'    slice(1:5) %>%
+#'    select(Species, everything()) %>%
 #'    flextable() %>%
 #'    footnote(i = 1, j = 1, value = as_paragraph("footer test")) %>%
 #'    theme_ft_smc()
+#'}
 #'
 #' @md
-#' @import flextable
 #' @export
 theme_ft_smc <- function(ft) {
 

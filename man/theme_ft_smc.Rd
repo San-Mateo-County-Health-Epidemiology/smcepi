@@ -16,11 +16,17 @@ a \code{flextable} object with custom formatting
 This function will format a flextable object according to the San Mateo County Office of Epidemiology and Evaluation's style guide.
 }
 \examples{
+\dontrun{
+
+library(flextable)
+library(dplyr)
+
 iris \%>\%
-   dplyr::slice(1:5) \%>\%
-   dplyr::select(Species, everything()) \%>\%
+   slice(1:5) \%>\%
+   select(Species, everything()) \%>\%
    flextable() \%>\%
    footnote(i = 1, j = 1, value = as_paragraph("footer test")) \%>\%
    theme_ft_smc()
+}
 
 }

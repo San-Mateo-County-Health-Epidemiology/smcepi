@@ -8,5 +8,8 @@
 
 library(testthat)
 library(smcepi)
+library(ggplot2)
+library(flextable)
+library(plotly)
 
 test_check("smcepi")

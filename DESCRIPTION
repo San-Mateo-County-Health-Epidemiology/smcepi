@@ -12,13 +12,14 @@ RoxygenNote: 7.2.3
 URL: https://github.com/San-Mateo-County-Health-Epidemiology/smcepi
 BugReports: https://github.com/San-Mateo-County-Health-Epidemiology/smcepi/issues
 Depends: 
-    flextable,
-    ggplot2,
-    ggtext
 Imports: 
     extrafont,
+    flextable,
+    ggplot2,
+    ggtext,
     magrittr,
     officer,
+    plotly,
     rlang,
     stringr
 Suggests: 
