@@ -117,25 +117,34 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 #'
 #' @usage theme_pl_smc(plot,
 #'    plot_lines = "horizontal",
-#'    legend_loc = "right",
+#'    legend_loc = "top",
 #'    ystart = "tozero",
 #'    title = NULL,
 #'    x_lab = NULL,
 #'    y_lab = NULL)
 #'
-#' @param plot
-#' @param plot_lines
-#' @param legend_loc
-#' @param ystart
-#' @param title
-#' @param x_lab
-#' @param y_lab
+#' @param plot A `plotly` plot object
+#' @param plot_lines Specify which lines should appear on your chart.
+#'   The default is horizontal lines, but you can also choose:
+#'
+#'   * `"horizontal"`: only horizontal lines
+#'   * `"vertical"`: only vertical lines
+#'   * `"both"`: horizontal and vertical lines
+#'   * `"none"`: no lines on the plot
+#' @param legend_loc Specify the legend location. The default is for the legend to appear at the top, but you can override this. The available options are: “left”,“top”, “right”, “bottom” and "none"
+#' @param ystart Specify whether or not the y-axis should start at zero. The default is to start at zero. The options are:
+#'
+#'   *`"tozero"`: axis starts at 0
+#'   *`"none"`: axis starts wherever plotly decides
+#' @param title: a string of text for the plot title
+#' @param x_lab: a string of text for the x-axis label
+#' @param y_lab: a string of tect for the y-axis label
 #'
 #' @return
 #' @export
 #'
 #' @examples
-theme_pl_smc <- function(plot, plot_lines = "horizontal", legend_loc = "right", ystart = "tozero", title = NULL, x_lab = NULL, y_lab = NULL) {
+theme_pl_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top", ystart = "tozero", title = NULL, x_lab = NULL, y_lab = NULL) {
 
   title_color <- "#17202A" # black
   caption_color <- "#566573" # dark grey
