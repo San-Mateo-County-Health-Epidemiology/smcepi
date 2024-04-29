@@ -109,6 +109,153 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
 
 }
 
+
+#'  Using `theme_pl_smc`
+#'
+#' @description
+#' This function is meant to be used with `plotly` charts to quickly format them according to the San Mateo County Office of Epidemiology and Evaluation's style guide
+#'
+#' @usage theme_pl_smc(plot,
+#'    plot_lines = "horizontal",
+#'    legend_loc = "right",
+#'    ystart = "tozero",
+#'    title = NULL,
+#'    x_lab = NULL,
+#'    y_lab = NULL)
+#'
+#' @param plot
+#' @param plot_lines
+#' @param legend_loc
+#' @param ystart
+#' @param title
+#' @param x_lab
+#' @param y_lab
+#'
+#' @return
+#' @export
+#'
+#' @examples
+theme_pl_smc <- function(plot, plot_lines = "horizontal", legend_loc = "right", ystart = "tozero", title = NULL, x_lab = NULL, y_lab = NULL) {
+
+  title_color <- "#17202A" # black
+  caption_color <- "#566573" # dark grey
+  axis_color <- "#17202A" # black
+  grid_color <- "#D5D8DC" # light grey
+  grid_white <- "#FDFEFE" # white
+
+  load_smc_fonts()
+
+  if(sum(grepl("^Arial$", names(grDevices::windowsFonts()))) == 0) {
+
+    font <- list(family = "sans",
+                 size = 12)
+  } else {
+
+    font <- list(family = "Arial",
+                 size = 12)
+  }
+
+  if(sum(grepl("^Arial Black$", names(grDevices::windowsFonts()))) == 0) {
+
+    title_font <- list(family = "sans",
+                       size = 16)
+  } else {
+
+    title_font <- list(family = "Arial Black",
+                       size = 16)
+  }
+
+  # legend ---------------------------------------------
+  legend_loc <- rlang::arg_match(legend_loc, c("top","left", "right", "bottom", "none"))
+
+  legend <- if(legend_loc == "right") {
+
+    legend_position <- list(orientation = "v",
+                            x = 1.1, xanchor = "center",
+                            y = 0.5, yanchor = "center")
+    show_legend <- T
+
+  } else if (legend_loc == "top") {
+
+    legend_position <- list(orientation = "h",
+                            x = 0.5, xanchor = "center",
+                            y = 1.1, yanchor = "center")
+    show_legend <- T
+
+  } else if (legend_loc == "bottom") {
+
+    legend_position <- list(orientation = "h",
+                            x = 0.5, xanchor = "center",
+                            y = -0.1, yanchor = "center")
+    show_legend <- T
+
+  } else if (legend_loc == "left") {
+
+    legend_position <- list(orientation = "v",
+                            x = -0.2, xanchor = "center",
+                            y = 0.5, yanchor = "center")
+    show_legend <- T
+
+  } else if (legend_loc == "none") {
+
+    legend_position <- list()
+    show_legend <- F
+
+  }
+
+  # plot lines -----------------------------------------
+  plot_lines <- rlang::arg_match(plot_lines, c("horizontal","vertical", "both", "none"))
+  ystart <- rlang::arg_match(ystart, c("tozero", "none"))
+
+  switch(ystart,
+         tozero = {ystart <- "tozero"},
+         none = {ystart <- ""})
+
+
+  ## x lines ----
+  switch(plot_lines,
+         horizontal = {x_color <- grid_white},
+         vertical = {x_color <- grid_color},
+         both = {x_color <- grid_color},
+         none = {x_color <- grid_white})
+
+  ## y lines ----
+  switch(plot_lines,
+         horizontal = {y_color <- grid_color},
+         vertical = {y_color <- grid_white},
+         both = {y_color <- grid_color},
+         none = {y_color <- grid_white})
+
+  # plotly layout --------------------------------------
+
+  plotly::layout(plot,
+                 title = list(text = title, font = list(family = "Arial Black",
+                                                        size = 22)),
+
+                 font = list(family = "Arial", size = 14),
+
+                 # legend ----
+                 legend = legend_position,
+                 showlegend = show_legend,
+
+                 # axis labels + grid lines ----
+                 xaxis = list(title = x_lab,
+                              zerolinecolor = x_color,
+                              zerolinewidth = 1,
+                              gridcolor = x_color),
+                 yaxis = list(title = y_lab,
+                              zerolinecolor = y_color,
+                              zerolinewidth = 1,
+                              gridcolor = y_color,
+                              rangemode = ystart),
+
+                 margin = list(t = 50)
+
+  )
+
+
+}
+
 #' Using `theme_ft_smc`
 #'
 #' @description
