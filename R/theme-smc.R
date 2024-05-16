@@ -56,10 +56,10 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
     font <- "Arial"
   }
 
-  if(sum(grepl("^Arial Black$", names(grDevices::windowsFonts()))) == 0) {
+  if(sum(grepl("^Trade Gothic Next Rounded$", names(grDevices::windowsFonts()))) == 0) {
     title_font <- "sans"
   } else {
-    title_font <- "Arial Black"
+    title_font <- "Trade Gothic Next Rounded"
   }
 
   # legend ---------------------------------------------
@@ -83,8 +83,8 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
          none = {panel.grid.major.y <- ggplot2::element_blank()})
 
   ggplot2::theme(
-    plot.title = ggtext::element_markdown(family = title_font, size = 16, hjust = 0, face = "bold", color = title_color),
-    plot.subtitle = ggtext::element_markdown(family = title_font, size = 12, hjust = 0, face = "bold", color = title_color),
+    plot.title = ggtext::element_markdown(family = title_font, size = 18, hjust = 0, face = "bold", color = title_color),
+    plot.subtitle = ggtext::element_markdown(family = title_font, size = 12, hjust = 0, color = title_color),
     plot.caption = ggtext::element_markdown(family = font, size = 8, color = caption_color, hjust = 0),
 
     legend.position = legend_loc,
