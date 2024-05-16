@@ -21,6 +21,10 @@ devtools::install_github("San-Mateo-County-Health-Epidemiology/smcepi")
 
 ## Using formatting themes
 
+### Fonts
+
+These packages assume that you've enabled Trade Gothic Next Rounded and Arial in R. You can do this by following the instructions in the [`adding-ms-cloud-fonts-to-R`](https://github.com/San-Mateo-County-Health-Epidemiology/Helpful-Code-Bits/blob/main/adding-ms-cloud-fonts-to-R.R)
+
 ### `theme_gg_smc()`
 
 `theme_gg_smc()` will format your `ggplot2` charts according to OEE
