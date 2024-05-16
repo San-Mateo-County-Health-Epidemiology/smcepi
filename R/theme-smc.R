@@ -196,14 +196,14 @@ theme_pl_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top", ys
                  size = 12)
   }
 
-  if(sum(grepl("^Arial Black$", names(grDevices::windowsFonts()))) == 0) {
+  if(sum(grepl("^Trade Gothic Next Rounded$", names(grDevices::windowsFonts()))) == 0) {
 
     title_font <- list(family = "sans",
                        size = 16)
   } else {
 
-    title_font <- list(family = "Arial Black",
-                       size = 16)
+    title_font <- list(family = "Trade Gothic Next Rounded",
+                       size = 22)
   }
 
   # legend ---------------------------------------------
@@ -270,8 +270,7 @@ theme_pl_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top", ys
   # plotly layout --------------------------------------
 
   plotly::layout(plot,
-                 title = list(text = title, font = list(family = "Arial Black",
-                                                        size = 22)),
+                 title = list(text = title, font = title_font),
 
                  font = list(family = "Arial", size = 14),
 
@@ -333,10 +332,10 @@ theme_ft_smc <- function(ft) {
     font <- "Arial"
   }
 
-  if(sum(grepl("^Arial Black$", names(grDevices::windowsFonts()))) == 0) {
+  if(sum(grepl("^Trade Gothic Next Rounded$", names(grDevices::windowsFonts()))) == 0) {
     title_font <- "sans"
   } else {
-    title_font <- "Arial Black"
+    title_font <- "Trade Gothic Next Rounded"
   }
 
   ft1 <- ft %>%
@@ -349,7 +348,7 @@ theme_ft_smc <- function(ft) {
     flextable::hline(part = "body", border = officer::fp_border(color = "#D5D8DC")) %>%
 
     # footer
-    flextable::font(fontname = font, part = "footer") %>%
+    flextable::font(fontname = title_font, part = "footer") %>%
     flextable::fontsize(size = 10, part = "footer") %>%
     flextable::color(color = "#566573", part = "footer")
   ft1
