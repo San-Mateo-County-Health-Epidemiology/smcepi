@@ -23,7 +23,7 @@ devtools::install_github("San-Mateo-County-Health-Epidemiology/smcepi")
 
 ### Fonts
 
-These packages assume that you've enabled Trade Gothic Next Rounded and Arial in R. You can do this by following the instructions in the [`adding-ms-cloud-fonts-to-R`](https://github.com/San-Mateo-County-Health-Epidemiology/Helpful-Code-Bits/blob/main/adding-ms-cloud-fonts-to-R.R)
+These packages assume that you've enabled Trade Gothic Next Rounded and Arial in R. You likely already have Arial enabled but probably don't have Trade Gothic Next Rounded enabled. You can enable it by following the instructions in the [`adding-ms-cloud-fonts-to-R`](https://github.com/San-Mateo-County-Health-Epidemiology/Helpful-Code-Bits/blob/main/adding-ms-cloud-fonts-to-R.R).
 
 ### `theme_gg_smc()`
 
