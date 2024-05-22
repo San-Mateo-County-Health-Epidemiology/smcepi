@@ -5,7 +5,11 @@
 #'
 #' @usage theme_gg_smc(plot,
 #'   plot_lines = "horizontal",
-#'   legend_loc = "top")
+#'   legend_loc = "top",
+#'   title_font_size = 18,
+#'   subtitle_font_size = 12,
+#'   caption_font_size = 8,
+#'   axis_font_size = 10)
 #'
 #' @param plot This should be a `ggplot2` object
 #' @param plot_lines Specify which lines should appear on your chart.
@@ -16,6 +20,10 @@
 #'   * `"both"`: horizontal and vertical lines
 #'   * `"none"`: no lines on the plot
 #' @param legend_loc Specify the legend location. The default is for the legend to appear at the top, but you can override this. The available options are: “left”,“top”, “right”, “bottom” and "none"
+#' @param title_font_size A numeric value to specify the font size of the title. The default is 18, the minimum is 6 and the maximum is 60.
+#' @param subtitle_font_size A numeric value to specify the font size of the subtitle. The default is 12, the minimum is 6 and the maximum is 60.
+#' @param caption_font_size A numeric value to specify the font size of the caption. The default is 8, the minimum is 6 and the maximum is 60.
+#' @param axis_font_size A numeric value to specify the font size of the axis labels. The default is 10, the minimum is 6 and the maximum is 60.
 #' @return a ggplot2 object with custom formatting
 #'
 #' @examples
@@ -40,6 +48,8 @@
 #' @importFrom ggplot2 theme
 #' @importFrom ggtext element_markdown
 theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top", title_font_size = 18, subtitle_font_size = 12, caption_font_size = 8, axis_font_size = 10) {
+
+  stopifnot(is.numeric(title_font_size) & is.numeric(subtitle_font_size) & is.numeric(caption_font_size) & is.numeric(axis_font_size))
 
   # set colors -----------------------------------------
   title_color <- "#17202A" # black
