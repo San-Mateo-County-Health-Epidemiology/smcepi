@@ -5,7 +5,11 @@
 #'
 #' @usage theme_gg_smc(plot,
 #'   plot_lines = "horizontal",
-#'   legend_loc = "top")
+#'   legend_loc = "top",
+#'   title_font_size = 18,
+#'   subtitle_font_size = 12,
+#'   caption_font_size = 8,
+#'   axis_font_size = 10)
 #'
 #' @param plot This should be a `ggplot2` object
 #' @param plot_lines Specify which lines should appear on your chart.
@@ -16,6 +20,10 @@
 #'   * `"both"`: horizontal and vertical lines
 #'   * `"none"`: no lines on the plot
 #' @param legend_loc Specify the legend location. The default is for the legend to appear at the top, but you can override this. The available options are: “left”,“top”, “right”, “bottom” and "none"
+#' @param title_font_size A numeric value to specify the font size of the title. The default is 18, the minimum is 6 and the maximum is 60.
+#' @param subtitle_font_size A numeric value to specify the font size of the subtitle. The default is 12, the minimum is 6 and the maximum is 60.
+#' @param caption_font_size A numeric value to specify the font size of the caption. The default is 8, the minimum is 6 and the maximum is 60.
+#' @param axis_font_size A numeric value to specify the font size of the axis labels. The default is 10, the minimum is 6 and the maximum is 60.
 #' @return a ggplot2 object with custom formatting
 #'
 #' @examples
@@ -39,7 +47,9 @@
 #' @export
 #' @importFrom ggplot2 theme
 #' @importFrom ggtext element_markdown
-theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
+theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top", title_font_size = 18, subtitle_font_size = 12, caption_font_size = 8, axis_font_size = 10) {
+
+  stopifnot(is.numeric(title_font_size) & is.numeric(subtitle_font_size) & is.numeric(caption_font_size) & is.numeric(axis_font_size))
 
   # set colors -----------------------------------------
   title_color <- "#17202A" # black
@@ -62,6 +72,12 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
     title_font <- "Trade Gothic Next Rounded"
   }
 
+  # font sizes -----------------------------------------
+  title_font_size <- ifelse(title_font_size < 6, 6, ifelse(title_font_size > 60, 60, title_font_size))
+  subtitle_font_size <- ifelse(subtitle_font_size < 6, 6, ifelse(subtitle_font_size > 60, 60, subtitle_font_size))
+  caption_font_size <- ifelse(caption_font_size < 6, 6, ifelse(caption_font_size > 60, 60, caption_font_size))
+  axis_font_size <- ifelse(axis_font_size < 6, 6, ifelse(axis_font_size > 60, 60, axis_font_size))
+
   # legend ---------------------------------------------
   legend_loc <- rlang::arg_match(legend_loc, c("top","left", "right", "bottom", "none"))
 
@@ -83,18 +99,18 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top") {
          none = {panel.grid.major.y <- ggplot2::element_blank()})
 
   ggplot2::theme(
-    plot.title = ggtext::element_markdown(family = title_font, size = 18, hjust = 0, face = "bold", color = title_color),
-    plot.subtitle = ggtext::element_markdown(family = title_font, size = 12, hjust = 0, color = title_color),
-    plot.caption = ggtext::element_markdown(family = font, size = 8, color = caption_color, hjust = 0),
+    plot.title = ggtext::element_markdown(family = title_font, size = title_font_size, hjust = 0, face = "bold", color = title_color),
+    plot.subtitle = ggtext::element_markdown(family = title_font, size = subtitle_font_size, hjust = 0, color = title_color),
+    plot.caption = ggtext::element_markdown(family = font, size = caption_font_size, color = caption_color, hjust = 0),
 
     legend.position = legend_loc,
     legend.title = ggplot2::element_blank(),
-    legend.text = ggplot2::element_text(family = font, size = 10, color = axis_color),
+    legend.text = ggplot2::element_text(family = font, size = axis_font_size, color = axis_color),
     legend.background = ggplot2::element_blank(),
     legend.key = ggplot2::element_blank(),
 
-    axis.title = ggplot2::element_text(family = font, size = 10, color = axis_color),
-    axis.text = ggplot2::element_text(family = font, size = 10, color = axis_color),
+    axis.title = ggplot2::element_text(family = font, size = axis_font_size, color = axis_color),
+    axis.text = ggplot2::element_text(family = font, size = axis_font_size, color = axis_color),
     # top, right, bottom, left
     axis.text.x = ggplot2::element_text(family = font, margin = ggplot2::margin(t = 5, r = 0, b = 0, l = 0), color = axis_color),
     axis.text.y = ggplot2::element_text(family = font, margin = ggplot2::margin(0, 5, 0, 10), color = axis_color),

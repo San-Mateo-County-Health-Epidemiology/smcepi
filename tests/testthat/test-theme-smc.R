@@ -45,5 +45,37 @@ test_that("theme_gg_smc legend bottom", {
   expect_equal(theme$legend.position, "bottom")
 })
 
+## test fonts ----
+### default ----
+test_that("theme_gg_smc legend bottom", {
+  theme <- theme_gg_smc()
+  expect_equal(theme$plot.title$size, 18)
+  expect_equal(theme$plot.subtitle$size, 12)
+  expect_equal(theme$plot.caption$size, 8)
+  expect_equal(theme$axis.title$size, 10)
+  expect_equal(theme$axis.text$size, 10)
+})
+
+### adjusting sizes ----
+test_that("theme_gg_smc legend bottom", {
+  theme <- theme_gg_smc(title_font_size = 22, subtitle_font_size = 20, caption_font_size = 16, axis_font_size = 14)
+  expect_equal(theme$plot.title$size, 22)
+  expect_equal(theme$plot.subtitle$size, 20)
+  expect_equal(theme$plot.caption$size, 16)
+  expect_equal(theme$axis.title$size, 14)
+  expect_equal(theme$axis.text$size, 14)
+})
+
+### invalid sizes ----
+test_that("theme_gg_smc legend bottom", {
+  theme <- theme_gg_smc(title_font_size = 200)
+  expect_equal(theme$plot.title$size, 60)
+})
+
+test_that("theme_gg_smc legend bottom", {
+  theme <- theme_gg_smc(title_font_size = 4)
+  expect_equal(theme$plot.title$size, 6)
+})
+
 # test theme_ft_smc() -------------------------
 

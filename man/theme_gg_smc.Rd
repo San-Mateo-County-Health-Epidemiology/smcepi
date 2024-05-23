@@ -6,7 +6,11 @@
 \usage{
 theme_gg_smc(plot,
   plot_lines = "horizontal",
-  legend_loc = "top")
+  legend_loc = "top",
+  title_font_size = 18,
+  subtitle_font_size = 12,
+  caption_font_size = 8,
+  axis_font_size = 10)
 }
 \arguments{
 \item{plot}{This should be a \code{ggplot2} object}
@@ -21,6 +25,14 @@ The default is horizontal lines, but you can also choose:
 }}
 
 \item{legend_loc}{Specify the legend location. The default is for the legend to appear at the top, but you can override this. The available options are: “left”,“top”, “right”, “bottom” and "none"}
+
+\item{title_font_size}{A numeric value to specify the font size of the title. The default is 18, the minimum is 6 and the maximum is 60.}
+
+\item{subtitle_font_size}{A numeric value to specify the font size of the subtitle. The default is 12, the minimum is 6 and the maximum is 60.}
+
+\item{caption_font_size}{A numeric value to specify the font size of the caption. The default is 8, the minimum is 6 and the maximum is 60.}
+
+\item{axis_font_size}{A numeric value to specify the font size of the axis labels. The default is 10, the minimum is 6 and the maximum is 60.}
 }
 \value{
 a ggplot2 object with custom formatting
