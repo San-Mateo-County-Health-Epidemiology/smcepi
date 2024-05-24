@@ -54,3 +54,45 @@ connect_azure <- function(creds_file = "", creds_position = 1, pwd = rstudioapi:
   return(con)
 
 }
+
+#' Get character variable (varchar) lengths for import into Azure
+#'
+#' @description
+#' Use this to generate a list of varchar(`n`) specifications to be used in an R to Azure import. Each character variable is given a field type of varchar(`n`) where `n` is based on the maximum string length per variable. `n` is 255 for string lengths of 255 or less and is the maximum string length for anything longer than 255 (ex: `varchar(1001)`)
+#'
+#' @usage varchar_max(data)
+#'
+#' @param data a 2x2 dataset that you plan to import into Azure from R
+#'
+#' @return a named list that specifies the varchar(n) length for each variable
+#' @export
+#'
+#' @examples
+#' data <- data.frame(
+#'           col1 = c("blue", "pink", "green", "yellow"),
+#'           col2 = c(paste(rep("a", 1000), collapse = ""), "b", "cc", "ddd"))
+#'
+#' varchar_max(data)
+varchar_max <- function(data) {
+
+  varchar <- data %>%
+    dplyr::select(tidyselect::where(is.character) | tidyselect::where(is.factor)) %>%
+    dplyr::mutate(dplyr::across(tidyselect::where(is.factor), ~ as.character(.x))) %>%
+    tidyr::pivot_longer(names_to = "var",
+                        values_to = "val",
+                        values_drop_na = T,
+                        cols = tidyselect::everything()) %>%
+    dplyr::mutate(char_ct = nchar(val)) %>%
+    dplyr::group_by(var) %>%
+    dplyr::summarize(max_char_ct = max(char_ct),
+                     .groups = "keep") %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(max_char_ct = dplyr::case_when(max_char_ct <= 255 ~ 255,
+                                                 TRUE ~ max_char_ct),
+           varchar = paste0("varchar(", max_char_ct, ")")) %>%
+    dplyr::select(-max_char_ct) %>%
+    tibble::deframe(.)
+
+  return(varchar)
+
+}

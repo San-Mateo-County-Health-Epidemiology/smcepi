@@ -4,7 +4,7 @@
 \alias{varchar_max}
 \title{Get character variable (varchar) lengths for import into Azure}
 \usage{
-varchar_max(data = data)
+varchar_max(data)
 }
 \arguments{
 \item{data}{a 2x2 dataset that you plan to import into Azure from R}

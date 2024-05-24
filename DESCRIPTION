@@ -24,7 +24,10 @@ Imports:
     plotly,
     rlang,
     rstudioapi,
-    stringr
+    stringr,
+    tibble,
+    tidyr,
+    tidyselect
 Suggests: 
     dplyr,
     testthat (>= 3.0.0)
