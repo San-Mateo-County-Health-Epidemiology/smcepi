@@ -11,17 +11,23 @@ LazyData: true
 RoxygenNote: 7.2.3
 URL: https://github.com/San-Mateo-County-Health-Epidemiology/smcepi
 BugReports: https://github.com/San-Mateo-County-Health-Epidemiology/smcepi/issues
-Depends: 
 Imports: 
+    config,
+    DBI,
     extrafont,
     flextable,
     ggplot2,
     ggtext,
     magrittr,
+    odbc,
     officer,
     plotly,
     rlang,
-    stringr
+    rstudioapi,
+    stringr,
+    tibble,
+    tidyr,
+    tidyselect
 Suggests: 
     dplyr,
     testthat (>= 3.0.0)
