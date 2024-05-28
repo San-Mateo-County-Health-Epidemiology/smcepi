@@ -67,6 +67,7 @@ connect_azure <- function(creds_file = "", creds_position = 1, pwd = rstudioapi:
 #' @return a named list that specifies the varchar(n) length for each variable
 #' @export
 #'
+#' @importFrom rlang .data
 #' @examples
 #' data <- data.frame(
 #'           col1 = c("blue", "pink", "green", "yellow"),
@@ -82,16 +83,16 @@ varchar_max <- function(data) {
                         values_to = "val",
                         values_drop_na = T,
                         cols = tidyselect::everything()) %>%
-    dplyr::mutate(char_ct = nchar(val)) %>%
-    dplyr::group_by(var) %>%
-    dplyr::summarize(max_char_ct = max(char_ct),
+    dplyr::mutate(char_ct = nchar(.data$val)) %>%
+    dplyr::group_by(.data$var) %>%
+    dplyr::summarize(max_char_ct = max(.data$char_ct),
                      .groups = "keep") %>%
     dplyr::ungroup() %>%
-    dplyr::mutate(max_char_ct = dplyr::case_when(max_char_ct <= 255 ~ 255,
-                                                 TRUE ~ max_char_ct),
-           varchar = paste0("varchar(", max_char_ct, ")")) %>%
-    dplyr::select(-max_char_ct) %>%
-    tibble::deframe(.)
+    dplyr::mutate(max_char_ct = dplyr::case_when(.data$max_char_ct <= 255 ~ 255,
+                                                 TRUE ~ .data$max_char_ct),
+           varchar = paste0("varchar(", .data$max_char_ct, ")")) %>%
+    dplyr::select(-.data$max_char_ct) %>%
+    tibble::deframe()
 
   return(varchar)
 
