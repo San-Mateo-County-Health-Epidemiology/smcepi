@@ -13,7 +13,7 @@ varchar_max(data)
 a named list that specifies the varchar(n) length for each variable
 }
 \description{
-Use this to generate a list of varchar(`n`) specifications to be used in an R to Azure import. Each character variable is given a field type of varchar(`n`) where `n` is based on the maximum string length per variable. `n` is 255 for string lengths of 255 or less and is the maximum string length for anything longer than 255 (ex: `varchar(1001)`)
+Use this to generate a list of varchar(`n`) specifications to be used in an R to Azure import. Each character variable is given a field type of varchar(`n`) where `n` is based on the maximum string length per variable. `n` is 255 for string lengths of 255 or less and is the maximum string length for the variable for any string longer than 255 (ex: `varchar(1001)`)
 }
 \examples{
 data <- data.frame(
@@ -21,4 +21,8 @@ data <- data.frame(
           col2 = c(paste(rep("a", 1000), collapse = ""), "b", "cc", "ddd"))
 
 varchar_max(data)
+
+# output:
+#           col1           col2
+# "varchar(255)" "varchar1000)"
 }
