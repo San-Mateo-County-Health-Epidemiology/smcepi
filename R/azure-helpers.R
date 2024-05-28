@@ -1,7 +1,7 @@
 #' Connect to Azure
 #'
 #' @description
-#' Use this function to connect to an Azure database from R. This uses an ODBC driver and the `DBI::dbConnect` function.
+#' Use this function to connect to an Azure database from R. This is a wrapper function for the `DBI::dbConnect` function.
 #'
 #' @usage connect_azure(creds_file,
 #'     creds_position = 1,
@@ -101,3 +101,68 @@ varchar_max <- function(data) {
   return(varchar)
 
 }
+
+#' Write large datasets from R to Azure
+#'
+#' @description
+#' This
+#'
+#' @usage varchar_max(data)
+#'
+#
+#' Title
+#'
+#' @param con
+#' @param data
+#' @param group_size
+#' @param table_name
+#' @param field_types
+#'
+#' @return
+#' @export
+#'
+#' @examples
+azure_import_loop <- function(con, data, group_size, table_name, field_types) {
+
+  data1 <- data %>%
+    mutate(group = ceiling(row_number()/group_size))
+
+  groups <- data1 %>%
+    distinct(group) %>%
+    pull(group)
+
+  azure_table <- table_name
+
+  for(i in groups) {
+
+    if(i == 1) {
+
+      print("group 1!")
+
+      to_import <- data1 %>%
+        filter(group == i) %>%
+        select(-group)
+
+      dbWriteTable(conn = con,
+                   name = azure_table,
+                   value = to_import,
+                   overwrite = T,
+                   field.types = field_types)
+
+    } else {
+
+      print(paste0("group ", i))
+
+      to_import <- data1 %>%
+        filter(group == i) %>%
+        select(-group)
+
+      dbAppendTable(con, azure_table, to_import, append = T, overwrite = F)
+
+    }
+  }
+
+
+}
+
+
