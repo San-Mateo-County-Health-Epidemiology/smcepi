@@ -19,7 +19,7 @@ connect_azure(creds_file,
 a Microsoft SQL server connection
 }
 \description{
-Use this function to connect to an Azure database from R. This uses an ODBC driver and the `DBI::dbConnect` function.
+Use this function to connect to an Azure database from R. This is a wrapper function for the `DBI::dbConnect` function.
 }
 \examples{
 \dontrun{
