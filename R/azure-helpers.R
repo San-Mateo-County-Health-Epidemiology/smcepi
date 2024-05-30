@@ -3,7 +3,7 @@
 #' @description
 #' Use this function to connect to an Azure database from R. This is a wrapper function for the `DBI::dbConnect` function.
 #'
-#' @usage connect_azure(creds_file,
+#' @usage azure_connect(creds_file,
 #'     creds_position = 1,
 #'     pwd = rstudioapi::askForPassword("Microsoft password"))
 #'
@@ -27,14 +27,14 @@
 #'      port: port-number
 #'
 #' # connecting with default credentials + windows password:
-#' con <- connect_azure(creds_file = "credentials.yml")
+#' con <- azure_connect(creds_file = "credentials.yml")
 #'
 #' # connecting with the second set of credentials and a custom password
-#' con <- connect_azure(creds_file = "credentials.yml", creds_position = 2, pwd = "password")
+#' con <- azure_connect(creds_file = "credentials.yml", creds_position = 2, pwd = "password")
 #'}
 #'
 #'
-connect_azure <- function(creds_file = "", creds_position = 1, pwd = rstudioapi::askForPassword("Microsoft password")) {
+azure_connect <- function(creds_file = "", creds_position = 1, pwd = rstudioapi::askForPassword("Microsoft password")) {
 
   stopifnot(grepl("*.yml", creds_file) & is.numeric(creds_position))
 

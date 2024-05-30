@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 The Azure helper functions are meant to help people who process data primarily in R but store data in Azure. The functions are wrapper functions that lean heavily on the [DBI](https://dbi.r-dbi.org/) package. 
 
-## `connect_azure()`
+## `azure_connect()`
 
 ## Basic usage
 
@@ -38,7 +38,7 @@ default:
 When you pass the `.yml` file through the function, you'll be prompted to enter your Windows password and then will be connected to the Azure database you've specified in the `.yml` file.
 
 ```{r eval=FALSE}
-azure_con <- connect_azure(creds_file = "*.yml")
+azure_con <- azure_connect(creds_file = "*.yml")
 ```
 
 ## Additional options
@@ -70,16 +70,16 @@ default:
 If you want to use the second set of credentials (`db_2`) instead of the first set (`db_1`) you should set `creds_position = 2`:
 
 ```{r eval=FALSE}
-azure_con <- connect_azure(creds_file = "*.yml",
+azure_con <- azure_connect(creds_file = "*.yml",
                            creds_position = 2)
 ```
 
 ### `pwd`
 
-By default, `connect_azure()` allows you to manually enter your password when you run the function. If you prefer to use a stored password, you can override the default using the `pwd` argument.
+By default, `azure_connect()` allows you to manually enter your password when you run the function. If you prefer to use a stored password, you can override the default using the `pwd` argument.
 
 ```{r eval=FALSE}
-azure_con <- connect_azure(creds_file = "*.yml",
+azure_con <- azure_connect(creds_file = "*.yml",
                            pwd = stored_password)
 ```
 
@@ -99,7 +99,7 @@ azure_import_loop(azure_con = azure_con,
 
 Arugments:
 
-* `azure_con`: A DBI Connection object as returned by `dbConnect()`. You can also create this using the `smcepi::connect_azure()` function. See help text for `DBI::dbWriteTable()` for technical details. 
+* `azure_con`: A DBI Connection object as returned by `dbConnect()`. You can also create this using the `smcepi::azure_connect()` function. See help text for `DBI::dbWriteTable()` for technical details. 
 * `data`: A data.frame object you plan to import
 * `group_size`: An integer that indicates the size of the import groups. Ex: a group_size of 50 would split the dataset into groups of 50 records and would then import each group at a time
 * `table_name`: A string to specify the name of the table in Azure
