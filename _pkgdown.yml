@@ -1,10 +1,9 @@
-url: https://San-Mateo-County-Health-Epidemiology.github.io/smcepi/
+url: https://san-mateo-county-health-epidemiology.github.io/smcepi/
 template:
   bootstrap: 5
-
 reference:
 - title: Azure
-  desc:  Functions to deal with Azure data from R
+  desc: Functions to deal with Azure data from R
 - contents:
   - azure_connect
   - azure_import_loop
@@ -19,5 +18,5 @@ reference:
   - gg_color_title
 - title: Misc data processing
   desc: Other helpful functions for data processing
-- contents:
-  - read_tsv_cr
+- contents: read_tsv_cr
+
