@@ -123,7 +123,7 @@ varchar_max <- function(data) {
 #'                   data = data,
 #'                   group_size = 500,
 #'                   table_name = "new_azure_table_name",
-#'                   field_types = varchar_maxes)
+#'                   field_types = varchar_max)
 #'
 #'}
 azure_import_loop <- function(azure_con, data, group_size, table_name, field_types = NULL) {

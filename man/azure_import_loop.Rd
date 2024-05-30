@@ -30,7 +30,7 @@ azure_import_loop(azure_con = azure_con,
                   data = data,
                   group_size = 500,
                   table_name = "new_azure_table_name",
-                  field_types = varchar_maxes)
+                  field_types = varchar_max)
 
 }
 }
