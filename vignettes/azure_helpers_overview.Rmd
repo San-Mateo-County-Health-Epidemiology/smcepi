@@ -18,9 +18,11 @@ The Azure helper functions are meant to help people who process data primarily i
 
 ## `connect_azure()`
 
+### Basic usage
+
 This is a wrapper around the `DBI::dbConnect()` function. The only required input is a `.yml` file that contains credentials for connecting to the database. 
 
-The function expects a `.yml` file that includes values for: server, driver, authenticator, database, uid_suffix and port. Here's an example `.yml` file:
+The function expects a `.yml` file that includes values for: `server`, `driver`, `authenticator`, `database`, `uid_suffix` and `port`. Here's an example `.yml` file template:
 
 ```{r eval=FALSE}
 default:
@@ -35,31 +37,73 @@ default:
 
 When you pass the `.yml` file through the function, you'll be prompted to enter your Windows password and then will be connected to the Azure database you've specified in the `.yml` file.
 
-
 ```{r eval=FALSE}
-connect_azure(creds_file = "*.yml",
-              creds_position = 1,
-              pwd = rstudioapi::askForPassword("Microsoft password"))
+azure_con <- connect_azure(creds_file = "*.yml")
 ```
 
+### Additional options
+### `creds_position`
+
+If you have multiple sets of credentials stored in your `.yml` file, you can select which set you'd like to use by specifying the position of the credentials.
+
+Let's say your `.yml` file looks like this:
 
 ```{r eval=FALSE}
-connect_azure(creds_file = "*.yml",
-              creds_position = 1,
-              pwd = rstudioapi::askForPassword("Microsoft password"))
+default:
+  db_1:
+    server: 'server-name'
+    driver: 'ODBC Driver 18 for SQL Server'
+    authenticator: 'ActivedirectoryPassword'
+    database: 'database-name'
+    uid_suffix: '@organization.org'
+    port: port-number
+  
+  db_2:
+    server: 'server-name'
+    driver: 'ODBC Driver 18 for SQL Server'
+    authenticator: 'ActivedirectoryPassword'
+    database: 'database-name'
+    uid_suffix: '@organization.org'
+    port: port-number
 ```
 
-#'
-#' # connecting with default credentials + windows password:
-#' con <- connect_azure(creds_file = "credentials.yml")
-#'
-#' # connecting with the second set of credentials and a custom password
-#' con <- connect_azure(creds_file = "credentials.yml", creds_position = 2, pwd = "password")
-#'}
+If you want to use the second set of credentials (`db_2`) instead of the first set (`db_1`) you should set `creds_position = 2`:
 
-If you have more than one set of credentials in the `.yml` file, you specify the credential position with the `
+```{r eval=FALSE}
+azure_con <- connect_azure(creds_file = "*.yml",
+                           creds_position = 2)
+```
+
+#### `pwd`
+
+By default, `connect_azure()` allows you to manually enter your password when you run the function. If you prefer to use a stored password, you can override the default using the `pwd` argument.
+
+```{r eval=FALSE}
+azure_con <- connect_azure(creds_file = "*.yml",
+                           pwd = stored_password)
+```
 
 ## `azure_import_loop()`
+
+This function creates a table in Azure from R. It is a wrapper function for the `DBI::dbWriteTable()` and the `DBI::dbAppendTable()` functions. First, this function breaks the dataset to be imported into smaller groups and then it loops through the groups. The first group is used to create the table and subsequent groups are appended to the table.
+
+This function is helpful for writing large datasets from R to Azure. Small datasets can be sent from R to Azure just using the `DBI::dbWriteTable()` function.
+
+```{r eval=FALSE}
+azure_import_loop(azure_con = azure_con,
+                  data = data,
+                  group_size = 500,
+                  table_name = "new_azure_table_name",
+                  field_types = varchar_max)
+```
+
+Arugments:
+
+* `azure_con`: A DBI Connection object as returned by `dbConnect()`. You can also create this using the `smcepi::connect_azure()` function. See help text for `DBI::dbWriteTable()` for technical details. 
+* `data`: A data.frame object you plan to import
+* `group_size`: An integer that indicates the size of the import groups. Ex: a group_size of 50 would split the dataset into groups of 50 records and would then import each group at a time
+* `table_name`: A string to specify the name of the table in Azure
+* `field_types`: Optional parameter to pass a list of varchar(`n`) lengths for the Azure table. Can be created with the `smcepi::varchar_max()` function
 
 ## `varchar_max()`
 

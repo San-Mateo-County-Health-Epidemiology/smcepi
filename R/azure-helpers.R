@@ -105,11 +105,11 @@ varchar_max <- function(data) {
 #' Write large datasets from R to Azure
 #'
 #' @description
-#' This is a wrapper function for the `DBI::dbWriteTable` and the `DBI::dbAppendTable` functions. This function breaks the dataset to be imported into smaller groups and then loops through the groups. The first group is used to create the table and subsequent groups are appended to the table.
+#' This function creates a table in Azure from R. It is a wrapper function for the `DBI::dbWriteTable` and the `DBI::dbAppendTable` functions. This function breaks the dataset to be imported into smaller groups and then loops through the groups. The first group is used to create the table and subsequent groups are appended to the table.
 #'
 #' @param azure_con A DBI Connection object as returned by `dbConnect()`. See help text for `DBI::dbWriteTable` for more details
 #' @param data A data.frame object you plan to import
-#' @param group_size An integer that indicates the size of the import groups. Ex: a group_size of 50 would loop through the dataset and import 50 records at a time
+#' @param group_size An integer that indicates the size of the import groups. Ex: a group_size of 50 would split the dataset into groups of 50 records and would then import each group at a time
 #' @param table_name A string to specify the name of the table in Azure
 #' @param field_types Optional parameter to pass a list of varchar(`n`) lengths for the Azure table. Can be created with the `smcepi::varchar_max()` function
 #'
