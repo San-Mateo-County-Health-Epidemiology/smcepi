@@ -58,7 +58,7 @@ connect_azure <- function(creds_file = "", creds_position = 1, pwd = rstudioapi:
 #' Get character variable (varchar) lengths for import into Azure
 #'
 #' @description
-#' Use this to generate a list of varchar(`n`) specifications to be used in an R to Azure import. Each character variable is given a field type of varchar(`n`) where `n` is based on the maximum string length per variable. `n` is 255 for string lengths of 255 or less and is the maximum string length for the variable for any string longer than 255 (ex: `varchar(1001)`)
+#' Use this to generate a list of `varchar(n)` specifications to be used in an R to Azure import with the `DBI:dbWriteTable()` or `smcepi::azure_import_loop()` functions. This list specifies a `varchar(n)` value for each character variable based on the maximum string length in that variable. `n` is 255 for variables with maximum string lengths of 255 or less and `n` is the maximum string length for variables with maximum string lengths longer than 255.
 #'
 #' @usage varchar_max(data)
 #'
@@ -105,11 +105,11 @@ varchar_max <- function(data) {
 #' Write large datasets from R to Azure
 #'
 #' @description
-#' This is a wrapper function for the `DBI::dbWriteTable` and the `DBI::dbAppendTable` functions. This function breaks the dataset to be imported into smaller groups and then loops through the groups. The first group is used to create the table and subsequent groups are appended to the table.
+#' This function creates a table in Azure from R. It is a wrapper function for the `DBI::dbWriteTable` and the `DBI::dbAppendTable` functions. This function breaks the dataset to be imported into smaller groups and then loops through the groups. The first group is used to create the table and subsequent groups are appended to the table.
 #'
 #' @param azure_con A DBI Connection object as returned by `dbConnect()`. See help text for `DBI::dbWriteTable` for more details
 #' @param data A data.frame object you plan to import
-#' @param group_size An integer that indicates the size of the import groups. Ex: a group_size of 50 would loop through the dataset and import 50 records at a time
+#' @param group_size An integer that indicates the size of the import groups. Ex: a group_size of 50 would split the dataset into groups of 50 records and would then import each group at a time
 #' @param table_name A string to specify the name of the table in Azure
 #' @param field_types Optional parameter to pass a list of varchar(`n`) lengths for the Azure table. Can be created with the `smcepi::varchar_max()` function
 #'
@@ -123,7 +123,7 @@ varchar_max <- function(data) {
 #'                   data = data,
 #'                   group_size = 500,
 #'                   table_name = "new_azure_table_name",
-#'                   field_types = varchar_maxes)
+#'                   field_types = varchar_max)
 #'
 #'}
 azure_import_loop <- function(azure_con, data, group_size, table_name, field_types = NULL) {

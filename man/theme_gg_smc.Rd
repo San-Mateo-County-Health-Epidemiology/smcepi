@@ -15,10 +15,9 @@ theme_gg_smc(plot,
 \arguments{
 \item{plot}{This should be a \code{ggplot2} object}
 
-\item{plot_lines}{Specify which lines should appear on your chart.
-The default is horizontal lines, but you can also choose:
+\item{plot_lines}{Specify which lines should appear on your chart. The default is horizontal lines, but you can also choose:
 \itemize{
-\item \code{"horizontal"}: only horizontal lines
+\item \code{"horizontal"} (the default): only horizontal lines
 \item \code{"vertical"}: only vertical lines
 \item \code{"both"}: horizontal and vertical lines
 \item \code{"none"}: no lines on the plot
