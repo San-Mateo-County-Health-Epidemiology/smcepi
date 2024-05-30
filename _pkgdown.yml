@@ -2,3 +2,21 @@ url: https://San-Mateo-County-Health-Epidemiology.github.io/smcepi/
 template:
   bootstrap: 5
 
+reference:
+- title: Azure
+  desc:  functions to deal with azure
+- contents:
+  - connect_azure
+  - azure_import_loop
+  - varchar_max
+- title: Data viz
+  desc: data viz functions
+- contents:
+  - theme_ft_smc
+  - theme_gg_smc
+  - theme_pl_smc
+  - load_smc_fonts
+  - gg_color_title
+- title: Misc data management
+- contents:
+  - read_tsv_cr
