@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 `theme_gg_smc()` will format your `ggplot2` charts according to OEE style guidelines. Embedded within the `theme_gg_smc()` is the `load_smc_fonts()` function that will download and/or enable the fonts from the [extrafont](https://cran.r-project.org/web/packages/extrafont/extrafont.pdf) package. If you haven't already installed the extrafont fonts on your computer, the `theme_gg_smc()` and `load_smc_fonts()` functions will download them the first time you run either of those functions. 
 
-```{r theme_gg_smc-example,  fig.align='center'}
+```{r theme_gg_smc-example, eval=FALSE, fig.align='center'}
 library(smcepi)
 library(ggplot2)
 
@@ -48,7 +48,7 @@ iris %>%
 
 `theme_ft_smc()` will format your `flextable` charts according to OEE style guidelines. Like in the `smc_gg_theme()` function, the `load_smc_fonts()` is embedded within the `theme_ft_smc()` function. 
 
-```{r theme_ft_smc-example, fig.align='center'}
+```{r theme_ft_smc-example,  eval=FALSE, fig.align='center'}
 library(smcepi)
 library(flextable)
 
@@ -69,7 +69,7 @@ iris %>%
 
 In order for the `gg_color_title()` to render correctly in your chart, you should use the `ggtext::element_markdown()` in your `ggplot2::theme()` instead of using the standard `element_markdown()`. The `theme_gg_smc()` function uses `element_markdown()`.
 
-```{r gg_color_title-example, fig.align='center'}
+```{r gg_color_title-example,  eval=FALSE, fig.align='center'}
 library(ggtext)
 
 brown_color <- "#873600"
