@@ -15,10 +15,9 @@ theme_pl_smc(plot,
 \arguments{
 \item{plot}{A `plotly` plot object}
 
-\item{plot_lines}{Specify which lines should appear on your chart.
-  The default is horizontal lines, but you can also choose:
+\item{plot_lines}{Specify which lines should appear on your chart. The default is horizontal lines, but you can also choose:
 
-  * `"horizontal"`: only horizontal lines
+  * `"horizontal"` (the default): only horizontal lines
   * `"vertical"`: only vertical lines
   * `"both"`: horizontal and vertical lines
   * `"none"`: no lines on the plot}
@@ -27,8 +26,8 @@ theme_pl_smc(plot,
 
 \item{ystart}{Specify whether or not the y-axis should start at zero. The default is to start at zero. The options are:
 
-  *`"tozero"`: axis starts at 0
-  *`"none"`: axis starts wherever plotly decides}
+  * `"tozero"` (the default) : axis starts at 0
+  * `"none"`: axis starts wherever plotly decides}
 
 \item{title}{a string of text for the plot title}
 

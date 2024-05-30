@@ -58,7 +58,7 @@ connect_azure <- function(creds_file = "", creds_position = 1, pwd = rstudioapi:
 #' Get character variable (varchar) lengths for import into Azure
 #'
 #' @description
-#' Use this to generate a list of varchar(`n`) specifications to be used in an R to Azure import. Each character variable is given a field type of varchar(`n`) where `n` is based on the maximum string length per variable. `n` is 255 for string lengths of 255 or less and is the maximum string length for the variable for any string longer than 255 (ex: `varchar(1001)`)
+#' Use this to generate a list of `varchar(n)` specifications to be used in an R to Azure import with the `DBI:dbWriteTable()` or `smcepi::azure_import_loop()` functions. This list specifies a `varchar(n)` value for each character variable based on the maximum string length in that variable. `n` is 255 for variables with maximum string lengths of 255 or less and `n` is the maximum string length for variables with maximum string lengths longer than 255.
 #'
 #' @usage varchar_max(data)
 #'

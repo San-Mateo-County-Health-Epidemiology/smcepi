@@ -12,10 +12,8 @@
 #'   axis_font_size = 10)
 #'
 #' @param plot This should be a `ggplot2` object
-#' @param plot_lines Specify which lines should appear on your chart.
-#'   The default is horizontal lines, but you can also choose:
-#'
-#'   * `"horizontal"`: only horizontal lines
+#' @param plot_lines Specify which lines should appear on your chart. The default is horizontal lines, but you can also choose:
+#'   * `"horizontal"` (the default): only horizontal lines
 #'   * `"vertical"`: only vertical lines
 #'   * `"both"`: horizontal and vertical lines
 #'   * `"none"`: no lines on the plot
@@ -143,18 +141,17 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top", ti
 #'    y_lab = NULL)
 #'
 #' @param plot A `plotly` plot object
-#' @param plot_lines Specify which lines should appear on your chart.
-#'   The default is horizontal lines, but you can also choose:
+#' @param plot_lines Specify which lines should appear on your chart. The default is horizontal lines, but you can also choose:
 #'
-#'   * `"horizontal"`: only horizontal lines
+#'   * `"horizontal"` (the default): only horizontal lines
 #'   * `"vertical"`: only vertical lines
 #'   * `"both"`: horizontal and vertical lines
 #'   * `"none"`: no lines on the plot
 #' @param legend_loc Specify the legend location. The default is for the legend to appear at the top, but you can override this. The available options are: “left”,“top”, “right”, “bottom” and "none"
 #' @param ystart Specify whether or not the y-axis should start at zero. The default is to start at zero. The options are:
 #'
-#'   *`"tozero"`: axis starts at 0
-#'   *`"none"`: axis starts wherever plotly decides
+#'   * `"tozero"` (the default) : axis starts at 0
+#'   * `"none"`: axis starts wherever plotly decides
 #' @param title a string of text for the plot title
 #' @param x_lab a string of text for the x-axis label
 #' @param y_lab a string of tect for the y-axis label

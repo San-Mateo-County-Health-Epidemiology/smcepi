@@ -107,6 +107,10 @@ Arugments:
 
 ## `varchar_max()`
 
+Use this to generate a list of varchar(`n`) specifications to be used in an R to Azure import with the `DBI:dbWriteTable()` or `smcepi::azure_import_loop()` functions. 
+
+This list specifies a `varchar(n)` value for each character variable based on the maximum string length in that variable. `n` is 255 for variables with maximum string lengths of 255 or less and `n` is the maximum string length for variables with maximum string lengths longer than 255.
+
 ## Vignette Info
 
 Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.

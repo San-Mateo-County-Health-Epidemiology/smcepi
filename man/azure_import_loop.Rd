@@ -11,7 +11,7 @@ azure_import_loop(azure_con, data, group_size, table_name, field_types = NULL)
 
 \item{data}{A data.frame object you plan to import}
 
-\item{group_size}{An integer that indicates the size of the import groups. Ex: a group_size of 50 would loop through the dataset and import 50 records at a time}
+\item{group_size}{An integer that indicates the size of the import groups. Ex: a group_size of 50 would split the dataset into groups of 50 records and would then import each group at a time}
 
 \item{table_name}{A string to specify the name of the table in Azure}
 
@@ -21,7 +21,7 @@ azure_import_loop(azure_con, data, group_size, table_name, field_types = NULL)
 will import the data into azure and will return any errors from the `DBI::dbWriteTable` and the `DBI::dbAppendTable` functions
 }
 \description{
-This is a wrapper function for the `DBI::dbWriteTable` and the `DBI::dbAppendTable` functions. This function breaks the dataset to be imported into smaller groups and then loops through the groups. The first group is used to create the table and subsequent groups are appended to the table.
+This function creates a table in Azure from R. It is a wrapper function for the `DBI::dbWriteTable` and the `DBI::dbAppendTable` functions. This function breaks the dataset to be imported into smaller groups and then loops through the groups. The first group is used to create the table and subsequent groups are appended to the table.
 }
 \examples{
 \dontrun{
