@@ -18,7 +18,7 @@ The Azure helper functions are meant to help people who process data primarily i
 
 ## `azure_connect()`
 
-## Basic usage
+### Basic usage
 
 This is a wrapper around the `DBI::dbConnect()` function. The only required input is a `.yml` file that contains credentials for connecting to the database. 
 
@@ -41,8 +41,8 @@ When you pass the `.yml` file through the function, you'll be prompted to enter 
 azure_con <- azure_connect(creds_file = "*.yml")
 ```
 
-## Additional options
-### `creds_position`
+### Additional options
+#### `creds_position`
 
 If you have multiple sets of credentials stored in your `.yml` file, you can select which set you'd like to use by specifying the position of the credentials.
 
@@ -74,7 +74,7 @@ azure_con <- azure_connect(creds_file = "*.yml",
                            creds_position = 2)
 ```
 
-### `pwd`
+#### `pwd`
 
 By default, `azure_connect()` allows you to manually enter your password when you run the function. If you prefer to use a stored password, you can override the default using the `pwd` argument.
 
