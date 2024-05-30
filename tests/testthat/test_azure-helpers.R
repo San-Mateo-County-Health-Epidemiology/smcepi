@@ -1,0 +1,1 @@
+# test azure helper functions ------------------
