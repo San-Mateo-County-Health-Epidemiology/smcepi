@@ -1,0 +1,102 @@
+---
+title: "Azure Helpers"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Azure Helpers}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The Azure helper functions are meant to help people who process data primarily in R but store data in Azure. The functions are wrapper functions that lean heavily on the [DBI](https://dbi.r-dbi.org/) package. 
+
+## `connect_azure()`
+
+This is a wrapper around the `DBI::dbConnect()` function. The only required input is a `.yml` file that contains credentials for connecting to the database. 
+
+The function expects a `.yml` file that includes values for: server, driver, authenticator, database, uid_suffix and port. Here's an example `.yml` file:
+
+```{r eval=FALSE}
+default:
+  db:
+    server: 'server-name'
+    driver: 'ODBC Driver 18 for SQL Server'
+    authenticator: 'ActivedirectoryPassword'
+    database: 'database-name'
+    uid_suffix: '@organization.org'
+    port: port-number
+```
+
+When you pass the `.yml` file through the function, you'll be prompted to enter your Windows password and then will be connected to the Azure database you've specified in the `.yml` file.
+
+
+```{r eval=FALSE}
+connect_azure(creds_file = "*.yml",
+              creds_position = 1,
+              pwd = rstudioapi::askForPassword("Microsoft password"))
+```
+
+
+```{r eval=FALSE}
+connect_azure(creds_file = "*.yml",
+              creds_position = 1,
+              pwd = rstudioapi::askForPassword("Microsoft password"))
+```
+
+#'
+#' # connecting with default credentials + windows password:
+#' con <- connect_azure(creds_file = "credentials.yml")
+#'
+#' # connecting with the second set of credentials and a custom password
+#' con <- connect_azure(creds_file = "credentials.yml", creds_position = 2, pwd = "password")
+#'}
+
+If you have more than one set of credentials in the `.yml` file, you specify the credential position with the `
+
+## `azure_import_loop()`
+
+## `varchar_max()`
+
+## Vignette Info
+
+Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+
+## Styles
+
+The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
+
+    output: 
+      rmarkdown::html_vignette:
+        css: mystyles.css
+
+## Figures
+
+The figure sizes have been customised so that you can easily put two images side-by-side. 
+
+```{r, fig.show='hold'}
+plot(1:10)
+plot(10:1)
+```
+
+You can enable figure captions by `fig_caption: yes` in YAML:
+
+    output:
+      rmarkdown::html_vignette:
+        fig_caption: yes
+
+Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
+
+## More Examples
+
+You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
+
+```{r, echo=FALSE, results='asis'}
+knitr::kable(head(mtcars, 10))
+```
+
