@@ -1,7 +1,7 @@
 Package: smcepi
 Type: Package
 Title: Useful functions for San Mateo County Epidemiologists 
-Version: 0.1.0
+Version: 0.2.0
 Author: person("Beth", "Jump", email = "ejump@smcgov.org", role = c("aut", "cre"))
 Maintainer: The package maintainer <ejump@smcgov.org>
 Description: Handy functions for use by San Mateo County epidemiologists. 
