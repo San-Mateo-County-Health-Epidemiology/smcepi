@@ -7,7 +7,7 @@
 load_smc_fonts()
 }
 \value{
-this will enable all of the `extrafont` fonts on your computer.
+this will enable all of the \code{extrafont} fonts on your computer.
 }
 \description{
 This function uses the 'extrafont' package to download and enable Arial and Georgia which are the official fonts for the SMC style guide.

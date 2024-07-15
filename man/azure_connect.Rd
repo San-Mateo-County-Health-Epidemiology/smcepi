@@ -11,7 +11,7 @@ azure_connect(creds_file,
 \arguments{
 \item{creds_file}{This is the path to the .yml file with the Azure information. The .yml must include: server, driver, authenticator, database, uid_suffix and port}
 
-\item{creds_position}{This is a number that identifies which set of credentials in the .yml file to use. It defaults to 1, which is the first set of credentials. If you have more than one set of credentials in your config file and want to use the second set, you should set `creds_position = 2`}
+\item{creds_position}{This is a number that identifies which set of credentials in the .yml file to use. It defaults to 1, which is the first set of credentials. If you have more than one set of credentials in your config file and want to use the second set, you should set \code{creds_position = 2}}
 
 \item{pwd}{by default, this allows you to enter your Windows password. You can override this by entering a password in this argument.}
 }
@@ -19,7 +19,7 @@ azure_connect(creds_file,
 a Microsoft SQL server connection
 }
 \description{
-Use this function to connect to an Azure database from R. This is a wrapper function for the `DBI::dbConnect` function.
+Use this function to connect to an Azure database from R. This is a wrapper function for the \code{DBI::dbConnect} function.
 }
 \examples{
 \dontrun{
