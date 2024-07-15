@@ -1,6 +1,6 @@
-#' Using `theme_gg_smc`
-#'
 #' `r lifecycle::badge('experimental')`
+#'
+#' Using `theme_gg_smc`
 #'
 #' @description
 #' This function is meant to be used with `ggplot2` charts to quickly format them according to the San Mateo County Office of Epidemiology and Evaluation's style guide.
