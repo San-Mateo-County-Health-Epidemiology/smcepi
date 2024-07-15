@@ -7,7 +7,7 @@
 azure_import_loop(azure_con, data, group_size, table_name, field_types = NULL)
 }
 \arguments{
-\item{azure_con}{A DBI Connection object as returned by `dbConnect()`. See help text for `DBI::dbWriteTable` for more details}
+\item{azure_con}{A DBI Connection object as returned by \code{dbConnect()}. See help text for \code{DBI::dbWriteTable} for more details}
 
 \item{data}{A data.frame object you plan to import}
 
@@ -15,13 +15,13 @@ azure_import_loop(azure_con, data, group_size, table_name, field_types = NULL)
 
 \item{table_name}{A string to specify the name of the table in Azure}
 
-\item{field_types}{Optional parameter to pass a list of varchar(`n`) lengths for the Azure table. Can be created with the `smcepi::varchar_max()` function}
+\item{field_types}{Optional parameter to pass a list of varchar(\code{n}) lengths for the Azure table. Can be created with the \code{smcepi::varchar_max()} function}
 }
 \value{
-will import the data into azure and will return any errors from the `DBI::dbWriteTable` and the `DBI::dbAppendTable` functions
+will import the data into azure and will return any errors from the \code{DBI::dbWriteTable} and the \code{DBI::dbAppendTable} functions
 }
 \description{
-This function creates a table in Azure from R. It is a wrapper function for the `DBI::dbWriteTable` and the `DBI::dbAppendTable` functions. This function breaks the dataset to be imported into smaller groups and then loops through the groups. The first group is used to create the table and subsequent groups are appended to the table.
+This function creates a table in Azure from R. It is a wrapper function for the \code{DBI::dbWriteTable} and the \code{DBI::dbAppendTable} functions. This function breaks the dataset to be imported into smaller groups and then loops through the groups. The first group is used to create the table and subsequent groups are appended to the table.
 }
 \examples{
 \dontrun{

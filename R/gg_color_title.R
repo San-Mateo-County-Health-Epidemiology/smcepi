@@ -7,7 +7,7 @@
 #' @param highlight_words This is a vector of the words you want to highlight from the `title_text` string. This vector must be the same length as the `highlight_colors` vector
 #' @param highlight_colors This is a vector of the colors you want for each word in the `highlight_words` argument. The first color corresponds to the first word, the second color with the second word, etc. This vector must be the same length as the `highlight_words` vector
 #'
-#' @return # a string that can be used for a ggtext::element_markdown() title
+#' @return a string that can be used for a `ggtext::element_markdown()` title
 #' @export
 #'
 #' @examples

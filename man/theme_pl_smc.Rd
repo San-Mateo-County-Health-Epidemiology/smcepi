@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme-smc.R
 \name{theme_pl_smc}
 \alias{theme_pl_smc}
-\title{Using `theme_pl_smc`}
+\title{Using \code{theme_pl_smc}}
 \usage{
 theme_pl_smc(plot,
    plot_lines = "horizontal",
@@ -13,21 +13,23 @@ theme_pl_smc(plot,
    y_lab = NULL)
 }
 \arguments{
-\item{plot}{A `plotly` plot object}
+\item{plot}{A \code{plotly} plot object}
 
 \item{plot_lines}{Specify which lines should appear on your chart. The default is horizontal lines, but you can also choose:
-
-  * `"horizontal"` (the default): only horizontal lines
-  * `"vertical"`: only vertical lines
-  * `"both"`: horizontal and vertical lines
-  * `"none"`: no lines on the plot}
+\itemize{
+\item \code{"horizontal"} (the default): only horizontal lines
+\item \code{"vertical"}: only vertical lines
+\item \code{"both"}: horizontal and vertical lines
+\item \code{"none"}: no lines on the plot
+}}
 
 \item{legend_loc}{Specify the legend location. The default is for the legend to appear at the top, but you can override this. The available options are: “left”,“top”, “right”, “bottom” and "none"}
 
 \item{ystart}{Specify whether or not the y-axis should start at zero. The default is to start at zero. The options are:
-
-  * `"tozero"` (the default) : axis starts at 0
-  * `"none"`: axis starts wherever plotly decides}
+\itemize{
+\item \code{"tozero"} (the default) : axis starts at 0
+\item \code{"none"}: axis starts wherever plotly decides
+}}
 
 \item{title}{a string of text for the plot title}
 
@@ -39,7 +41,7 @@ theme_pl_smc(plot,
 a plotly object with custom formatting
 }
 \description{
-This function is meant to be used with `plotly` charts to quickly format them according to the San Mateo County Office of Epidemiology and Evaluation's style guide
+This function is meant to be used with \code{plotly} charts to quickly format them according to the San Mateo County Office of Epidemiology and Evaluation's style guide
 }
 \examples{
 \dontrun{

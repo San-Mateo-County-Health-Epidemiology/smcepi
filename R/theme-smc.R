@@ -1,3 +1,5 @@
+#' `r lifecycle::badge('experimental')`
+#'
 #' Using `theme_gg_smc`
 #'
 #' @description

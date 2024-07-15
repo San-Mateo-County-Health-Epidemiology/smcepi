@@ -2,22 +2,22 @@
 % Please edit documentation in R/gg_color_title.R
 \name{gg_color_title}
 \alias{gg_color_title}
-\title{Using `gg_color_title()`}
+\title{Using \code{gg_color_title()}}
 \usage{
 gg_color_title(title_text, highlight_words, highlight_colors)
 }
 \arguments{
 \item{title_text}{This is a string that is the entire title (or subtitle or caption)}
 
-\item{highlight_words}{This is a vector of the words you want to highlight from the `title_text` string. This vector must be the same length as the `highlight_colors` vector}
+\item{highlight_words}{This is a vector of the words you want to highlight from the \code{title_text} string. This vector must be the same length as the \code{highlight_colors} vector}
 
-\item{highlight_colors}{This is a vector of the colors you want for each word in the `highlight_words` argument. The first color corresponds to the first word, the second color with the second word, etc. This vector must be the same length as the `highlight_words` vector}
+\item{highlight_colors}{This is a vector of the colors you want for each word in the \code{highlight_words} argument. The first color corresponds to the first word, the second color with the second word, etc. This vector must be the same length as the \code{highlight_words} vector}
 }
 \value{
-# a string that can be used for a ggtext::element_markdown() title
+a string that can be used for a \code{ggtext::element_markdown()} title
 }
 \description{
-This function allows you to selectively color words in the text of your `ggplot2` plot. In order for this to work, you'll need to use the `gg_text::element_markdown()` in the `ggplot2::theme` for the text you want to color.
+This function allows you to selectively color words in the text of your \code{ggplot2} plot. In order for this to work, you'll need to use the \code{gg_text::element_markdown()} in the \code{ggplot2::theme} for the text you want to color.
 }
 \examples{
 title <- gg_color_title("Brown and blue eyes are most common",
