@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-city_clean <- function(data, city_col) {
+city_clean <- function(data, city_col, new_col) {
   data1 <- data %>%
     dplyr::rename(city_orig = !!city_col) %>%
     dplyr::mutate(city_temp = stringr::str_replace_all(stringr::str_to_lower(city_orig), "\\.|\\-|\\,|\\s", ""),
@@ -42,7 +42,8 @@ city_clean <- function(data, city_col) {
                                                     "^sanma[teogry]eo.*$|^sanma[teogry]e.*$|^sm$|^sammat.*$|^s[an].*teo$|^sanmat.*o$|^.*mateo.*$|^.*hillsdale.*$" = "San Mateo",
                                                     "^s{2,}anfra.*$|^southsanfra.*$|^sosanfra.*$|^ssf$|^sosf$|^southsf$|^sou.*ity$|^s[ou].*isco$" = "South San Francisco",
                                                     "^wood.*de$" = "Woodside",
-                                                    "^.*homeless.*$|^.*unshelt.*$" = "Unsheltered")))
+                                                    "^.*homeless.*$|^.*unshelt.*$" = "Unsheltered"))) %>%
+    rename(!!new_col := city)
   data1
 
 }
