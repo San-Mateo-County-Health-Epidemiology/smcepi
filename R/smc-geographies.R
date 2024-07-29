@@ -1,12 +1,29 @@
-#' cleaning up cities in a data frame
+#' cleaning up a variable of San Mateo Cities in a data frame
 #'
-#' @param data
+#' @description
+#' This function is meant to be used to clean up San Mateo cities in a dataframe. It will only look for San Mateo County cities - it doesn't look for other cities.
 #'
-#' @return
+#' @usage city_clean(data,
+#'     city_col,
+#'     new_col)
+#'
+#' @param data This is the name of the dataframe with the city variable in it that you'd like to clean
+#' @param city_col This is a string that specifies the name of the city variable you want to clean
+#' @param new_col (optional): This is a string to specify the name of the variable with the cleaned city names. By default the cleaned cities will be saved in a variable called `city_clean`
+#'
+#' @return a dataset with a new variable for the cleaned city values
 #' @export
 #'
 #' @examples
-city_clean <- function(data, city_col, new_col) {
+#' \dontrun{
+#'  data1 <- data %>%
+#'     city_clean(city_col = "city_dirty",
+#'                new_col = "city_clean")
+#'
+#'}
+#'
+#'
+smc_city_clean <- function(data, city_col, new_col = "city_clean") {
   data1 <- data %>%
     dplyr::rename(city_orig = !!city_col) %>%
     dplyr::mutate(city_temp = stringr::str_replace_all(stringr::str_to_lower(city_orig), "\\.|\\-|\\,|\\s", ""),
@@ -43,7 +60,7 @@ city_clean <- function(data, city_col, new_col) {
                                                     "^s{2,}anfra.*$|^southsanfra.*$|^sosanfra.*$|^ssf$|^sosf$|^southsf$|^sou.*ity$|^s[ou].*isco$" = "South San Francisco",
                                                     "^wood.*de$" = "Woodside",
                                                     "^.*homeless.*$|^.*unshelt.*$" = "Unsheltered"))) %>%
-    rename(!!new_col := city)
+    dplyr::rename(!!new_col := city)
   data1
 
 }
