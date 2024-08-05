@@ -98,7 +98,7 @@ smc_zip_region_sort <- function(data, zip_col = "zip", region_col = "zip_region"
 
   data1 <- data %>%
     dplyr::rename(zip = !!zip_col) %>%
-    mutate(zip_region = case_when(
+    dplyr::mutate(zip_region = dplyr::case_when(
       zip %in% c("94005", "94014", "94015", "94030", "94044", "94066", "94080") ~ "North",
       zip %in% c("94002", "94010", "94065", "94070", "94401", "94402", "94403", "94404") ~ "Mid",
       zip %in% c("94025", "94027", "94028", "94061", "94062", "94063", "94303") ~ "South",
