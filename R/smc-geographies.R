@@ -1,7 +1,7 @@
 #' cleaning up a variable of San Mateo Cities in a data frame
 #'
 #' @description
-#' This function is meant to be used to clean up San Mateo cities in a dataframe. It will only look for San Mateo County cities - it doesn't look for other cities.
+#' This function is meant to be used to clean up San Mateo cities in a dataframe. It will only look for San Mateo County cities - it doesn't look for other cities. Non-San Mateo cities will return an `NA` in the `city_clean` column.
 #'
 #' @usage city_clean(data,
 #'     city_col,
@@ -59,7 +59,9 @@ smc_city_clean <- function(data, city_col, new_col = "city_clean") {
                                                     "^sanma[teogry]eo.*$|^sanma[teogry]e.*$|^sm$|^sammat.*$|^s[an].*teo$|^sanmat.*o$|^.*mateo.*$|^.*hillsdale.*$" = "San Mateo",
                                                     "^s{2,}anfra.*$|^southsanfra.*$|^so{0,1}sa{0,1}n{0,1}fra.*$|^ssf$|^sosf$|^southsf$|^sou.*ity$|^s[ou].*isco$" = "South San Francisco",
                                                     "^wood.*de$" = "Woodside",
-                                                    "^.*homeless.*$|^.*unshelt.*$" = "Unsheltered"))) %>%
+                                                    "^.*homeless.*$|^.*unshelt.*$" = "Unsheltered")),
+                  city = dplyr::case_when(!stringr::str_detect(city, "[A-Z]") ~ NA_character_,
+                                          TRUE ~ city)) %>%
     dplyr::rename(!!new_col := city)
   data1
 
