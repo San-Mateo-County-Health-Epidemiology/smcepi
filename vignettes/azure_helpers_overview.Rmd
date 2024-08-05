@@ -97,7 +97,7 @@ azure_import_loop(azure_con = azure_con,
                   field_types = varchar_max)
 ```
 
-Arugments:
+Arguements:
 
 * `azure_con`: A DBI Connection object as returned by `dbConnect()`. You can also create this using the `smcepi::azure_connect()` function. See help text for `DBI::dbWriteTable()` for technical details. 
 * `data`: A data.frame object you plan to import
