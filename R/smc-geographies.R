@@ -1,4 +1,4 @@
-#' cleaning up a variable of San Mateo Cities in a data frame
+#' cleaning up San Mateo Cities in a data frame
 #'
 #' @description
 #' This function is meant to be used to clean up San Mateo cities in a dataframe. It will only look for San Mateo County cities - it doesn't look for other cities. Non-San Mateo cities will return an `NA` in the `city_clean` column.
@@ -62,27 +62,50 @@ smc_city_clean <- function(data, city_col, new_col = "city_clean") {
                                                     "^.*homeless.*$|^.*unshelt.*$" = "Unsheltered")),
                   city = dplyr::case_when(!stringr::str_detect(city, "[A-Z]") ~ NA_character_,
                                           TRUE ~ city)) %>%
-    dplyr::rename(!!new_col := city)
+    dplyr::rename(!!new_col := city,
+                  !!city_col := city_orig)
+
   data1
 
 }
 
-
-#' Assigning county regions based on zip codes
+#' Classify zip codes by region in San Mateo County
 #'
-#' @param data
+#' @description
+#' This function sorts 5-digit San Mateo zip codes into county regions: north, south, mid, coastside and "not a residential zip". Non-San Mateo zipcodes will return an `NA` in the `city_clean` column.
 #'
-#' @return
+#' @usage city_clean(data,
+#'     city_col,
+#'     new_col)
+#'
+#' @param data This is the name of the dataframe with the zip code variable in it that you'd like to sort
+#' @param zip_col (optional): This is a string that specifies the name of the zip code variable you want to sort. By default the function assumes the zipcodes are stored in a variable called `zip`
+#' @param region_col (optional): This is a string to specify the name of the variable with the zip regions. By default the sorted zipcodes will be saved in a variable called `region_col`
+#'
+#' @return a dataset with a new variable for the sorted zip codes
 #' @export
 #'
 #' @examples
-zip_region_function <- function(data) {
+#' \dontrun{
+#'  data1 <- data %>%
+#'     smc_zip_region_sort(zip_col = "zip",
+#'                         region_col = "zip_region")
+#'
+#'}
+#'
+#'
+smc_zip_region_sort <- function(data, zip_col = "zip", region_col = "zip_region") {
+
   data1 <- data %>%
+    dplyr::rename(zip = !!zip_col) %>%
     mutate(zip_region = case_when(
       zip %in% c("94005", "94014", "94015", "94030", "94044", "94066", "94080") ~ "North",
       zip %in% c("94002", "94010", "94065", "94070", "94401", "94402", "94403", "94404") ~ "Mid",
       zip %in% c("94025", "94027", "94028", "94061", "94062", "94063", "94303") ~ "South",
-      zip %in% c("94019", "94020", "94021", "94038", "94060", "94074", "94109") ~ "Coast"))
+      zip %in% c("94019", "94020", "94021", "94038", "94060", "94074") ~ "Coast",
+      zip %in% c("94017", "94018", "94037", "94064", "94128") ~ "Not a residential zip")) %>%
+    dplyr::rename(!!region_col := zip_region,
+                  !!zip_col := zip)
 
   data1
 
