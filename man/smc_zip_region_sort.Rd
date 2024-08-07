@@ -24,7 +24,7 @@ This function sorts 5-digit San Mateo zip codes into county regions: north, sout
 \examples{
 data <- data.frame(
   cty_zip = c("94015", "94403", "94303", "94019", "94128", "94110")
-  ) \%>\%
+  )
 
 data \%>\%
   smc_zip_region_sort(zip_col = "cty_zip",

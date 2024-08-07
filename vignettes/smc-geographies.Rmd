@@ -2,7 +2,7 @@
 title: "San Mateo Geography Functions"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Azure Helpers}
+  %\VignetteIndexEntry{San Mateo Geography Functions}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -103,7 +103,7 @@ smc_city_clean <- function(data, city_col = "city", new_col = "city_clean") {
 #' @examples
 #' data <- data.frame(
 #'   cty_zip = c("94015", "94403", "94303", "94019", "94128", "94110")
-#'   ) %>%
+#'   )
 #'
 #' data %>%
 #'   smc_zip_region_sort(zip_col = "cty_zip",
