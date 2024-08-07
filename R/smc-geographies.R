@@ -8,7 +8,7 @@
 #'     new_col)
 #'
 #' @param data This is the name of the dataframe with the city variable in it that you'd like to clean
-#' @param city_col This is a string that specifies the name of the city variable you want to clean
+#' @param city_col (optional): This is a string that specifies the name of the city variable you want to clean. By default, the function assumes the variable is called `city`.
 #' @param new_col (optional): This is a string to specify the name of the variable with the cleaned city names. By default the cleaned cities will be saved in a variable called `city_clean`
 #'
 #' @return a dataset with a new variable for the cleaned city values
