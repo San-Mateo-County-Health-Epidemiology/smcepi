@@ -1,0 +1,49 @@
+---
+title: "San Mateo Geography Functions"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Azure Helpers}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The San Mateo County geography functions are designed to help clean and categorize geographic variables consistently.  
+
+## `smc_city_clean()`
+
+### Basic usage
+
+This function uses regular expressions to clean up San Mateo County city names. Non-San Mateo city names will return an `NA` value. By default, the function assumes the variable you want to clean is called `city` and will save the cleaned results in a variable called `city_clean`.
+
+```{r eval=FALSE}
+data <- data.frame(
+  city = c("Burligame", "Fost City", "San Mato", "Daily Cit", "S S Francisco", "South San Fransico", "SoSan Franc", "San Francisco")
+  ) 
+
+data %>%
+  smc_city_clean()
+
+```
+
+### Additional options
+
+If your input column is not called `city` you should pass the name of your city variable in the `city_col` argument. You also have the option of specifying the name of the variable for the cleaned cities. By default it is `city_clean`. 
+
+```{r eval=FALSE}
+data <- data.frame(
+  city_dirty = c("Burligame", "Fost City", "San Mato", "Daily Cit", "S S Francisco", "South San Fransico", "SoSan Franc", "San Francisco")
+  ) 
+
+data %>%
+  smc_city_clean(city_col = "city_dirty",
+                 new_col = "smc_city")
+
+```
+
