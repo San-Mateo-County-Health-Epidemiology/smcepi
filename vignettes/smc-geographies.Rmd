@@ -47,3 +47,35 @@ data %>%
 
 ```
 
+
+## `smc_zip_region_sort()`
+
+### Basic usage
+
+This function categorizes zip codes into county regions. The expected input is a variable in a data frame and it will return a second variable with the zip region. The region options are: North, Mid, South, Coastside and "Not a residential zip" (for PO Boxes). 
+
+```{r eval=FALSE}
+data <- data.frame(
+  zip = c("94015", "94403", "94303", "94019", "94128", "94110")
+  )
+
+data %>%
+  smc_zip_region_sort()
+
+```
+
+### Additional options
+
+By default, the function expects the variable of zip codes to be called `zip` and it will save the zip regions in a variable called `zip_region`. However, if your input column is not called `zip` you can override the default with the `zip_col` argument. You can also change the outputted variable name with the `region_col` argument. 
+
+```{r eval=FALSE}
+data <- data.frame(
+  smc_zip = c("94015", "94403", "94303", "94019", "94128", "94110")
+  )
+
+data %>%
+  smc_zip_region_sort(zip_col = "smc_zip",
+                      region_col = "smc_zip_region")
+
+```
+
