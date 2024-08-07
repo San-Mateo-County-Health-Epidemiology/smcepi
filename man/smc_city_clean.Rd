@@ -4,7 +4,7 @@
 \alias{smc_city_clean}
 \title{cleaning up San Mateo Cities in a data frame}
 \usage{
-city_clean(data,
+smc_city_clean(data,
     city_col,
     new_col)
 }
@@ -23,7 +23,8 @@ This function is meant to be used to clean up San Mateo cities in a dataframe. I
 }
 \examples{
 data <- data.frame(
- city_dirty = c("Burligame", "Fost City", "San Mato", "Daily Cit", "S S Francisco", "South San Fransico", "SoSan Franc", "San Francisco")
+ city_dirty = c("Burligame", "Fost City", "San Mato", "Daily Cit", "S S Francisco",
+                "South San Fransico", "SoSan Franc", "San Francisco")
  )
 
 data \%>\%

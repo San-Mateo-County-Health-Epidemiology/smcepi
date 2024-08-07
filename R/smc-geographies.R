@@ -3,7 +3,7 @@
 #' @description
 #' This function is meant to be used to clean up San Mateo cities in a dataframe. It will only look for San Mateo County cities - it doesn't look for other cities. Non-San Mateo cities will return an `NA` in the `city_clean` column.
 #'
-#' @usage city_clean(data,
+#' @usage smc_city_clean(data,
 #'     city_col,
 #'     new_col)
 #'
@@ -13,10 +13,14 @@
 #'
 #' @return a dataset with a new variable for the cleaned city values
 #' @export
+#' @importFrom rlang enquo
+#' @importFrom rlang quo_name
+#' @importFrom rlang :=
 #'
 #' @examples
 #' data <- data.frame(
-#'  city_dirty = c("Burligame", "Fost City", "San Mato", "Daily Cit", "S S Francisco", "South San Fransico", "SoSan Franc", "San Francisco")
+#'  city_dirty = c("Burligame", "Fost City", "San Mato", "Daily Cit", "S S Francisco",
+#'                 "South San Fransico", "SoSan Franc", "San Francisco")
 #'  )
 #'
 #' data %>%
@@ -25,6 +29,11 @@
 #'
 #'
 smc_city_clean <- function(data, city_col = "city", new_col = "city_clean") {
+
+  city_orig = NULL
+  city_temp = NULL
+  city = NULL
+
   data1 <- data %>%
     dplyr::rename(city_orig = !!city_col) %>%
     dplyr::mutate(city_temp = stringr::str_replace_all(stringr::str_to_lower(city_orig), "\\.|\\-|\\,|\\s", ""),
@@ -76,9 +85,9 @@ smc_city_clean <- function(data, city_col = "city", new_col = "city_clean") {
 #' @description
 #' This function sorts 5-digit San Mateo zip codes into county regions: north, south, mid, coastside and "not a residential zip". Non-San Mateo zipcodes will return an `NA` in the `city_clean` column.
 #'
-#' @usage city_clean(data,
-#'     city_col,
-#'     new_col)
+#' @usage smc_zip_region_sort(data,
+#'                            zip_col = "zip",
+#'                            region_col = "zip_region")
 #'
 #' @param data This is the name of the dataframe with the zip code variable in it that you'd like to sort
 #' @param zip_col (optional): This is a string that specifies the name of the zip code variable you want to sort. By default the function assumes the zipcodes are stored in a variable called `zip`
@@ -86,17 +95,25 @@ smc_city_clean <- function(data, city_col = "city", new_col = "city_clean") {
 #'
 #' @return a dataset with a new variable for the sorted zip codes
 #' @export
+#' @importFrom rlang enquo
+#' @importFrom rlang quo_name
+#' @importFrom rlang :=
+#'
 #'
 #' @examples
-#' \dontrun{
-#'  data1 <- data %>%
-#'     smc_zip_region_sort(zip_col = "zip",
-#'                         region_col = "zip_region")
+#' data <- data.frame(
+#'   cty_zip = c("94015", "94403", "94303", "94019", "94128", "94110")
+#'   ) %>%
 #'
-#'}
+#' data %>%
+#'   smc_zip_region_sort(zip_col = "cty_zip",
+#'                       region_col = "cty_zip_region")
 #'
 #'
 smc_zip_region_sort <- function(data, zip_col = "zip", region_col = "zip_region") {
+
+  zip = NULL
+  zip_region = NULL
 
   data1 <- data %>%
     dplyr::rename(zip = !!zip_col) %>%

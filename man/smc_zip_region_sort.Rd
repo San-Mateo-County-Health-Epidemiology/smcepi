@@ -4,9 +4,9 @@
 \alias{smc_zip_region_sort}
 \title{Classify zip codes by region in San Mateo County}
 \usage{
-city_clean(data,
-    city_col,
-    new_col)
+smc_zip_region_sort(data,
+                           zip_col = "zip",
+                           region_col = "zip_region")
 }
 \arguments{
 \item{data}{This is the name of the dataframe with the zip code variable in it that you'd like to sort}
@@ -22,12 +22,13 @@ a dataset with a new variable for the sorted zip codes
 This function sorts 5-digit San Mateo zip codes into county regions: north, south, mid, coastside and "not a residential zip". Non-San Mateo zipcodes will return an \code{NA} in the \code{city_clean} column.
 }
 \examples{
-\dontrun{
- data1 <- data \%>\%
-    smc_zip_region_sort(zip_col = "zip",
-                        region_col = "zip_region")
+data <- data.frame(
+  cty_zip = c("94015", "94403", "94303", "94019", "94128", "94110")
+  ) \%>\%
 
-}
+data \%>\%
+  smc_zip_region_sort(zip_col = "cty_zip",
+                      region_col = "cty_zip_region")
 
 
 }
