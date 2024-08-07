@@ -15,12 +15,13 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#'  data1 <- data %>%
-#'     smc_city_clean(city_col = "city_dirty",
-#'                new_col = "city_clean")
+#' data <- data.frame(
+#'  city_dirty = c("Burligame", "Fost City", "San Mato", "Daily Cit", "S S Francisco", "South San Fransico", "SoSan Franc", "San Francisco")
+#'  )
 #'
-#'}
+#' data %>%
+#'     smc_city_clean(city_col = "city_dirty",
+#'                    new_col = "city_smc")
 #'
 #'
 smc_city_clean <- function(data, city_col = "city", new_col = "city_clean") {
