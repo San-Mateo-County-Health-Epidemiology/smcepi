@@ -18,5 +18,8 @@ reference:
   - gg_color_title
 - title: Misc data processing
   desc: Other helpful functions for data processing
-- contents: read_tsv_cr
+- contents:
+  - read_tsv_cr
+  - smc_city_clean
+
 
