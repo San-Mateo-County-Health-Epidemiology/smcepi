@@ -17,13 +17,13 @@
 #' @examples
 #' \dontrun{
 #'  data1 <- data %>%
-#'     city_clean(city_col = "city_dirty",
+#'     smc_city_clean(city_col = "city_dirty",
 #'                new_col = "city_clean")
 #'
 #'}
 #'
 #'
-smc_city_clean <- function(data, city_col, new_col = "city_clean") {
+smc_city_clean <- function(data, city_col = "city", new_col = "city_clean") {
   data1 <- data %>%
     dplyr::rename(city_orig = !!city_col) %>%
     dplyr::mutate(city_temp = stringr::str_replace_all(stringr::str_to_lower(city_orig), "\\.|\\-|\\,|\\s", ""),
@@ -63,7 +63,8 @@ smc_city_clean <- function(data, city_col, new_col = "city_clean") {
                   city = dplyr::case_when(!stringr::str_detect(city, "[A-Z]") ~ NA_character_,
                                           TRUE ~ city)) %>%
     dplyr::rename(!!new_col := city,
-                  !!city_col := city_orig)
+                  !!city_col := city_orig) %>%
+    dplyr::select(-city_temp)
 
   data1
 
