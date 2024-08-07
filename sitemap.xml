@@ -5,6 +5,7 @@
 <url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/articles/azure_helpers_overview.html</loc></url>
 <url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/articles/file-management.html</loc></url>
 <url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/articles/index.html</loc></url>
+<url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/articles/smc-geographies.html</loc></url>
 <url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/articles/style_guide_templates.html</loc></url>
 <url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/authors.html</loc></url>
 <url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/index.html</loc></url>
@@ -15,6 +16,8 @@
 <url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/load_smc_fonts.html</loc></url>
 <url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/pipe.html</loc></url>
 <url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/read_tsv_cr.html</loc></url>
+<url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/smc_city_clean.html</loc></url>
+<url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/smc_zip_region_sort.html</loc></url>
 <url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/smcepi-package.html</loc></url>
 <url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/theme_ft_smc.html</loc></url>
 <url><loc>https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/theme_gg_smc.html</loc></url>
