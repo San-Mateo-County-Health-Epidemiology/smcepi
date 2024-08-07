@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme-smc.R
 \name{theme_gg_smc}
 \alias{theme_gg_smc}
-\title{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}}
+\title{Using \code{theme_gg_smc}}
 \usage{
 theme_gg_smc(plot,
   plot_lines = "horizontal",
@@ -40,7 +40,7 @@ a ggplot2 object with custom formatting
 This function is meant to be used with \code{ggplot2} charts to quickly format them according to the San Mateo County Office of Epidemiology and Evaluation's style guide.
 }
 \details{
-Using \code{theme_gg_smc}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \examples{
 # creating a jitter plot with `theme_gg_smc`

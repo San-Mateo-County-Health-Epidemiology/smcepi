@@ -2,7 +2,7 @@
 % Please edit documentation in R/read-calredie-tsv.R
 \name{read_tsv_cr}
 \alias{read_tsv_cr}
-\title{Using \code{read_tsv_cr}}
+\title{Reading large tab separated files with \code{read_tsv_cr}}
 \usage{
 read_tsv_cr(file)
 }
@@ -13,7 +13,7 @@ read_tsv_cr(file)
 a data frame
 }
 \description{
-This is a wrapper for \code{read.csv2} that is meant specifically for CalREDIE tab separated files from the DDP.
+This is a wrapper for \code{read.csv2} that is meant for large tab separated values, including CalREDIE tab separated files from the DDP.
 }
 \examples{
 \dontrun{
