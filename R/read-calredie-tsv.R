@@ -1,7 +1,7 @@
-#' Using `read_tsv_cr`
+#' Reading large tab separated files with `read_tsv_cr`
 #'
 #' @description
-#' This is a wrapper for `read.csv2` that is meant specifically for CalREDIE tab separated files from the DDP.
+#' This is a wrapper for `read.csv2` that is meant for large tab separated values, including CalREDIE tab separated files from the DDP.
 #'
 #' @usage read_tsv_cr(file)
 #'
