@@ -1,6 +1,7 @@
 url: https://san-mateo-county-health-epidemiology.github.io/smcepi/
 template:
   bootstrap: 5
+  bootswatch: flatly
 reference:
 - title: Azure
   desc: Functions to deal with Azure data from R
