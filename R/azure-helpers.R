@@ -112,6 +112,7 @@ varchar_max <- function(data) {
 #' @param group_size An integer that indicates the size of the import groups. Ex: a group_size of 50 would split the dataset into groups of 50 records and would then import each group at a time
 #' @param table_name A string to specify the name of the table in Azure
 #' @param field_types Optional parameter to pass a list of varchar(`n`) lengths for the Azure table. Can be created with the `smcepi::varchar_max()` function
+#' @param table_type Optional parameter to specify whether or not you're creating a new table (`table_type = "new"`) or appending data to an existing table (`table_type = "existing"`). The default is `"new"`
 #'
 #' @return will import the data into azure and will return any errors from the `DBI::dbWriteTable` and the `DBI::dbAppendTable` functions
 #' @export
@@ -126,7 +127,9 @@ varchar_max <- function(data) {
 #'                   field_types = varchar_max)
 #'
 #'}
-azure_import_loop <- function(azure_con, data, group_size, table_name, field_types = NULL) {
+azure_import_loop <- function(azure_con, data, group_size, table_name, field_types = NULL, table_type = "new") {
+
+  table_type <- rlang::arg_match(table_type, c("new","existing"))
 
   data1 <- data %>%
     dplyr::mutate(group = ceiling(dplyr::row_number()/group_size))
@@ -137,9 +140,9 @@ azure_import_loop <- function(azure_con, data, group_size, table_name, field_typ
 
   azure_table <- table_name
 
-  for(i in groups) {
+  for (i in groups) {
 
-    if(i == 1) {
+    if (i == 1 & table_type == "new") {
 
       print("group 1!")
 

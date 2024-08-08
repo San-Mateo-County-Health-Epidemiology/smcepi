@@ -8,10 +8,7 @@ vignette: >
 ---
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
 
 The San Mateo County geography functions are designed to help clean and categorize geographic variables consistently.  

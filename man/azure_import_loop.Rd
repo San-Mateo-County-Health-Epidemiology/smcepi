@@ -4,7 +4,14 @@
 \alias{azure_import_loop}
 \title{Write large datasets from R to Azure}
 \usage{
-azure_import_loop(azure_con, data, group_size, table_name, field_types = NULL)
+azure_import_loop(
+  azure_con,
+  data,
+  group_size,
+  table_name,
+  field_types = NULL,
+  table_type = "new"
+)
 }
 \arguments{
 \item{azure_con}{A DBI Connection object as returned by \code{dbConnect()}. See help text for \code{DBI::dbWriteTable} for more details}
@@ -16,6 +23,8 @@ azure_import_loop(azure_con, data, group_size, table_name, field_types = NULL)
 \item{table_name}{A string to specify the name of the table in Azure}
 
 \item{field_types}{Optional parameter to pass a list of varchar(\code{n}) lengths for the Azure table. Can be created with the \code{smcepi::varchar_max()} function}
+
+\item{table_type}{Optional parameter to specify whether or not you're creating a new table (\code{table_type = "new"}) or appending data to an existing table (\code{table_type = "existing"}). The default is \code{"new"}}
 }
 \value{
 will import the data into azure and will return any errors from the \code{DBI::dbWriteTable} and the \code{DBI::dbAppendTable} functions
