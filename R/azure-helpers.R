@@ -51,6 +51,19 @@ azure_connect <- function(creds_file = "", creds_position = 1, pwd = rstudioapi:
                         Port = creds$port,
                         timeout = 30)
 
+  # This saves what was typed into R
+  code <- c(match.call())
+
+  # this opens the connection pane
+  odbc:::on_connection_opened(
+    con,
+    paste(c("library(smcepi)",
+            paste("con <-", gsub(", ", ",\n\t", code))),
+          collapse = "\n"))
+
+  return(con)
+
+
   return(con)
 
 }
