@@ -5,8 +5,8 @@
 \title{cleaning up San Mateo Cities in a data frame}
 \usage{
 smc_city_clean(data,
-    city_col,
-    new_col)
+      city_col = "city",
+      new_col = "city_clean")
 }
 \arguments{
 \item{data}{This is the name of the dataframe with the city variable in it that you'd like to clean}
