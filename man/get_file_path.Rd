@@ -5,9 +5,9 @@
 \title{Get file path for a file stored in a folder with multiple versions of a file}
 \usage{
 get_file_path(path = NULL,
-                     pattern = NULL,
-                     sort_method = "created date",
-                     sort_type = "newest")
+             pattern = NULL,
+             sort_method = "created date",
+             sort_type = "newest")
 }
 \arguments{
 \item{path}{a string specifying the directory in which you want to look. If you're already in the directory, you can leave this blank}
@@ -16,14 +16,14 @@ get_file_path(path = NULL,
 
 \item{sort_method}{\itemize{
 \item \code{"created date"} (the default): sort by the date the file was created
-\itemize{
 \item \code{"modified date"}: sort by the date the file was last modified
 \item \code{"accessed date"}: sort by the date the file was last accessed
-}
 }}
 
-\item{sort_type}{*\code{"newest"} (the default): get the newest file based on sort method
-*\code{"oldest"}: get the oldest file based on sort method}
+\item{sort_type}{\itemize{
+\item \code{"newest"} (the default): get the newest file based on sort method
+\item \code{"oldest"}: get the oldest file based on sort method
+}}
 }
 \value{
 the file path as a string

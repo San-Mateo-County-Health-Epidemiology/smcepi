@@ -4,19 +4,19 @@
 #' If you have multiple versions of the same data set stored in a folder, this will pull the newest or oldest file path. You can enter a path and/or a pattern to look for.
 #'
 #' @usage get_file_path(path = NULL,
-#'                      pattern = NULL,
-#'                      sort_method = "created date",
-#'                      sort_type = "newest")
+#'              pattern = NULL,
+#'              sort_method = "created date",
+#'              sort_type = "newest")
 #'
 #' @param path a string specifying the directory in which you want to look. If you're already in the directory, you can leave this blank
 #' @param pattern a string and/or regular expression specifying which files you're interested in
 #' @param sort_method
 #'   * `"created date"` (the default): sort by the date the file was created
-#'   * `"modified date"`: sort by the date the file was last modified
-#'   * `"accessed date"`: sort by the date the file was last accessed
+#'  * `"modified date"`: sort by the date the file was last modified
+#'  * `"accessed date"`: sort by the date the file was last accessed
 #' @param sort_type
-#'   *`"newest"` (the default): get the newest file based on sort method
-#'   *`"oldest"`: get the oldest file based on sort method
+#'   * `"newest"` (the default): get the newest file based on sort method
+#'  * `"oldest"`: get the oldest file based on sort method
 #'
 #' @return the file path as a string
 #' @export
