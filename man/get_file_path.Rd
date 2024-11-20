@@ -35,7 +35,7 @@ If you have multiple versions of the same data set stored in a folder, this will
 \dontrun{
 
 # get the file that was most recently accessed in a directory
-get_file_path(sort_method = "accessed date", sort type = "newest")
+get_file_path(sort_method = "accessed date", sort_type = "newest")
 
 # get the first file that was created in a different directory
 get_file_path(path = "data", sort_type = "newest")
