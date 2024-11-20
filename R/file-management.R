@@ -51,7 +51,7 @@ get_file_path <- function(path = NULL, pattern = NULL, sort_method = "created da
          `accessed date` = {sort_method = "atime"})
 
   # set decreasing variable based on sort type ------------------
-  sort_type <- rlang::arg_match(sort_method, c("newest","oldest"))
+  sort_type <- rlang::arg_match(sort_type, c("newest","oldest"))
 
   switch(sort_type,
          newest = {sort_type = TRUE},
