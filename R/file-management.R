@@ -3,12 +3,13 @@
 #' @description
 #' If you have multiple versions of the same data set stored in a folder, this will pull the newest or oldest file path. You can enter a path and/or a pattern to look for.
 #'
-#' @usage get_file_path(path = NULL,
+#' @usage get_file_path(directory = getwd(),
 #'              pattern = NULL,
 #'              sort_method = "created date",
-#'              sort_type = "newest")
+#'              sort_type = "newest",
+#'              include_directories = FALSE)
 #'
-#' @param path a string specifying the directory in which you want to look. If you're already in the directory, you can leave this blank
+#' @param directory a string specifying the directory in which you want to look. It defaults to the working directory
 #' @param pattern a string and/or regular expression specifying which files you're interested in
 #' @param sort_method
 #'   * `"created date"` (the default): sort by the date the file was created
@@ -17,6 +18,7 @@
 #' @param sort_type
 #'   * `"newest"` (the default): get the newest file based on sort method
 #'  * `"oldest"`: get the oldest file based on sort method
+#' @param include_directories boolean to indicate whether or not directories should be included in your results
 #'
 #' @return the file path as a string
 #' @export
@@ -28,19 +30,29 @@
 #' get_file_path(sort_method = "accessed date", sort_type = "newest")
 #'
 #' # get the first file that was created in a different directory
-#' get_file_path(path = "data", sort_type = "newest")
+#' get_file_path(directory = "data", sort_type = "newest")
 #'
 #' # get the most recently modified parquet file in a directory
-#' get_file_path(path = "data", pattern = "*.parquet",
+#' get_file_path(directory = "data", pattern = "*.parquet",
 #'               sort_method = "modified date", sort_type = "newest")
 #'
 #'}
-get_file_path <- function(path = NULL, pattern = NULL, sort_method = "created date", sort_type = "newest") {
+get_file_path <- function(directory = getwd(), pattern = NULL, sort_method = "created date", sort_type = "newest", include_directories = FALSE) {
 
   # get the files that match the path + pattern -----------------
-  files <- file.info(list.files(path = path,
-                                pattern = pattern,
-                                full.names = T))
+  files <- list.files(path = directory,
+                      pattern = pattern,
+                      full.names = T)
+  files
+
+  # remove directories from results if include_directories == FALSE ---------
+  stopifnot(typeof(include_directories) == "logical")
+
+  if (include_directories == FALSE) {
+    files <- setdiff(files, list.dirs(path = directory, recursive = FALSE, full.names = T))
+  }
+
+  files <- file.info(files)
 
   # ensure a valid sort method was inputted ---------------------
   sort_method <- rlang::arg_match(sort_method, c("created date","modified date", "accessed date"))

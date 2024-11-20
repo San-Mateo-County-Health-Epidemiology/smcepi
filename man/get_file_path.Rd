@@ -4,13 +4,14 @@
 \alias{get_file_path}
 \title{Get file path for a file stored in a folder with multiple versions of a file}
 \usage{
-get_file_path(path = NULL,
+get_file_path(directory = getwd(),
              pattern = NULL,
              sort_method = "created date",
-             sort_type = "newest")
+             sort_type = "newest",
+             include_directories = FALSE)
 }
 \arguments{
-\item{path}{a string specifying the directory in which you want to look. If you're already in the directory, you can leave this blank}
+\item{directory}{a string specifying the directory in which you want to look. It defaults to the working directory}
 
 \item{pattern}{a string and/or regular expression specifying which files you're interested in}
 
@@ -24,6 +25,8 @@ get_file_path(path = NULL,
 \item \code{"newest"} (the default): get the newest file based on sort method
 \item \code{"oldest"}: get the oldest file based on sort method
 }}
+
+\item{include_directories}{boolean to indicate whether or not directories should be included in your results}
 }
 \value{
 the file path as a string
@@ -38,10 +41,10 @@ If you have multiple versions of the same data set stored in a folder, this will
 get_file_path(sort_method = "accessed date", sort_type = "newest")
 
 # get the first file that was created in a different directory
-get_file_path(path = "data", sort_type = "newest")
+get_file_path(directory = "data", sort_type = "newest")
 
 # get the most recently modified parquet file in a directory
-get_file_path(path = "data", pattern = "*.parquet",
+get_file_path(directory = "data", pattern = "*.parquet",
               sort_method = "modified date", sort_type = "newest")
 
 }
