@@ -6,7 +6,7 @@
 \usage{
 get_file_path(path = NULL,
                      pattern = NULL,
-                     sort_method = "created time",
+                     sort_method = "created date",
                      sort_type = "newest")
 }
 \arguments{
@@ -41,7 +41,8 @@ get_file_path(sort_method = "accessed date", sort type = "newest")
 get_file_path(path = "data", sort_type = "newest")
 
 # get the most recently modified parquet file in a directory
-get_file_path(path = "data", pattern = "*.parquet", sort_method = "modified date", sort_type = "newest")
+get_file_path(path = "data", pattern = "*.parquet",
+              sort_method = "modified date", sort_type = "newest")
 
 }
 }
