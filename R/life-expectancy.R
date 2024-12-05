@@ -41,15 +41,19 @@ make_life_table <- function(data) {
 
 test_data <- data.frame(
   year = 2020,
-  age_cat = c("0", "1-4", "5-9", "10-14", "15-19","20-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90+"),
-  deaths = c(101, 10, 16, 15, 65, 102, 164, 218, 268, 301, 427, 631, 999, 1414, 1661, 2244, 2583, 3234, 3841, 6546),
-  population = c(37091, 159844, 226038, 232718, 208813, 187469, 219833, 244278, 268280, 274061, 284629, 289041, 269557, 257883, 230428, 192485, 139779, 85485, 57412, 38668)
+  age_cat = rep(c("0", "1-4", "5-9", "10-14", "15-19","20-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90+"), 2),
+  deaths = c(101, 10, 16, 15, 65, 102, 164, 218, 268, 301, 427, 631, 999, 1414, 1661, 2244, 2583, 3234, 3841, 6546, 114, 15, 14, 16, 59, 108, 149, 192, 231, 265, 403, 620, 1010, 1353, 1692, 2083, 2495, 3126, 3812, 6443),
+  population = c(37091, 159844, 226038, 232718, 208813, 187469, 219833, 244278, 268280, 274061, 284629, 289041, 269557, 257883, 230428, 192485, 139779, 85485, 57412, 38668, 38483, 165990, 228426, 231830, 208844, 189191, 219408, 245057, 267273, 274420, 288485, 286389, 271027, 254730, 222002, 179366, 126073, 85853, 57803, 38744)
 )
 
 # get start age ----
+### NEED THIS BY GROUP
 test_data$start_age <- as.numeric(sub("[\\s\\-]+\\d{1,2}$|\\+$", "", test_data$age_cat))
-test_data$max_age <- ifelse(max(test_data$start_age) == test_data$start_age,
-                            1, 0)
+test_data$max_age <- by(test_data$year, ~ ifelse(max(test_data$start_age) == test_data$start_age,
+                            1, 0))
+
+isIDmax <- with(dd, ave(Value, ID, FUN=function(x) seq_along(x)==which.max(x)))==1
+group[isIDmax, ]
 
 # set interval widths ----
 test_data$int_width <- ifelse(test_data$age_cat == "0", 1,
@@ -71,11 +75,9 @@ test_data$prob_dying <- test_data$int_width*test_data$death_rate/(1+test_data$in
 test_data$prob_surv <- 1-test_data$prob_dying
 
 # get the number alive at the start of the interval ----
+### ADD GROUPS! perhaps with 'by'?
 sumprod <- function(x, y) x * y
 test_data$num_alive_int <- Reduce(sumprod, test_data$prob_surv, init = 100000, acc = TRUE)[1:nrow(test_data)]
-
-## CHECK THIS
-test_data$test_num_alive <- aggregate(test_num_alive_int ~ prob_surv, data = test_data)
 
 # get the number dying in the interval ----
 test_data$num_dying_int <- ifelse(test_data$max_age == 0,
