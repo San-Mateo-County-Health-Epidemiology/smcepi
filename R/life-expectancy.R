@@ -59,14 +59,15 @@ le_fun <- function(x) {
   prob_dying = int_width*death_rate/(1+int_width*(1-fract_surv)*death_rate)
   prob_surv = 1-prob_dying
   num_alive_int = Reduce(sumprod, prob_surv, init = 100000, acc = TRUE)[1:nrow(x)]
-  num_dying_int = ifelse(max_age == 1, num_alive_int,
+  num_dying_int = ifelse(max_age == 1, num_alive_int, num_alive_int - c(num_alive_int[-1], 0))
 
+  pers_yrs_lived_int = ifelse(max_age == 1, num_alive_int/death_rate,
+                              int_width*(lead(num_alive_int)+(fract_surv*num_dying_int)))
 
-  num_dying_int = case_when(row_number() == n() ~ num_alive_int,
-                            TRUE ~ num_alive_int - lead(num_alive_int)),
+  pers_yrs_lived_past = rev(cumsum(rev(pers_yrs_lived_int)))
 
-
-  cbind(x, start_age, max_age, int_width, fract_surv, death_rate, prob_dying, prob_surv, num_alive_int)
+  cbind(x, start_age, max_age, int_width, fract_surv, death_rate, prob_dying, prob_surv,
+        num_alive_int, num_dying_int, pers_yrs_lived_int, pers_yrs_lived_past)
 
 }
 
@@ -78,31 +79,6 @@ test_data <- data.frame(
 )
 
 test_data <- do.call(rbind, by(test_data, test_data[, c("year")], le_fun))
-
-
-                               function(x) cbind(x, start_age = as.numeric(sub("[\\s\\-]+\\d{1,2}$|\\+$", "", x[, c("age_cat")])),
-                                                 max_age = ifelse(max(start_age) == start_age, 1, 0))))
-                                                 #max_age = ifelse(max(x[, c("start_age")]) == x[, c("start_age")], 1, 0),
-                                                 int_width = ifelse(x[, c("age_cat")] == "0", 1,
-                                                                    ifelse(x[, c("age_cat")] == "1-4", 4,
-                                                                           ifelse(x[, c("age_cat")] == "0-4", 5,
-                                                                                  ifelse(x[, c("age_cat")] == "85+", 17.3,
-                                                                                         ifelse(x[, c("age_cat")] == "90+", 12.3, 5))))),
-                                                 fract_surv = ifelse(x[, c("age_cat")] == "0", 0.1,
-                                                                     ifelse(x[, c("age_cat")] == "0-4", 0.02, 0.5)),
-                                                 death_rate = x[, c("deaths")]/x[, c("population")],
-                                                 prob_dying = x[, c("int_width")] * x[, c("death_rate")] /
-                                                   (1 + x[, c("int_width")] * (1-x[, c("fract_surv")]) * x[, c("death_rate")]),
-                                                 prob_surv = 1-x[, c("prob_dying")],
-                                                 new_col = Reduce(sumprod, x[, c("prob_surv")], init = 100000, acc = TRUE)[1:nrow(x)])))
-
-
-# get the number dying in the interval ----
-test_data$num_dying_int <- ifelse(test_data$max_age == 0,
-                                  ave(test_data$num_alive_int,
-                                      test_data$year,
-                                      FUN = function(x) abs(c(diff(x), 0))),
-                                      test_data$num_alive_int)
 
 
 pers_yrs_lived_int = case_when(row_number() == n() ~ num_alive_int/death_rate,
@@ -142,8 +118,10 @@ test_le$death_rate == test_data$death_rate
 test_le$prob_dying == test_data$prob_dying
 test_le$prob_surv == test_data$prob_surv
 test_le$num_alive_int == test_data$num_alive_int
+test_le$num_dying_int == test_data$num_dying_int
+test_le$pers_yrs_lived_int == test_data$pers_yrs_lived_int
+test_le$pers_yrs_lived_past == test_data$pers_yrs_lived_past
 
-test_le$num_alive_int == test_data$num_alive_int
 
 
 # old code!
