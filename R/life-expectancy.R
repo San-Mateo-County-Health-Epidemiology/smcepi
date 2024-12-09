@@ -1,6 +1,8 @@
 #' life table
 #'
-#' this is the function called in the `make_life_table()`.
+#' this is the function called in the `make_life_table()`. It calculates the vectors required for creating life expectancy methods outlined in the Public Health England calculator that lives [here](https://fingertips.phe.org.uk/documents/phe%20life%20expectancy%20calculator.xlsm).
+#'
+#' Some things have been added, including the option for 0-4 ages (instead of 0 and 1-4) and 85+ (instead of 85-89 and 90+)
 #'
 #' @param x a dataframe
 #'
@@ -83,6 +85,7 @@ make_life_table <- function(data, group_cols = NULL, age_cat_col = "age_cat", de
   # check that all of our columns are in the data set
   stopifnot(all(c("age_cat", "deaths", "population") %in% colnames(data)))
 
+  # create life table with specified groups
   test_data <- do.call(rbind, by(data, data[, c(group_cols)], life_table))
 
 }
