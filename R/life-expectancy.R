@@ -7,25 +7,30 @@
 #' @return
 #'
 #' @examples
-life_table <- function(x) {
 
-  start_age = as.numeric(sub("[\\s\\-]+\\d{1,2}$|\\+$", "", x[, c("age_cat")]))
+life_table <- function(data) {
+
+  # arrange data ----
+  start_age = as.numeric(sub("[\\s\\-]+\\d{1,2}$|\\+$", "", data$age_cat))
+  data <- data[order(start_age),]
+
+  # make vectors ----
   max_age = ifelse(max(start_age) == start_age, 1, 0)
 
-  int_width = ifelse(x[, c("age_cat")] == "0", 1,
-                     ifelse(x[, c("age_cat")] == "1-4", 4,
-                            ifelse(x[, c("age_cat")] == "0-4", 5,
-                                   ifelse(x[, c("age_cat")] == "85+", 17.3,
-                                          ifelse(x[, c("age_cat")] == "90+", 12.3, 5)))))
-  fract_surv = ifelse(x[, c("age_cat")] == "0", 0.1,
-                      ifelse(x[, c("age_cat")] == "0-4", 0.02, 0.5))
+  int_width = as.numeric(ifelse(data[, c("age_cat")] == "0", 1,
+                                ifelse(data[, c("age_cat")] == "1-4", 4,
+                                       ifelse(data[, c("age_cat")] == "0-4", 5,
+                                              ifelse(data[, c("age_cat")] == "85+", 17.3,
+                                                     ifelse(data[, c("age_cat")] == "90+", 12.3, 5))))))
+  fract_surv = as.numeric(ifelse(data[, c("age_cat")] == "0", 0.1,
+                                 ifelse(data[, c("age_cat")] == "0-4", 0.02, 0.5)))
 
-  death_rate = x[, c("deaths")]/x[, c("population")]
+  death_rate = unlist(data[, c("deaths")]/data[, c("population")])
   prob_dying = int_width*death_rate/(1+int_width*(1-fract_surv)*death_rate)
   prob_surv = 1-prob_dying
-  num_alive_int = Reduce(sumprod, prob_surv, init = 100000, acc = TRUE)[1:nrow(x)]
-  num_dying_int = ifelse(max_age == 1, num_alive_int, num_alive_int - c(num_alive_int[-1], 0))
+  num_alive_int = Reduce(f = "*", prob_surv, init = 100000, acc = TRUE)[1:nrow(data)]
 
+  num_dying_int = as.numeric(ifelse(max_age == 1, num_alive_int, num_alive_int - c(num_alive_int[-1], 0)))
   pers_yrs_lived_int = ifelse(max_age == 1, num_alive_int/death_rate,
                               int_width*(lead(num_alive_int)+(fract_surv*num_dying_int)))
 
@@ -33,8 +38,10 @@ life_table <- function(x) {
 
   obs_le_int = pers_yrs_lived_past/num_alive_int
 
-  sample_var = ifelse(max_age == 1, (death_rate*(1-death_rate)/x[, c("population")]),
-                      ifelse(x[, c("deaths")] == 0, 0, (prob_dying^2*(1-prob_dying)/x[, c("deaths")])))
+  sample_var = ifelse(max_age == 1, (death_rate*(1-death_rate)/unlist(data[, c("population")])),
+                      ifelse(unlist(data[, c("deaths")]) == 0, 0,
+                             (prob_dying^2*(1-prob_dying)/unlist(data[, c("deaths")]))))
+
   weighted_var = ifelse(max_age == 1, (num_alive_int^2)/death_rate^4*sample_var,
                         (num_alive_int^2)*((1-fract_surv)*int_width+lead(obs_le_int))^2*sample_var)
 
@@ -43,10 +50,12 @@ life_table <- function(x) {
   ci_low_95 = round(obs_le_int-(1.96*sqrt(sample_var_obs_le)), 1)
   ci_high_95 = round(obs_le_int+(1.96*sqrt(sample_var_obs_le)), 1)
 
+  # bind all of the vectors together ----
+  new_data <- cbind(data, start_age, max_age, int_width, fract_surv, death_rate, prob_dying, prob_surv,
+                    num_alive_int, num_dying_int, pers_yrs_lived_int, pers_yrs_lived_past,
+                    obs_le_int, sample_var, weighted_var, sample_var_pers_yrs, sample_var_obs_le, ci_low_95, ci_high_95)
 
-  cbind(x, start_age, max_age, int_width, fract_surv, death_rate, prob_dying, prob_surv,
-        num_alive_int, num_dying_int, pers_yrs_lived_int, pers_yrs_lived_past,
-        obs_le_int, sample_var, weighted_var, sample_var_pers_yrs, sample_var_obs_le, ci_low_95, ci_high_95)
+  return(new_data)
 
 }
 
@@ -64,15 +73,17 @@ life_table <- function(x) {
 #' @examples
 #'
 #'
-make_life_table <- function(data, year_col = "year", age_cat_col = "age_cat", deaths_col = "deaths", population_col = "population") {
+make_life_table <- function(data, group_cols = NULL, age_cat_col = "age_cat", deaths_col = "deaths", population_col = "population") {
 
-  # allow user to specify names of variables
-  names(df)[names(df) == year_col] <- 'year'
+  # update variables with user specified names
+  names(data)[names(data) == age_cat_col] <- 'age_cat'
+  names(data)[names(data) == deaths_col] <- 'deaths'
+  names(data)[names(data) == population_col] <- 'population'
 
   # check that all of our columns are in the data set
-  stopifnot(all(c("year", "age_cat", "deaths", "population") %in% colnames(data)))
+  stopifnot(all(c("age_cat", "deaths", "population") %in% colnames(data)))
 
-  test_data <- do.call(rbind, by(test_data, test_data[, c("year")], make_life_table))
+  test_data <- do.call(rbind, by(data, data[, c(group_cols)], life_table))
 
 }
 
