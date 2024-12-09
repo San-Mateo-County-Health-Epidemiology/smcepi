@@ -4,11 +4,12 @@
 #'
 #' Some things have been added, including the option for 0-4 ages (instead of 0 and 1-4) and 85+ (instead of 85-89 and 90+)
 #'
-#' @param x a dataframe
+#' @param x a data frame
 #'
-#' @return
+#' @return a data frame
 #'
 #' @examples
+#' # don't run this on its own - run make_life_table()
 
 life_table <- function(data) {
 
