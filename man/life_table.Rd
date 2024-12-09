@@ -7,7 +7,7 @@
 life_table(data)
 }
 \arguments{
-\item{x}{a data frame}
+\item{data}{a data frame}
 }
 \value{
 a data frame

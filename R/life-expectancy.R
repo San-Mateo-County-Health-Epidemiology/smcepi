@@ -4,7 +4,7 @@
 #'
 #' Some things have been added, including the option for 0-4 ages (instead of 0 and 1-4) and 85+ (instead of 85-89 and 90+)
 #'
-#' @param x a data frame
+#' @param data a data frame
 #'
 #' @return a data frame
 #'
@@ -31,11 +31,11 @@ life_table <- function(data) {
   death_rate = unlist(data[, c("deaths")]/data[, c("population")])
   prob_dying = int_width*death_rate/(1+int_width*(1-fract_surv)*death_rate)
   prob_surv = 1-prob_dying
-  num_alive_int = Reduce(f = "*", prob_surv, init = 100000, acc = TRUE)[1:nrow(data)]
+  num_alive_int = Reduce(f = "*", prob_surv, init = 100000, accumulate = TRUE)[1:nrow(data)]
 
   num_dying_int = as.numeric(ifelse(max_age == 1, num_alive_int, num_alive_int - c(num_alive_int[-1], 0)))
   pers_yrs_lived_int = ifelse(max_age == 1, num_alive_int/death_rate,
-                              int_width*(lead(num_alive_int)+(fract_surv*num_dying_int)))
+                              int_width*(c(num_alive_int[-1], 0)+(fract_surv*num_dying_int)))
 
   pers_yrs_lived_past = rev(cumsum(rev(pers_yrs_lived_int)))
 
@@ -46,7 +46,7 @@ life_table <- function(data) {
                              (prob_dying^2*(1-prob_dying)/unlist(data[, c("deaths")]))))
 
   weighted_var = ifelse(max_age == 1, (num_alive_int^2)/death_rate^4*sample_var,
-                        (num_alive_int^2)*((1-fract_surv)*int_width+lead(obs_le_int))^2*sample_var)
+                        (num_alive_int^2)*((1-fract_surv)*int_width+c(obs_le_int[-1], 0))^2*sample_var)
 
   sample_var_pers_yrs = rev(cumsum(rev(weighted_var)))
   sample_var_obs_le = sample_var_pers_yrs/num_alive_int^2
@@ -84,9 +84,16 @@ life_table <- function(data) {
 #' @examples
 #'test_data <- data.frame(
 #'  year = c(rep(2020, 20), rep(2021, 20)),
-#'  ages = rep(c("0", "1-4", "5-9", "10-14", "15-19","20-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90+"), 2),
-#'  deaths = c(101, 10, 16, 18, 65, 102, 164, 218, 268, 301, 427, 631, 999, 1414, 1661, 2244, 2583, 3234, 3841, 6546, 114, 15, 24, 16, 59, 108, 149, 192, 231, 265, 403, 620, 1010, 1353, 1692, 2083, 2495, 3126, 3812, 6443),
-#'  population_est = c(37091, 159844, 226038, 232718, 208813, 187469, 219833, 244278, 268280, 274061, 284629, 289041, 269557, 257883, 230428, 192485, 139779, 85485, 57412, 38668, 38483, 165990, 228426, 231830, 208844, 189191, 219408, 245057, 267273, 274420, 288485, 286389, 271027, 254730, 222002, 179366, 126073, 85853, 57803, 38744))
+#'  ages = rep(c("0", "1-4", "5-9", "10-14", "15-19","20-24", "25-29", "30-34", "35-39", "40-44",
+#'  "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90+"), 2),
+#'  deaths = c(101, 10, 16, 18, 65, 102, 164, 218, 268, 301, 427,
+#'             631, 999, 1414, 1661, 2244, 2583, 3234, 3841, 6546,
+#'             114, 15, 24, 16, 59, 108, 149, 192, 231, 265, 403,
+#'             620, 1010, 1353, 1692, 2083, 2495, 3126, 3812, 6443),
+#'  population_est = c(37091, 159844, 226038, 232718, 208813, 187469, 219833, 244278, 268280,
+#'       274061, 284629, 289041, 269557, 257883, 230428, 192485, 139779, 85485, 57412, 38668,
+#'             38483, 165990, 228426, 231830, 208844, 189191, 219408, 245057, 267273, 274420,
+#'             288485, 286389, 271027, 254730, 222002, 179366, 126073, 85853, 57803, 38744))
 #'
 #'le_table <- make_life_table(data = test_data,
 #'                            group_cols = c("year"),
