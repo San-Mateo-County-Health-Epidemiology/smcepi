@@ -61,19 +61,36 @@ life_table <- function(data) {
 
 }
 
-#' Title
+#' Creating life tables
 #'
-#' @param data
-#' @param year_col
-#' @param age_cat_col
-#' @param deaths_col
-#' @param population_col
+#' @description This function creates a life table based on the life table from Public Health England. It is designed to work with grouped data so that you can calculate life tables for multiple groups at once.
 #'
-#' @return
+#' @usage make_life_table(data,
+#'               group_cols = NULL,
+#'               age_cat_col = "age_cat",
+#'               deaths_col = "deaths",
+#'               population_col = "population")
+#'
+#' @param data a 2x2 data frame with variables for age categories, population years and death count.
+#' @param group_cols a list of variables used to group the output.
+#' @param age_cat_col the name of the variable with age categories if the variable has a name other than "age_cat"
+#' @param deaths_col the name of the variable with death counts if the variable has a name other than "deaths"
+#' @param population_col the name of the variable with the population years if the variable has a name other than "population"
+#'
+#' @return a data frame with a variable for each of the columns in the PHE life table
 #' @export
 #'
 #' @examples
+#'test_data <- data.frame(
+#'  year = c(rep(2020, 20), rep(2021, 20)),
+#'  ages = rep(c("0", "1-4", "5-9", "10-14", "15-19","20-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90+"), 2),
+#'  deaths = c(101, 10, 16, 18, 65, 102, 164, 218, 268, 301, 427, 631, 999, 1414, 1661, 2244, 2583, 3234, 3841, 6546, 114, 15, 24, 16, 59, 108, 149, 192, 231, 265, 403, 620, 1010, 1353, 1692, 2083, 2495, 3126, 3812, 6443),
+#'  population_est = c(37091, 159844, 226038, 232718, 208813, 187469, 219833, 244278, 268280, 274061, 284629, 289041, 269557, 257883, 230428, 192485, 139779, 85485, 57412, 38668, 38483, 165990, 228426, 231830, 208844, 189191, 219408, 245057, 267273, 274420, 288485, 286389, 271027, 254730, 222002, 179366, 126073, 85853, 57803, 38744))
 #'
+#'le_table <- make_life_table(data = test_data,
+#'                            group_cols = c("year"),
+#'                            age_cat_col = "ages",
+#'                            population_col = "population_est")
 #'
 make_life_table <- function(data, group_cols = NULL, age_cat_col = "age_cat", deaths_col = "deaths", population_col = "population") {
 
@@ -86,7 +103,8 @@ make_life_table <- function(data, group_cols = NULL, age_cat_col = "age_cat", de
   stopifnot(all(c("age_cat", "deaths", "population") %in% colnames(data)))
 
   # create life table with specified groups
-  test_data <- do.call(rbind, by(data, data[, c(group_cols)], life_table))
+  data1 <- do.call(rbind, by(data, data[, c(group_cols)], life_table))
+  return(data1)
 
 }
 
