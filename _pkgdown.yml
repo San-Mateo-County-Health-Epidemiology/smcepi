@@ -20,11 +20,10 @@ reference:
 - title: Misc data processing
   desc: Other helpful functions for data processing
 - contents:
+  - get_file_path
   - read_tsv_cr
   - smc_city_clean
   - smc_zip_region_sort
   - life_table
   - make_life_table
   - get_le
-
-
