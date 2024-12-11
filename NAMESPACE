@@ -3,6 +3,7 @@
 export("%>%")
 export(azure_connect)
 export(azure_import_loop)
+export(get_le)
 export(gg_color_title)
 export(load_smc_fonts)
 export(make_life_table)
