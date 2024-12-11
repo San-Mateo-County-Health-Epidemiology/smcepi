@@ -127,7 +127,12 @@ make_life_table <- function(data, grouping_vars = NULL, age_cat_col = "age_cat",
   stopifnot(all(c("age_cat", "deaths", "population") %in% colnames(data)))
 
   # create life table with specified groups
-  data1 <- do.call(rbind, by(data, data[, c(grouping_vars)], life_table))
+  if (is.null(grouping_vars)) {
+    data1 <- life_table(data)
+  } else {
+    data1 <- do.call(rbind, by(data, data[, c(grouping_vars)], life_table))
+  }
+
   rownames(data1) <- NULL
   return(data1)
 
