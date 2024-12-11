@@ -95,8 +95,8 @@
 <span class="r-in"><span><span class="co"># step 2: create a life table using the methods from Public Health England .xlsm file</span></span></span>
 <span class="r-in"><span><span class="va">le_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="make_life_table.html">make_life_table</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">test_data</span>,</span></span>
 <span class="r-in"><span>                            grouping_vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"year"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                            age_cat_col <span class="op">=</span> <span class="st">"ages"</span>,</span></span>
-<span class="r-in"><span>                            population_col <span class="op">=</span> <span class="st">"population_est"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>                            age_cat_var <span class="op">=</span> <span class="st">"ages"</span>,</span></span>
+<span class="r-in"><span>                            population_var <span class="op">=</span> <span class="st">"population_est"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># step 3: pull out the life expectancy for each group</span></span></span>
 <span class="r-in"><span><span class="co">## 3a: get le for age 0 (typical estimation used) with confidence intervals</span></span></span>
