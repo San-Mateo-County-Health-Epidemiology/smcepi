@@ -42,8 +42,8 @@ test_data <- data.frame(
 # step 2: create a life table using the methods from Public Health England .xlsm file
 le_table <- make_life_table(data = test_data,
                             grouping_vars = c("year"),
-                            age_cat_col = "ages",
-                            population_col = "population_est")
+                            age_cat_var = "ages",
+                            population_var = "population_est")
 
 # step 3: pull out the life expectancy for each group
 ## 3a: get le for age 0 (typical estimation used) with confidence intervals

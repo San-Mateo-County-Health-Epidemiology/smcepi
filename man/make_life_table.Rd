@@ -6,20 +6,20 @@
 \usage{
 make_life_table(data,
                 grouping_vars = NULL,
-                age_cat_col = "age_cat",
-                deaths_col = "deaths",
-                population_col = "population")
+                age_cat_var = "age_cat",
+                deaths_var = "deaths",
+                population_var = "population")
 }
 \arguments{
 \item{data}{a 2x2 data frame with variables for age categories, population years and death count.}
 
 \item{grouping_vars}{a list of variables used to group the output.}
 
-\item{age_cat_col}{the name of the variable with age categories if the variable has a name other than "age_cat"}
+\item{age_cat_var}{the name of the variable with age categories if the variable has a name other than "age_cat"}
 
-\item{deaths_col}{the name of the variable with death counts if the variable has a name other than "deaths"}
+\item{deaths_var}{the name of the variable with death counts if the variable has a name other than "deaths"}
 
-\item{population_col}{the name of the variable with the population years if the variable has a name other than "population"}
+\item{population_var}{the name of the variable with the population years if the variable has a name other than "population"}
 }
 \value{
 a data frame with a variable for each of the columns in the PHE life table
@@ -45,8 +45,8 @@ test_data <- data.frame(
 # step 2: create a life table using the methods from Public Health England .xlsm file
 le_table <- make_life_table(data = test_data,
                             grouping_vars = c("year"),
-                            age_cat_col = "ages",
-                            population_col = "population_est")
+                            age_cat_var = "ages",
+                            population_var = "population_est")
 
 # step 3: pull out the life expectancy for each group
 ## 3a: get le for age 0 (typical estimation used) with confidence intervals

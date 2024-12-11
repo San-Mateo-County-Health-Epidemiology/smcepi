@@ -34,7 +34,7 @@ test_that("make_life_table", {
 
   ## test renaming columns ----
   colnames(test_data) <- c("years", "ages", "deaths", "pop")
-  le_table <- make_life_table(test_data, grouping_vars = "years", age_cat_col = "ages", population_col = "pop")
+  le_table <- make_life_table(test_data, grouping_vars = "years", age_cat_var = "ages", population_var = "pop")
   expect_equal("data.frame", class(le_table))
 
 

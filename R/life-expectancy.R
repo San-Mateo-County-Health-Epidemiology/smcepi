@@ -82,8 +82,8 @@ test_data <- data.frame(
 # step 2: create a life table using the methods from Public Health England .xlsm file
 le_table <- make_life_table(data = test_data,
                             grouping_vars = c("year"),
-                            age_cat_col = "ages",
-                            population_col = "population_est")
+                            age_cat_var = "ages",
+                            population_var = "population_est")
 
 # step 3: pull out the life expectancy for each group
 ## 3a: get le for age 0 (typical estimation used) with confidence intervals
@@ -102,26 +102,26 @@ get_le(le_table, start_age = 30, grouping_vars = c("year"), include_ci = FALSE)
 #'
 #' @usage make_life_table(data,
 #'                 grouping_vars = NULL,
-#'                 age_cat_col = "age_cat",
-#'                 deaths_col = "deaths",
-#'                 population_col = "population")
+#'                 age_cat_var = "age_cat",
+#'                 deaths_var = "deaths",
+#'                 population_var = "population")
 #'
 #' @param data a 2x2 data frame with variables for age categories, population years and death count.
 #' @param grouping_vars a list of variables used to group the output.
-#' @param age_cat_col the name of the variable with age categories if the variable has a name other than "age_cat"
-#' @param deaths_col the name of the variable with death counts if the variable has a name other than "deaths"
-#' @param population_col the name of the variable with the population years if the variable has a name other than "population"
+#' @param age_cat_var the name of the variable with age categories if the variable has a name other than "age_cat"
+#' @param deaths_var the name of the variable with death counts if the variable has a name other than "deaths"
+#' @param population_var the name of the variable with the population years if the variable has a name other than "population"
 #'
 #' @return a data frame with a variable for each of the columns in the PHE life table
 #' @export
 #'
 #' @eval life_table_examples()
-make_life_table <- function(data, grouping_vars = NULL, age_cat_col = "age_cat", deaths_col = "deaths", population_col = "population") {
+make_life_table <- function(data, grouping_vars = NULL, age_cat_var = "age_cat", deaths_var = "deaths", population_var = "population") {
 
   # update variables with user specified names
-  names(data)[names(data) == age_cat_col] <- 'age_cat'
-  names(data)[names(data) == deaths_col] <- 'deaths'
-  names(data)[names(data) == population_col] <- 'population'
+  names(data)[names(data) == age_cat_var] <- 'age_cat'
+  names(data)[names(data) == deaths_var] <- 'deaths'
+  names(data)[names(data) == population_var] <- 'population'
 
   # check that all of our columns are in the data set
   stopifnot(all(c("age_cat", "deaths", "population") %in% colnames(data)))
@@ -165,13 +165,13 @@ get_le <- function(data, start_age = 0, grouping_vars = NULL, include_ci = TRUE)
 
   # set vector of columns to be outputted
   if (include_ci == T) {
-    selected_cols <- c("obs_le_int", "ci_low_95", "ci_high_95")
+    selected_vars <- c("obs_le_int", "ci_low_95", "ci_high_95")
   } else {
-    selected_cols <- c("obs_le_int")
+    selected_vars <- c("obs_le_int")
   }
 
   # keep selected output
-  le <- data[data$start_age == as.numeric(start_age), c(grouping_vars, selected_cols)]
+  le <- data[data$start_age == as.numeric(start_age), c(grouping_vars, selected_vars)]
 
   return(le)
 
