@@ -5,10 +5,10 @@
 \title{Creating life tables}
 \usage{
 make_life_table(data,
-              grouping_vars = NULL,
-              age_cat_col = "age_cat",
-              deaths_col = "deaths",
-              population_col = "population")
+                grouping_vars = NULL,
+                age_cat_col = "age_cat",
+                deaths_col = "deaths",
+                population_col = "population")
 }
 \arguments{
 \item{data}{a 2x2 data frame with variables for age categories, population years and death count.}
@@ -25,25 +25,34 @@ make_life_table(data,
 a data frame with a variable for each of the columns in the PHE life table
 }
 \description{
-This function creates a life table based on the life table from Public Health England. It is designed to work with grouped data so that you can calculate life tables for multiple groups at once.
+This function creates a life table based on the life table from Public Health England that lives \href{https://fingertips.phe.org.uk/documents/phe\%20life\%20expectancy\%20calculator.xlsm}{here}. It is designed to work with grouped data so that you can calculate life tables for multiple groups at once.
 }
 \examples{
+# step 1: generate data from which to calculate life expectancy
 test_data <- data.frame(
- year = c(rep(2020, 20), rep(2021, 20)),
- ages = rep(c("0", "1-4", "5-9", "10-14", "15-19","20-24", "25-29", "30-34", "35-39", "40-44",
- "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90+"), 2),
- deaths = c(101, 10, 16, 18, 65, 102, 164, 218, 268, 301, 427,
-            631, 999, 1414, 1661, 2244, 2583, 3234, 3841, 6546,
+  year = c(rep(2020, 20), rep(2021, 20)),
+  ages = rep(c("0", "1-4", "5-9", "10-14", "15-19","20-24", "25-29", "30-34", "35-39", "40-44",
+  "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90+"), 2),
+  deaths = c(101, 10, 16, 18, 65, 102, 164, 218, 268, 301, 427,
+             631, 999, 1414, 1661, 2244, 2583, 3234, 3841, 6546,
             114, 15, 24, 16, 59, 108, 149, 192, 231, 265, 403,
-            620, 1010, 1353, 1692, 2083, 2495, 3126, 3812, 6443),
- population_est = c(37091, 159844, 226038, 232718, 208813, 187469, 219833, 244278, 268280,
-      274061, 284629, 289041, 269557, 257883, 230428, 192485, 139779, 85485, 57412, 38668,
-            38483, 165990, 228426, 231830, 208844, 189191, 219408, 245057, 267273, 274420,
-            288485, 286389, 271027, 254730, 222002, 179366, 126073, 85853, 57803, 38744))
+             620, 1010, 1353, 1692, 2083, 2495, 3126, 3812, 6443),
+  population_est = c(37091, 159844, 226038, 232718, 208813, 187469, 219833, 244278, 268280,
+       274061, 284629, 289041, 269557, 257883, 230428, 192485, 139779, 85485, 57412, 38668,
+             38483, 165990, 228426, 231830, 208844, 189191, 219408, 245057, 267273, 274420,
+             288485, 286389, 271027, 254730, 222002, 179366, 126073, 85853, 57803, 38744))
 
+# step 2: create a life table using the methods from Public Health England .xlsm file
 le_table <- make_life_table(data = test_data,
-                           grouping_vars = c("year"),
-                           age_cat_col = "ages",
-                           population_col = "population_est")
+                            grouping_vars = c("year"),
+                            age_cat_col = "ages",
+                            population_col = "population_est")
+
+# step 3: pull out the life expectancy for each group
+## 3a: get le for age 0 (typical estimation used) with confidence intervals
+get_le(le_table, grouping_vars = c("year"))
+
+## 3b. get le for the age group starting at 30 without confidence intervals
+get_le(le_table, start_age = 30, grouping_vars = c("year"), include_ci = FALSE)
 
 }

@@ -5,14 +5,14 @@
 \title{Pulling Life Expectancy from a Life Table}
 \usage{
 get_le(data,
-              start_age = 0,
-              grouping_vars = NULL,
-              include_ci = T)
+       start_age = 0,
+       grouping_vars = NULL,
+       include_ci = TRUE)
 }
 \arguments{
 \item{data}{a data frame generated from the \code{make_life_table()} function}
 
-\item{start_age}{an integer for the start age of the age group for which you want life expectancy. Defaults to 0.}
+\item{start_age}{an integer for the start age of the age group for which you want life expectancy. Defaults to 0. Possible start ages are 0, 1 and multiples of 5 up to 90 (ie 5, 10, 15, 20...)}
 
 \item{grouping_vars}{the same list of \code{grouping_vars} specified in the \code{make_life_table()} function}
 
@@ -22,32 +22,34 @@ get_le(data,
 a data frame with life expectancy for specified ages for each specified group
 }
 \description{
-This function is meant to be used out the output from the \code{make_life_table()} function. It will pull the life expectancy for a given age from the life table.
+This function is meant to be used on the output from the \code{make_life_table()} function. It will pull the life expectancy for a given age from the life table.
 }
 \examples{
-# set up ----
+# step 1: generate data from which to calculate life expectancy
 test_data <- data.frame(
- year = c(rep(2020, 20), rep(2021, 20)),
- ages = rep(c("0", "1-4", "5-9", "10-14", "15-19","20-24", "25-29", "30-34", "35-39", "40-44",
- "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90+"), 2),
- deaths = c(101, 10, 16, 18, 65, 102, 164, 218, 268, 301, 427,
-            631, 999, 1414, 1661, 2244, 2583, 3234, 3841, 6546,
+  year = c(rep(2020, 20), rep(2021, 20)),
+  ages = rep(c("0", "1-4", "5-9", "10-14", "15-19","20-24", "25-29", "30-34", "35-39", "40-44",
+  "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90+"), 2),
+  deaths = c(101, 10, 16, 18, 65, 102, 164, 218, 268, 301, 427,
+             631, 999, 1414, 1661, 2244, 2583, 3234, 3841, 6546,
             114, 15, 24, 16, 59, 108, 149, 192, 231, 265, 403,
-            620, 1010, 1353, 1692, 2083, 2495, 3126, 3812, 6443),
- population_est = c(37091, 159844, 226038, 232718, 208813, 187469, 219833, 244278, 268280,
-      274061, 284629, 289041, 269557, 257883, 230428, 192485, 139779, 85485, 57412, 38668,
-            38483, 165990, 228426, 231830, 208844, 189191, 219408, 245057, 267273, 274420,
-            288485, 286389, 271027, 254730, 222002, 179366, 126073, 85853, 57803, 38744))
+             620, 1010, 1353, 1692, 2083, 2495, 3126, 3812, 6443),
+  population_est = c(37091, 159844, 226038, 232718, 208813, 187469, 219833, 244278, 268280,
+       274061, 284629, 289041, 269557, 257883, 230428, 192485, 139779, 85485, 57412, 38668,
+             38483, 165990, 228426, 231830, 208844, 189191, 219408, 245057, 267273, 274420,
+             288485, 286389, 271027, 254730, 222002, 179366, 126073, 85853, 57803, 38744))
 
-# create life table ----
+# step 2: create a life table using the methods from Public Health England .xlsm file
 le_table <- make_life_table(data = test_data,
-                           grouping_vars = c("year"),
-                           age_cat_col = "ages",
-                           population_col = "population_est")
+                            grouping_vars = c("year"),
+                            age_cat_col = "ages",
+                            population_col = "population_est")
 
-# get le for age 0 (typical estimation used) with confidence intervals ----
+# step 3: pull out the life expectancy for each group
+## 3a: get le for age 0 (typical estimation used) with confidence intervals
 get_le(le_table, grouping_vars = c("year"))
 
-# get le for another age group without confidence intervals
-get_le(le_table, start_age = 30, grouping_vars = c("year"), include_ci = F)
+## 3b. get le for the age group starting at 30 without confidence intervals
+get_le(le_table, start_age = 30, grouping_vars = c("year"), include_ci = FALSE)
+
 }
