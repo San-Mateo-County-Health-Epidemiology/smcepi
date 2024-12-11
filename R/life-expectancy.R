@@ -171,8 +171,8 @@ get_le <- function(data, start_age = 0, grouping_vars = NULL, include_ci = TRUE)
   }
 
   # keep selected output
-  data[data$start_age == as.numeric(start_age), c(grouping_vars, selected_cols)]
+  le <- data[data$start_age == as.numeric(start_age), c(grouping_vars, selected_cols)]
 
-  return(data)
+  return(le)
 
 }
