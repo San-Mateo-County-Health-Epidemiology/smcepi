@@ -23,5 +23,8 @@ reference:
   - read_tsv_cr
   - smc_city_clean
   - smc_zip_region_sort
+  - life_table
+  - make_life_table
+  - get_le
 
 
