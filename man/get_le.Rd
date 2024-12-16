@@ -27,7 +27,7 @@ This function is meant to be used on the output from the \code{make_life_table()
 \examples{
 # step 1: generate data from which to calculate life expectancy
 test_data <- data.frame(
-  year = c(rep(2020, 20), rep(2021, 20)),
+  group = c(rep("phe", 20), rep("simulated", 20)),
   ages = rep(c("0", "1-4", "5-9", "10-14", "15-19","20-24", "25-29", "30-34", "35-39", "40-44",
   "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90+"), 2),
   deaths = c(206, 37, 23, 23, 105, 162, 268, 314, 413, 584, 954,
@@ -41,15 +41,15 @@ test_data <- data.frame(
 
 # step 2: create a life table using the methods from Public Health England .xlsm file
 le_table <- make_life_table(data = test_data,
-                            grouping_vars = c("year"),
+                            grouping_vars = c("group"),
                             age_cat_var = "ages",
                             population_var = "population_est")
 
 # step 3: pull out the life expectancy for each group
 ## 3a: get le for age 0 (typical estimation used) with confidence intervals
-get_le(le_table, grouping_vars = c("year"))
+get_le(le_table, grouping_vars = c("group"))
 
 ## 3b. get le for the age group starting at 30 without confidence intervals
-get_le(le_table, start_age = 30, grouping_vars = c("year"), include_ci = FALSE)
+get_le(le_table, start_age = 30, grouping_vars = c("group"), include_ci = FALSE)
 
 }
