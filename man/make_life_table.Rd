@@ -15,7 +15,7 @@ make_life_table(data,
 
 \item{grouping_vars}{a list of variables used to group the output.}
 
-\item{age_cat_var}{the name of the variable with age categories if the variable has a name other than "age_cat"}
+\item{age_cat_var}{the name of the variable with age categories if the variable has a name other than "age_cat". Age categories should be in the format \code{start_age-end_age}, ex: \code{0-4}, \code{5-9}, etc}
 
 \item{deaths_var}{the name of the variable with death counts if the variable has a name other than "deaths"}
 

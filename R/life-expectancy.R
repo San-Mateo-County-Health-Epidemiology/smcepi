@@ -108,7 +108,7 @@ get_le(le_table, start_age = 30, grouping_vars = c("group"), include_ci = FALSE)
 #'
 #' @param data a 2x2 data frame with variables for age categories, population years and death count.
 #' @param grouping_vars a list of variables used to group the output.
-#' @param age_cat_var the name of the variable with age categories if the variable has a name other than "age_cat"
+#' @param age_cat_var the name of the variable with age categories if the variable has a name other than "age_cat". Age categories should be in the format `start_age-end_age`, ex: `0-4`, `5-9`, etc
 #' @param deaths_var the name of the variable with death counts if the variable has a name other than "deaths"
 #' @param population_var the name of the variable with the population years if the variable has a name other than "population"
 #'
