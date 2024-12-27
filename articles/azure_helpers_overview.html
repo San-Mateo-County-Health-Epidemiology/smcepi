@@ -212,6 +212,8 @@ with maximum string lengths longer than 255.</p>
 <span>          col2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="fl">1000</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">""</span><span class="op">)</span>, <span class="st">"b"</span>, <span class="st">"cc"</span>, <span class="st">"ddd"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">smcepi</span><span class="fu">::</span><span class="fu"><a href="../reference/varchar_max.html">varchar_max</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in get(paste0(generic, ".", class), envir = get_method_env()) : </span></span>
+<span><span class="co">#&gt;   object 'type_sum.accel' not found</span></span>
 <span><span class="co">#&gt;            col1            col2 </span></span>
 <span><span class="co">#&gt;  "varchar(255)" "varchar(1000)"</span></span></code></pre></div>
 </div>
