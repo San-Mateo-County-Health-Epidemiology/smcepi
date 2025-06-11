@@ -14,8 +14,8 @@
 life_table <- function(data) {
 
   # arrange data ----
-  start_age = as.numeric(sub("[\\s\\-]+\\d{1,2}$|\\+$", "", data$age_cat))
-  data <- data[order(start_age),]
+  data$start_age = as.numeric(sub("[\\s\\-]+\\d{1,2}$|\\+$", "", data$age_cat))
+  data <- data[order(data$start_age),]
 
   # make vectors ----
   max_age = ifelse(max(start_age) == start_age, 1, 0)
