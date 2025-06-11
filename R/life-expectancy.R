@@ -14,7 +14,7 @@
 life_table <- function(data) {
 
   # arrange data ----
-  data$start_age = as.numeric(sub("[\\s\\-]+\\d{1,2}$|\\+$", "", data$age_cat))
+  start_age <- as.numeric(sub("[\\s\\-]+\\d{1,2}$|\\+$", "", data$age_cat))
   data <- cbind(data, start_age)
   data <- data[order(data$start_age),]
 
