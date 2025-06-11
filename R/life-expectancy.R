@@ -15,6 +15,7 @@ life_table <- function(data) {
 
   # arrange data ----
   data$start_age = as.numeric(sub("[\\s\\-]+\\d{1,2}$|\\+$", "", data$age_cat))
+  data <- cbind(data, start_age)
   data <- data[order(data$start_age),]
 
   # make vectors ----
@@ -54,7 +55,7 @@ life_table <- function(data) {
   ci_high_95 = round(obs_le_int+(1.96*sqrt(sample_var_obs_le)), 1)
 
   # bind all of the vectors together ----
-  new_data <- cbind(data, start_age, int_width, fract_surv, death_rate, prob_dying, prob_surv,
+  new_data <- cbind(data, int_width, fract_surv, death_rate, prob_dying, prob_surv,
                     num_alive_int, num_dying_int, pers_yrs_lived_int, pers_yrs_lived_past,
                     obs_le_int, sample_var, weighted_var, sample_var_pers_yrs, sample_var_obs_le, ci_low_95, ci_high_95)
 
