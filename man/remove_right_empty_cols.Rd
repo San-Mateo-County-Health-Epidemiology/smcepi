@@ -2,7 +2,7 @@
 % Please edit documentation in R/data-management.R
 \name{remove_right_empty_cols}
 \alias{remove_right_empty_cols}
-\title{Remove all empty columns at the rightmost ****}
+\title{Remove all empty columns on the right end of a data set.}
 \usage{
 remove_right_empty_cols(data)
 }
@@ -26,6 +26,7 @@ data <- data.frame(
   col6 = NA)
 
 remove_right_empty_cols(data)
+ # the function drops `col5` and `col6` but keeps `col3`:
 head(data)
 
 

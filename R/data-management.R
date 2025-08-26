@@ -27,7 +27,7 @@
 #'
 remove_right_empty_cols <- function(data) {
 
-  stopifnot(class(data) %in% c("data.frame", "tibble"))
+  stopifnot(sum(class(data) %in% c("data.frame", "tibble")) >= 1)
 
   # loop through columns starting at the right
   for (i in ncol(data):1) {
