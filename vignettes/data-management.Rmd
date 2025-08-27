@@ -1,0 +1,69 @@
+---
+title: "Data Management"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Data File Management}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+library(smcepi)
+library(tidyverse)
+```
+
+## remove_right_empty_cols()
+
+This function removes all empty columns on the right of a data set. This function is useful when you import a file and R adds empty columns to the right of the actual data. This function won't remove empty columns on the left or in the middle of the data set. 
+
+### it will remove empty columns on the right...
+
+This data has two empty columns on the right:
+
+```{r}
+data <- data.frame(
+  col1 = sample(1:100, 100, replace = T),
+  col2 = NA,
+  col3 = runif(100),
+  col4 = sample(c("blue", "green", "yellow", "orange"), 100, replace = T),
+  col5 = NA,
+  col6 = NA
+)
+head(data)
+```
+
+After passing it through `remove_right_empty_cols()`, the two empty columns on the right (`col5` and `col6` have been dropped):
+
+```{r}
+remove_right_empty_cols(data) %>%
+  head(5)
+```
+
+### ... and only on the right.
+
+If you accidentally run this function on a data set that doesn't have any empty columns on the right, the data set will not change. The rightmost variable in this data set has information in it:
+
+```{r}
+data <- data.frame(
+  col1 = sample(1:100, 100, replace = T),
+  col2 = NA,
+  col3 = runif(100),
+  col4 = NA,
+  col5 = NA,
+  col6 = sample(c("blue", "green", "yellow", "orange"), 100, replace = T)
+)
+
+head(data)
+```
+
+In this example `col6` has data in it, so no variables are dropped from the data set. 
+
+```{r}
+remove_right_empty_cols(data) %>%
+  head(5)
+```

@@ -13,7 +13,7 @@ remove_right_empty_cols(data)
 the inputted data frame without empty columns on the right
 }
 \description{
-This function will drop empty columns at the far right of a data set. It moves from the right to left and will stop removing empty columns when it gets to the first column with data in it.
+This function will drop empty columns at the far right of a data set. This is useful when you import data and get empty columns on the right that shouldn't be there. This function only removes empty columns on the right - it doesn't remove empty columns anywhere else.
 }
 \examples{
 
