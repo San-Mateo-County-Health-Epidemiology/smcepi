@@ -14,7 +14,6 @@ knitr::opts_chunk$set(
 )
 
 library(smcepi)
-library(tidyverse)
 ```
 
 ## remove_right_empty_cols()
@@ -40,8 +39,7 @@ head(data)
 After passing it through `remove_right_empty_cols()`, the two empty columns on the right (`col5` and `col6` have been dropped):
 
 ```{r}
-remove_right_empty_cols(data) %>%
-  head(5)
+head(remove_right_empty_cols(data))
 ```
 
 ### ... and only on the right.
@@ -64,6 +62,5 @@ head(data)
 In this example `col6` has data in it, so no variables are dropped from the data set. 
 
 ```{r}
-remove_right_empty_cols(data) %>%
-  head(5)
+head(remove_right_empty_cols(data))
 ```
