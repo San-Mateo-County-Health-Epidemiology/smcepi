@@ -3,11 +3,12 @@ pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   azure_helpers_overview: azure_helpers_overview.html
+  data-management: data-management.html
   file-management: file-management.html
   life-expectancy-overview: life-expectancy-overview.html
   smc-geographies: smc-geographies.html
   style_guide_templates: style_guide_templates.html
-last_built: 2025-06-11T17:28Z
+last_built: 2025-08-27T17:20Z
 urls:
   reference: https://san-mateo-county-health-epidemiology.github.io/smcepi/reference
   article: https://san-mateo-county-health-epidemiology.github.io/smcepi/articles
