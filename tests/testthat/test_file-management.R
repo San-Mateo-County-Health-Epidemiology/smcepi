@@ -1,5 +1,5 @@
-# test theme_gg_smc() ---------------------
-## make sure it's a theme ----
+# test file management functions ---------------------
+## make a string is outputted ----
 test_that("output is a string", {
 
   path <- get_file_path(sort_method = "accessed date", sort_type = "newest")
