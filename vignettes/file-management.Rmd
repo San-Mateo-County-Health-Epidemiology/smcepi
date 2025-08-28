@@ -1,5 +1,5 @@
 ---
-title: "Misc File Management"
+title: "File Management"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Misc File Management}
@@ -14,6 +14,45 @@ knitr::opts_chunk$set(
 )
 ```
 
+This packages has a couple functions that will help managing how you import files into R. 
+
 ```{r setup}
 library(smcepi)
 ```
+
+## `get_file_path()`
+
+### Basic usage
+
+This function is useful when you have multiple versions of a file in a folder (think: cumulative exports saved weekly) and want to retrieve the path for a specific file. 
+
+`get_file_path()` has five arguments:
+
+* `directory`: a string specifying the directory in which you want to look. It defaults to the working directory (`getwd()`)
+* `pattern`: a string and/or regular expression specifying which files you're interested in
+* `sort_method`: "created date" (the default), "modified date" or"accessed date"
+* `sort_type`: "newest" (the default) or "oldest"
+* `include_directories`: boolean to indicate whether or not directories should be included in your results. It defaults to `FALSE`
+
+If you run the function without specifying any arguments (`get_file_path()`), it will return the file with the newest create date in your current working directory. 
+
+### Additional options
+Some options for using this function:
+
+Get the file that was most recently accessed in a directory:
+```
+get_file_path(sort_method = "accessed date", sort_type = "newest")
+```
+
+Get the first file that was created in a different directory:
+```
+get_file_path(directory = "data", sort_type = "newest")
+```
+
+Get the most recently modified parquet file in a directory
+```
+get_file_path(directory = "data", pattern = "*.parquet",
+              sort_method = "modified date", sort_type = "newest")
+```
+
+## `read_tsv_cr`
