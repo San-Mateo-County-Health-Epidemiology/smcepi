@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 library(smcepi)
 ```
 
+These functions are for small data processing tasks. 
+
 ## remove_right_empty_cols()
 
 This function removes all empty columns on the right of a data set. This function is useful when you import a file and R adds empty columns to the right of the actual data. This function won't remove empty columns on the left or in the middle of the data set. 
@@ -65,4 +67,3 @@ In this example `col6` has data in it, so no variables are dropped from the data
 head(remove_right_empty_cols(data))
 ```
 
-## ...
