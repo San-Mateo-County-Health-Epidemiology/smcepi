@@ -55,4 +55,18 @@ get_file_path(directory = "data", pattern = "*.parquet",
               sort_method = "modified date", sort_type = "newest")
 ```
 
-## `read_tsv_cr`
+## `read_tsv_cr()`
+### Basic usage
+
+This is a wrapper function build on `utils::read.csv2()`. It is meant to be used for large tab separated value (.tsv) files, including CalREDIE tab separated files from the DDP.
+
+If you're reading in a large `.tsv` file, you can just pass the path of the file through the function:
+
+```
+data <- read_tsv_cr("export.tsv")
+```
+
+### Additional options
+
+You can also pass any of the `utils::read.csv2()` arguments to `read_tsv_cr()` though if you want to specify a lot of arguments, you might be better off just using `utils::read.csv2()`.
+
