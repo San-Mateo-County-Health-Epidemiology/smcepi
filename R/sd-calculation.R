@@ -8,15 +8,15 @@
 #' @export
 #'
 #' @examples
-#' sd(5,20)
+#' prop_sd(5,20)
 #'
-sd <- function(num, denom) {
+prop_sd <- function(num, denom) {
 
   stopifnot(is.numeric(num) & is.numeric(denom))
 
   prop <- num / denom
 
-  sd <- round(sqrt(prop*(1-prop)/denom), digits = 3)
+  sd <- sqrt(prop*(1-prop)/denom)
 
   return(sd)
 
