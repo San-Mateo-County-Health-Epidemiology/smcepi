@@ -1,0 +1,36 @@
+---
+title: "Standard Deviation"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Standard Deviation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>")
+
+library(smcepi)
+```
+
+This function calculates the standard deviation of a proportion.
+
+## Data structure
+
+This data includes a numerator and denominator to plug in to the function.
+
+```{r}
+  data <- data.frame(
+    num = 50,
+  denom = 2000)
+```
+
+## Application of the function
+
+To use the function, supply the numerator followed by the denominator to the `prop_sd` function.
+
+```{r}
+prop_sd(data$num, data$denom)
+```
