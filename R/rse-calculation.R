@@ -4,31 +4,29 @@
 #' @param sd This is the standard deviation of the data.
 #' @param n This is the sample size of the data.
 #' @param method This is the method by which the RSE is calculated.
-#'
+#'  * `"sample"`: used to calculate the RSE of surveillance data sets
+#'  * `"survey"`: utilized to calculate the RSE of data from a survey or a limited data set from a larger population.
 #' @return The relative standard error of sample or survey data.
 #' @export
 #'
 #' @examples
 #' \dontrun {
 #'
-#' library(smcepi)
-#'
 #' rse(25, 1050, method = "survey")
 #' }
 
-prop_rse <- function(sd, n, method) {
+prop_rse <- function(prop_sd, n, method) {
 
-  library(smcepi)
-
-  stopifnot(is.numeric(sd) & is.numeric(n) & !method == "sample|survey")
+  stopifnot(is.numeric(prop_sd) & is.numeric(n))
+  method <- rlang::arg_match(method, c("sample|survey"))
 
   if (method == "sample") {
 
-    rse <- sd/sqrt(n)
+    rse <- prop_sd/sqrt(n)
 
   } else if (method == "survey") {
 
-    se <- sd/sqrt(n)
+    se <- prop_sd/sqrt(n)
 
     rse <- 100 * (se/n)
 
