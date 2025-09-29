@@ -17,7 +17,7 @@ library(smcepi)
 
 # Standard deviation of a proportion function
 
-This function calculates the standard deviation of a proportion. In epidemiology, we often need to calculate standard deviations of proportions to provide further context for interpretation of other statistical measures such as rates. The default sd() function in R uses a denominator of `n (sample size)-1`, but we wanted a function that would use a denominator of n. Thus, the formula to calculate the standard deviation (sd) of a proportion (prop) using the prop_sd function is $$ sd = \sqrt{\frac{prop*{(1-prop)}}{n}} $$
+This function calculates the standard deviation of a proportion. In epidemiology, we often need to calculate standard deviations of proportions to provide further context for interpretation of other statistical measures such as rates. The default sd() function in R uses a denominator of `n (sample size)-1`, but we wanted a function that would use a denominator of n. Thus, the formula to calculate the standard deviation (sd) of a proportion (prop) using the `prop_sd` function is $$ prop_sd = \sqrt{\frac{prop*{(1-prop)}}{n}} $$
 
 ## Application of the function
 
@@ -36,7 +36,7 @@ This function calculates the relative standard error (RSE) for sample and survey
 
 ## Application of the function-Sample
 
-For the sample method, the function inputs include the standard deviation (sd), the sample size (n), and the method ("sample" in this case) to determine the appropriate calculation for the data. The sample method can typically be used on surveillance data sets common in epidemiology. The formula for the prop_rse function sample method is $$ rse = \frac{sd}{\sqrt(n)} $$
+For the sample method, the function inputs include the standard deviation (sd), the sample size (n), and the method ("sample" in this case) to determine the appropriate calculation for the data. The sample method can typically be used on surveillance data sets common in epidemiology. The formula for the `prop_rse` function sample method is $$ prop_rse = \frac{sd}{\sqrt(n)} $$
 
 ```{r}
     sample_sd <- 25
