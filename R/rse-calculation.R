@@ -18,7 +18,7 @@
 prop_rse <- function(prop_sd, n, method) {
 
   stopifnot(is.numeric(prop_sd) & is.numeric(n))
-  method <- rlang::arg_match(method, c("sample|survey"))
+  method <- rlang::arg_match(method, c("sample", "survey"))
 
   if (method == "sample") {
 

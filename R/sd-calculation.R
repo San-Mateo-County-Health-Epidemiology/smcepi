@@ -14,6 +14,10 @@ prop_sd <- function(num, denom) {
 
   stopifnot(is.numeric(num) & is.numeric(denom))
 
+  stopifnot(num < denom)
+
+  stopifnot(num > 0 & denom > 0)
+
   prop <- num / denom
 
   sd <- sqrt(prop*(1-prop)/denom)
