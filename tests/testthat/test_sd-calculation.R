@@ -4,9 +4,8 @@ library(testthat)
 ## test that output is a data frame ----
 test_that("prop_sd", {
 
-  sd_df <- data.frame(
-    num = 50,
-  denom = 2000)
+    num <- 50
+  denom <- 2000
 
   expect_equal(class(sd_df$num), "numeric")
   expect_equal(class(sd_df$denom), "numeric")
