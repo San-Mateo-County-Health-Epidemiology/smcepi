@@ -354,6 +354,10 @@ theme_ft_smc <- function(ft) {
     title_font <- "Trade Gothic Next Rounded"
   }
 
+  # identify numeric columns so they can be right aligned
+  num_cols <- unlist(unname(which(sapply(data, is.numeric))))
+
+
   ft1 <- ft %>%
     # header
     flextable::font(fontname = title_font, part = "header") %>%
@@ -362,6 +366,7 @@ theme_ft_smc <- function(ft) {
     # body
     flextable::font(fontname = font, part = "body") %>%
     flextable::hline(part = "body", border = officer::fp_border(color = "#D5D8DC")) %>%
+    align(j = num_cols, align = "right") %>%
 
     # footer
     flextable::font(fontname = title_font, part = "footer") %>%
