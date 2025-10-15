@@ -12,7 +12,7 @@
 #' @examples
 #' \dontrun
 #'
-#' rse(25, 1050, method = "survey")
+#' prop_rse(25, 1050, method = "survey")
 #'
 
 prop_rse <- function(prop_sd, n, method) {
@@ -24,7 +24,7 @@ prop_rse <- function(prop_sd, n, method) {
 
     rse <- prop_sd/sqrt(n)
 
-  } else if (method == "survey") {
+ } else if (method == "survey") {
 
     se <- prop_sd/sqrt(n)
 
