@@ -7,6 +7,8 @@
 prop_rse(prop_sd, n, method)
 }
 \arguments{
+\item{prop_sd}{This is the standard deviation of the proportion.}
+
 \item{n}{This is the sample size of the data.}
 
 \item{method}{This is the method by which the RSE is calculated.
@@ -14,8 +16,6 @@ prop_rse(prop_sd, n, method)
 \item \code{"sample"}: used to calculate the RSE of surveillance data sets
 \item \code{"survey"}: utilized to calculate the RSE of data from a survey or a limited data set from a larger population.
 }}
-
-\item{sd}{This is the standard deviation of the data.}
 }
 \value{
 The relative standard error of sample or survey data.
@@ -24,8 +24,8 @@ The relative standard error of sample or survey data.
 Use this function to calculate the relative standard error (RSE) for a sample and survey data. The RSE measures the reliability of an estimate by dividing the standard error of the estimate by the estimate. The RSE is displayed as a percentage of the estimate.
 }
 \examples{
-\dontrun {
+\dontrun{
 
-rse(25, 1050, method = "survey")
+prop_rse(25, 1050, method = "survey")
 }
 }
