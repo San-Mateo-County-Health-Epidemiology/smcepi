@@ -6,11 +6,10 @@ articles:
   data-management: data-management.html
   file-management: file-management.html
   life-expectancy-overview: life-expectancy-overview.html
-  rse-calculation_overview: rse-calculation_overview.html
   sd-rse-calculation_overview: sd-rse-calculation_overview.html
   smc-geographies: smc-geographies.html
   style_guide_templates: style_guide_templates.html
-last_built: 2025-10-16T16:24Z
+last_built: 2025-10-16T16:27Z
 urls:
   reference: https://san-mateo-county-health-epidemiology.github.io/smcepi/reference
   article: https://san-mateo-county-health-epidemiology.github.io/smcepi/articles
