@@ -22,6 +22,9 @@
     <li><a class="dropdown-item" href="../articles/data-management.html">Data Management</a></li>
     <li><a class="dropdown-item" href="../articles/file-management.html">File Management</a></li>
     <li><a class="dropdown-item" href="../articles/life-expectancy-overview.html">Life Expectancy</a></li>
+    <li><a class="dropdown-item" href="../articles/rse-calculation_overview.html">Relative Standard Error</a></li>
+    <li><a class="dropdown-item" href="../articles/sd-calculation_overview.html">Standard Deviation</a></li>
+    <li><a class="dropdown-item" href="../articles/sd-rse-calculation_overview.html">Statistical functions</a></li>
     <li><a class="dropdown-item" href="../articles/smc-geographies.html">San Mateo Geography Functions</a></li>
     <li><a class="dropdown-item" href="../articles/style_guide_templates.html">Style Guide Templates</a></li>
   </ul></li>
@@ -76,115 +79,115 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">remove_right_empty_cols</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     col1 col2        col3   col4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     63   NA 0.332799758   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2      4   NA 0.568352669   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     34   NA 0.252205725  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     35   NA 0.464013567  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     89   NA 0.917660507   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     86   NA 0.972844218   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     43   NA 0.819082447 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8      7   NA 0.902923798   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9     32   NA 0.581366044 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    53   NA 0.773008481 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11    70   NA 0.995123026 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12     9   NA 0.710971250 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13    22   NA 0.214942596 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14    10   NA 0.291757630 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15    32   NA 0.721759729 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16    34   NA 0.866615703 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17    17   NA 0.238453106   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18    52   NA 0.004496308 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19    56   NA 0.943516464   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20    22   NA 0.438137200   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21    95   NA 0.750603328   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22     1   NA 0.667815764  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23    70   NA 0.407973201 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24    34   NA 0.351248815 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25    51   NA 0.738091561 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26    46   NA 0.664285493  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27    65   NA 0.085224700 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28    25   NA 0.856132157 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29    37   NA 0.076983322  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30     8   NA 0.852844803 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31    33   NA 0.106346961  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32    96   NA 0.484802824 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33    83   NA 0.247219110  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34    92   NA 0.686569211  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35    28   NA 0.163623198  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36    48   NA 0.952824800  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37    75   NA 0.321854551  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38    90   NA 0.361534117   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39    35   NA 0.887723417 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40     2   NA 0.828014418 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41    87   NA 0.100656458  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42     3   NA 0.906051578  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43    38   NA 0.772730364  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44    68   NA 0.383370670   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45    65   NA 0.999652457   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 46     6   NA 0.349299049  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47    22   NA 0.947318266 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48    19   NA 0.216099976   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49     2   NA 0.032092709 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50    64   NA 0.145315843 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 51    40   NA 0.854383888  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52    65   NA 0.213149311  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 53    28   NA 0.210310738 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 54    97   NA 0.039520690  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55    71   NA 0.944774803 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56    12   NA 0.244927987 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 57    54   NA 0.781122568  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 58    41   NA 0.288237168 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59    42   NA 0.875357910 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60    66   NA 0.295750094 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 61    26   NA 0.983525408 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 62    60   NA 0.589837556 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 63    14   NA 0.759158380 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 64     5   NA 0.836075306 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 65    76   NA 0.762819470 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 66    17   NA 0.417269926  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 67    13   NA 0.138074841   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 68    97   NA 0.080844962 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 69    33   NA 0.655982626  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 70    77   NA 0.602003859 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 71    82   NA 0.656995830   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 72    32   NA 0.329317164 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 73    69   NA 0.979474220 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 74    55   NA 0.715186134 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 75    11   NA 0.872630305   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 76    33   NA 0.983283747   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 77    36   NA 0.218562993   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 78     7   NA 0.664530064   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 79    23   NA 0.389564038  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 80    88   NA 0.046063639 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 81    34   NA 0.616914558   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 82    72   NA 0.598474994 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 83    73   NA 0.406853630 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 84    51   NA 0.858328150  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 85    59   NA 0.517681185 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 86    38   NA 0.979293410 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 87    25   NA 0.017015688   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 88    53   NA 0.673447826 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 89    35   NA 0.371269882   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 90    45   NA 0.918010637   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 91    82   NA 0.677978095 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 92    23   NA 0.665152461  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 93    43   NA 0.756041088  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 94     4   NA 0.542837155 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 95    34   NA 0.239288098   blue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 96    41   NA 0.508893572  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 97    82   NA 0.417264371  green</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 98    94   NA 0.726948853 yellow</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 99    19   NA 0.637685552 orange</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 100   76   NA 0.396409955  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     34   NA 0.464013567  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     35   NA 0.917660507   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     89   NA 0.972844218   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     86   NA 0.819082447 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     43   NA 0.902923798   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      7   NA 0.581366044 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     32   NA 0.773008481 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8     53   NA 0.995123026 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9     70   NA 0.710971250 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10     9   NA 0.214942596 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11    22   NA 0.291757630 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12    10   NA 0.721759729 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13    32   NA 0.866615703 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14    34   NA 0.238453106   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15    17   NA 0.004496308 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16    52   NA 0.943516464   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17    56   NA 0.438137200   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18    22   NA 0.750603328   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19    95   NA 0.667815764  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20     1   NA 0.407973201 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21    70   NA 0.351248815 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22    34   NA 0.738091561 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23    51   NA 0.664285493  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24    46   NA 0.085224700 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25    65   NA 0.856132157 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26    25   NA 0.076983322  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27    37   NA 0.852844803 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28     8   NA 0.106346961  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29    33   NA 0.484802824 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30    96   NA 0.247219110  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31    83   NA 0.686569211  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32    92   NA 0.163623198  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33    28   NA 0.952824800  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34    48   NA 0.321854551  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35    75   NA 0.361534117   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36    90   NA 0.887723417 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37    35   NA 0.828014418 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38     2   NA 0.100656458  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39    87   NA 0.906051578  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40     3   NA 0.772730364  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41    38   NA 0.383370670   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42    68   NA 0.999652457   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43    65   NA 0.349299049  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44     6   NA 0.947318266 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45    22   NA 0.216099976   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46    19   NA 0.032092709 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47     2   NA 0.145315843 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48    64   NA 0.854383888  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49    40   NA 0.213149311  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50    65   NA 0.210310738 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51    28   NA 0.039520690  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52    97   NA 0.944774803 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53    71   NA 0.244927987 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54    12   NA 0.781122568  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55    54   NA 0.288237168 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56    41   NA 0.875357910 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57    42   NA 0.295750094 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58    66   NA 0.983525408 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59    26   NA 0.589837556 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60    60   NA 0.759158380 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61    14   NA 0.836075306 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62     5   NA 0.762819470 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63    76   NA 0.417269926  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64    17   NA 0.138074841   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65    13   NA 0.080844962 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66    97   NA 0.655982626  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 67    33   NA 0.602003859 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 68    77   NA 0.656995830   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69    82   NA 0.329317164 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70    32   NA 0.979474220 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71    69   NA 0.715186134 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72    55   NA 0.872630305   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73    11   NA 0.983283747   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 74    33   NA 0.218562993   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75    36   NA 0.664530064   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76     7   NA 0.389564038  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77    23   NA 0.046063639 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 78    88   NA 0.616914558   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 79    34   NA 0.598474994 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80    72   NA 0.406853630 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81    73   NA 0.858328150  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82    51   NA 0.517681185 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83    59   NA 0.979293410 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84    38   NA 0.017015688   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85    25   NA 0.673447826 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86    53   NA 0.371269882   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87    35   NA 0.918010637   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88    45   NA 0.677978095 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89    82   NA 0.665152461  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90    23   NA 0.756041088  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91    43   NA 0.542837155 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92     4   NA 0.239288098   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93    34   NA 0.508893572  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94    41   NA 0.417264371  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95    82   NA 0.726948853 yellow</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96    94   NA 0.637685552 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 97    19   NA 0.396409955  green</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98    76   NA 0.959482607 orange</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99    51   NA 0.298658030   blue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100   17   NA 0.050201166  green</span>
 <span class="r-in"><span> <span class="co"># the function drops `col5` and `col6` but keeps `col3`:</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   col1 col2      col3  col4 col5 col6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   63   NA 0.3327998  blue   NA   NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    4   NA 0.5683527  blue   NA   NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   34   NA 0.2522057 green   NA   NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   35   NA 0.4640136 green   NA   NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5   89   NA 0.9176605  blue   NA   NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6   86   NA 0.9728442  blue   NA   NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   col1 col2      col3   col4 col5 col6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   34   NA 0.4640136  green   NA   NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   35   NA 0.9176605   blue   NA   NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   89   NA 0.9728442   blue   NA   NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   86   NA 0.8190824 yellow   NA   NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   43   NA 0.9029238   blue   NA   NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6    7   NA 0.5813660 orange   NA   NA</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
