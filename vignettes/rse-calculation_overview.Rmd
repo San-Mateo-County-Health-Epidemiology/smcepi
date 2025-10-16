@@ -1,0 +1,56 @@
+---
+title: "Relative Standard Error"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Relative Standard Error}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>")
+
+library(smcepi)
+```
+
+This function calculates the relative standard error for sample and survey data.
+
+## Data structure-Sample
+
+This data includes a standard deviation, a sample size, and a method ("sample" in this case) to determine the appropriate calculation for the data.
+
+```{r}
+  rse_df_sample <- data.frame(
+    sd = 25,
+    n = 1000,
+    method = "sample")
+```
+
+## Application of the function
+
+To use the function, supply the standard deviation, sample size, and method to the `prop_rse` function.
+
+```{r}
+prop_rse(rse_df_sample$sd, rse_df_sample$n, rse_df_sample$method)
+```
+
+## Data structure-Survey
+
+This data includes a standard deviation, a sample size, and a method ("survey" in this case) to determine the appropriate calculation for the data.
+
+```{r}
+  rse_df_survey <- data.frame(
+    sd = 25,
+    n = 1000,
+    method = "survey")
+```
+
+## Application of the function
+
+To use the function, supply the standard deviation, sample size, and method to the `prop_rse` function.
+
+```{r}
+prop_rse(rse_df_survey$sd, rse_df_survey$n, rse_df_survey$method)
+```

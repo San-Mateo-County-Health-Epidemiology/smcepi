@@ -1,0 +1,66 @@
+---
+title: "Statistical functions"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Statistical functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>")
+
+library(smcepi)
+```
+
+## `prop_sd`
+
+### Background
+
+This function calculates the standard deviation of a proportion. In epidemiology, we often need to calculate standard deviations of proportions to provide further context for interpretation of other statistical measures such as rates. The default sd() function in R uses a denominator of `n (sample size)-1`, but we wanted a function that would use a denominator of n. Thus, the formula to calculate the standard deviation (sd) of a proportion (prop) using the `prop_sd` function is $$ sd = \sqrt{\frac{prop*{(1-prop)}}{n}} $$
+
+### Basic usage
+
+The function inputs include the numerator followed by the denominator of the proportion. The function checks to ensure that the numerator and denominator are numeric values prior to execution of the function.
+
+```{r}
+    num <- 50
+  denom <- 2000
+  
+  prop_sd(num = num, denom = denom)
+```
+
+## `prop_rse`
+
+This function calculates the relative standard error (RSE) for sample and survey data. The RSE characterizes the reliability of a measure represented as a percentage. A low RSE would indicate a more stable and precise estimate while a high RSE suggests that the estimate is unreliable.
+
+### Basic usage: `method = "sample"`
+
+For the sample method, the function inputs include the `prop_sd`, the sample size (n), and the method ("sample" in this case) to determine the appropriate calculation for the data. The sample method can typically be used on surveillance data sets common in epidemiology. The formula for the `prop_rse` function sample method is $$ rse = \frac{sd}{\sqrt(n)} $$
+
+```{r}
+    sample_sd <- 25
+    sample_n <- 1000
+    sample_method <- "sample"
+    
+    prop_rse(prop_sd = sample_sd, n = sample_n, method = sample_method)
+```
+
+### Basic usage: `method = "survey"`
+
+For the survey method, the function inputs include the `prop_sd`, the sample size (n), and the method ("survey" in this case) to determine the appropriate calculation for the data. The survey method can be used on survey data sets in epidemiology. The first step in calculating the relative standard error using the survey method is to calculate the standard error (se) using the following formula, which includes the standard deviation of the proportion (sd) and the sample size (n). $$ se = \frac{sd}{\sqrt(n)} $$
+
+Then, the standard error (se) and sample size (n) are used to calculate the relative standard error (rse) using the following formula.
+
+$$ rse = 100 * (se/n) $$
+
+```{r}
+    survey_sd <- 25
+    survey_n <- 1000
+    survey_method <- "survey"
+    
+    prop_rse(survey_sd, survey_n, survey_method)
+```
+
