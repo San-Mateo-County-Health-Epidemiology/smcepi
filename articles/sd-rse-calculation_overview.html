@@ -85,7 +85,7 @@ a denominator of <code>n (sample size)-1</code>, but we wanted a
 function that would use a denominator of n. Thus, the formula to
 calculate the standard deviation (sd) of a proportion (prop) using the
 <code>prop_sd</code> function is
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>d</mi><mo>=</mo><msqrt><mfrac><mrow><mi>p</mi><mi>r</mi><mi>o</mi><mi>p</mi><mo>*</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>p</mi><mi>r</mi><mi>o</mi><mi>p</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mi>n</mi></mfrac></msqrt></mrow><annotation encoding="application/x-tex"> sd = \sqrt{\frac{prop*{(1-prop)}}{n}} </annotation></semantics></math></p>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>d</mi><mo>=</mo><msqrt><mfrac><mrow><mi>p</mi><mi>r</mi><mi>o</mi><mi>p</mi><mo>*</mo><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>p</mi><mi>r</mi><mi>o</mi><mi>p</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><mi>n</mi></mfrac></msqrt></mrow><annotation encoding="application/x-tex"> sd = \sqrt{\frac{prop*{(1-prop)}}{n}} </annotation></semantics></math></p>
 </div>
 <div class="section level3">
 <h3 id="basic-usage">Basic usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
@@ -143,7 +143,7 @@ sample size (n).
 <p>Then, the standard error (se) and sample size (n) are used to
 calculate the relative standard error (rse) using the following
 formula.</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>s</mi><mi>e</mi><mo>=</mo><mn>100</mn><mo>*</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>e</mi><mi>/</mi><mi>n</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> rse = 100 * (se/n) </annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>s</mi><mi>e</mi><mo>=</mo><mn>100</mn><mo>*</mo><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mi>e</mi><mi>/</mi><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex"> rse = 100 * (se/n) </annotation></semantics></math></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>    <span class="va">survey_sd</span> <span class="op">&lt;-</span> <span class="fl">25</span></span>
 <span>    <span class="va">survey_n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
@@ -164,7 +164,7 @@ formula.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

@@ -1,5 +1,5 @@
-pandoc: 3.1.11
-pkgdown: 2.1.3
+pandoc: 3.8.3
+pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   azure_helpers_overview: azure_helpers_overview.html
@@ -9,7 +9,7 @@ articles:
   sd-rse-calculation_overview: sd-rse-calculation_overview.html
   smc-geographies: smc-geographies.html
   style_guide_templates: style_guide_templates.html
-last_built: 2025-10-16T16:27Z
+last_built: 2026-05-15T21:20Z
 urls:
   reference: https://san-mateo-county-health-epidemiology.github.io/smcepi/reference
   article: https://san-mateo-county-health-epidemiology.github.io/smcepi/articles

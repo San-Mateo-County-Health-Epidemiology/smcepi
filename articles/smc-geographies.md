@@ -1,0 +1,79 @@
+# San Mateo Geography Functions
+
+The San Mateo County geography functions are designed to help clean and
+categorize geographic variables consistently.
+
+## `smc_city_clean()`
+
+### Basic usage
+
+This function uses regular expressions to clean up San Mateo County city
+names. Non-San Mateo city names will return an `NA` value. By default,
+the function assumes the variable you want to clean is called `city` and
+will save the cleaned results in a variable called `city_clean`.
+
+``` r
+
+data <- data.frame(
+  city = c("Burligame", "Fost City", "San Mato", "Daily Cit", "S S Francisco", "South San Fransico", "SoSan Franc", "San Francisco")
+  ) 
+
+data %>%
+  smc_city_clean()
+```
+
+### Additional options
+
+If your input column is not called `city` you should pass the name of
+your city variable in the `city_col` argument. You also have the option
+of specifying the name of the variable for the cleaned cities. By
+default it is `city_clean`.
+
+``` r
+
+data <- data.frame(
+  city_dirty = c("Burligame", "Fost City", "San Mato", "Daily Cit", "S S Francisco", "South San Fransico", "SoSan Franc", "San Francisco")
+  ) 
+
+data %>%
+  smc_city_clean(city_col = "city_dirty",
+                 new_col = "smc_city")
+```
+
+## `smc_zip_region_sort()`
+
+### Basic usage
+
+This function categorizes zip codes into county regions. The expected
+input is a variable in a data frame and it will return a second variable
+with the zip region. The region options are: North, Mid, South,
+Coastside and “Not a residential zip” (for PO Boxes).
+
+``` r
+
+data <- data.frame(
+  zip = c("94015", "94403", "94303", "94019", "94128", "94110")
+  )
+
+data %>%
+  smc_zip_region_sort()
+```
+
+### Additional options
+
+By default, the function expects the variable of zip codes to be called
+`zip` and it will save the zip regions in a variable called
+`zip_region`. However, if your input column is not called `zip` you can
+override the default with the `zip_col` argument. You can also change
+the outputted variable name with the `region_col` argument.
+
+``` r
+
+data <- data.frame(
+  smc_zip = c("94015", "94403", "94303", "94019", "94128", "94110")
+  )
+
+data %>%
+  smc_zip_region_sort(zip_col = "smc_zip",
+                      region_col = "smc_zip_region")
+```
