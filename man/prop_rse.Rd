@@ -24,8 +24,9 @@ The relative standard error of sample or survey data.
 Use this function to calculate the relative standard error (RSE) for a sample and survey data. The RSE measures the reliability of an estimate by dividing the standard error of the estimate by the estimate. The RSE is displayed as a percentage of the estimate.
 }
 \examples{
-\dontrun
+\dontrun{
 
 prop_rse(25, 1050, method = "survey")
 
+}
 }
