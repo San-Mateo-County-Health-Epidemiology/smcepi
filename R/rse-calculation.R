@@ -10,10 +10,11 @@
 #' @export
 #'
 #' @examples
-#' \dontrun
+#' \dontrun{
 #'
 #' prop_rse(25, 1050, method = "survey")
 #'
+#'}
 
 prop_rse <- function(prop_sd, n, method) {
 
