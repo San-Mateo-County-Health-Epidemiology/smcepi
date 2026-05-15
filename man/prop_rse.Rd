@@ -27,3 +27,4 @@ Use this function to calculate the relative standard error (RSE) for a sample an
 \dontrun{
 prop_rse(25, 1050, method = "survey")
 }
+}
