@@ -93,9 +93,6 @@ Other helpful functions for data processing
 - [`get_le()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/get_le.md)
   : Pulling Life Expectancy from a Life Table
 
-- [`ci()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/ci.md)
-  : Confidence interval for a proportion
-
 - [`prop_sd()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/prop_sd.md)
   : Standard deviation calculation for a proportion
 
