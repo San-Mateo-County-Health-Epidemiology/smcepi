@@ -94,10 +94,10 @@ calculate the standard deviation (sd) of a proportion (prop) using the
 of the proportion. The function checks to ensure that the numerator and
 denominator are numeric values prior to execution of the function.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span>    <span class="va">num</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
-<span>  <span class="va">denom</span> <span class="op">&lt;-</span> <span class="fl">2000</span></span>
+<code class="sourceCode R"><span><span class="va">num</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
+<span><span class="va">denom</span> <span class="op">&lt;-</span> <span class="fl">2000</span></span>
 <span>  </span>
-<span>  <span class="fu"><a href="../reference/prop_sd.html">prop_sd</a></span><span class="op">(</span>num <span class="op">=</span> <span class="va">num</span>, denom <span class="op">=</span> <span class="va">denom</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/prop_sd.html">prop_sd</a></span><span class="op">(</span>num <span class="op">=</span> <span class="va">num</span>, denom <span class="op">=</span> <span class="va">denom</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.00349106</span></span></code></pre></div>
 </div>
 </div>
@@ -121,11 +121,11 @@ epidemiology. The formula for the <code>prop_rse</code> function sample
 method is
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>s</mi><mi>e</mi><mo>=</mo><mfrac><mrow><mi>s</mi><mi>d</mi></mrow><mrow><msqrt><mi>(</mi></msqrt><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex"> rse = \frac{sd}{\sqrt(n)} </annotation></semantics></math></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span>    <span class="va">sample_sd</span> <span class="op">&lt;-</span> <span class="fl">25</span></span>
-<span>    <span class="va">sample_n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
-<span>    <span class="va">sample_method</span> <span class="op">&lt;-</span> <span class="st">"sample"</span></span>
+<code class="sourceCode R"><span><span class="va">sample_sd</span> <span class="op">&lt;-</span> <span class="fl">25</span></span>
+<span><span class="va">sample_n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
+<span><span class="va">sample_method</span> <span class="op">&lt;-</span> <span class="st">"sample"</span></span>
 <span>    </span>
-<span>    <span class="fu"><a href="../reference/prop_rse.html">prop_rse</a></span><span class="op">(</span>prop_sd <span class="op">=</span> <span class="va">sample_sd</span>, n <span class="op">=</span> <span class="va">sample_n</span>, method <span class="op">=</span> <span class="va">sample_method</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/prop_rse.html">prop_rse</a></span><span class="op">(</span>prop_sd <span class="op">=</span> <span class="va">sample_sd</span>, n <span class="op">=</span> <span class="va">sample_n</span>, method <span class="op">=</span> <span class="va">sample_method</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.7905694</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -145,11 +145,11 @@ calculate the relative standard error (rse) using the following
 formula.</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>s</mi><mi>e</mi><mo>=</mo><mn>100</mn><mo>*</mo><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mi>e</mi><mi>/</mi><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex"> rse = 100 * (se/n) </annotation></semantics></math></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span>    <span class="va">survey_sd</span> <span class="op">&lt;-</span> <span class="fl">25</span></span>
-<span>    <span class="va">survey_n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
-<span>    <span class="va">survey_method</span> <span class="op">&lt;-</span> <span class="st">"survey"</span></span>
+<code class="sourceCode R"><span><span class="va">survey_sd</span> <span class="op">&lt;-</span> <span class="fl">25</span></span>
+<span><span class="va">survey_n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
+<span><span class="va">survey_method</span> <span class="op">&lt;-</span> <span class="st">"survey"</span></span>
 <span>    </span>
-<span>    <span class="fu"><a href="../reference/prop_rse.html">prop_rse</a></span><span class="op">(</span><span class="va">survey_sd</span>, <span class="va">survey_n</span>, <span class="va">survey_method</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/prop_rse.html">prop_rse</a></span><span class="op">(</span><span class="va">survey_sd</span>, <span class="va">survey_n</span>, <span class="va">survey_method</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.07905694</span></span></code></pre></div>
 </div>
 </div>

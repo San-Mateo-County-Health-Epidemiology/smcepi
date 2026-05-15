@@ -24,10 +24,10 @@ denominator are numeric values prior to execution of the function.
 
 ``` r
 
-    num <- 50
-  denom <- 2000
+num <- 50
+denom <- 2000
   
-  prop_sd(num = num, denom = denom)
+prop_sd(num = num, denom = denom)
 #> [1] 0.00349106
 ```
 
@@ -52,11 +52,11 @@ the `prop_rse` function sample method is
 
 ``` r
 
-    sample_sd <- 25
-    sample_n <- 1000
-    sample_method <- "sample"
+sample_sd <- 25
+sample_n <- 1000
+sample_method <- "sample"
     
-    prop_rse(prop_sd = sample_sd, n = sample_n, method = sample_method)
+prop_rse(prop_sd = sample_sd, n = sample_n, method = sample_method)
 #> [1] 0.7905694
 ```
 
@@ -82,10 +82,10 @@ the relative standard error (rse) using the following formula.
 
 ``` r
 
-    survey_sd <- 25
-    survey_n <- 1000
-    survey_method <- "survey"
+survey_sd <- 25
+survey_n <- 1000
+survey_method <- "survey"
     
-    prop_rse(survey_sd, survey_n, survey_method)
+prop_rse(survey_sd, survey_n, survey_method)
 #> [1] 0.07905694
 ```

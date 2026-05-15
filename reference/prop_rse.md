@@ -38,7 +38,6 @@ The relative standard error of sample or survey data.
 
 ``` r
 if (FALSE) { # \dontrun{
-
 prop_rse(25, 1050, method = "survey")
 } # }
 ```
