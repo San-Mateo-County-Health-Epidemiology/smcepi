@@ -16,11 +16,19 @@ prop_sd <- function(num, denom) {
 
   stopifnot(num < denom)
 
-  stopifnot(num > 0 & denom > 0)
+  stopifnot(denom > 0)
+
+  if (num > 0) {
 
   prop <- num / denom
 
   sd <- sqrt(prop*(1-prop)/denom)
+
+  } else if (num == 0) {
+
+    sd <- NA
+
+  }
 
   return(sd)
 
