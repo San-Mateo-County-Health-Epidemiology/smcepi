@@ -11,7 +11,6 @@
 #'
 #' @examples
 #' \dontrun{
-#'
 #' prop_rse(25, 1050, method = "survey")
 #'}
 

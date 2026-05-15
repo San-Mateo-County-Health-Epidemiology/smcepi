@@ -34,5 +34,6 @@ reference:
   - life_table
   - make_life_table
   - get_le
+  - ci
   - prop_sd
   - prop_rse

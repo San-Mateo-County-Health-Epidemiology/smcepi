@@ -113,20 +113,32 @@ smc_city_clean <- function(data, city_col = "city", new_col = "city_clean") {
 #'
 smc_zip_region_sort <- function(data, zip_col = "zip", region_col = "zip_region") {
 
-  zip = NULL
-  zip_region = NULL
+  # rename inputted column to zip
+  names(data)[names(data) == zip_col] <- 'zip'
 
-  data1 <- data %>%
-    dplyr::rename(zip = !!zip_col) %>%
-    dplyr::mutate(zip_region = dplyr::case_when(
-      zip %in% c("94005", "94014", "94015", "94030", "94044", "94066", "94080") ~ "North",
-      zip %in% c("94002", "94010", "94065", "94070", "94401", "94402", "94403", "94404") ~ "Mid",
-      zip %in% c("94025", "94027", "94028", "94061", "94062", "94063", "94303") ~ "South",
-      zip %in% c("94019", "94020", "94021", "94038", "94060", "94074") ~ "Coast",
-      zip %in% c("94017", "94018", "94037", "94064", "94128") ~ "Not a residential zip")) %>%
-    dplyr::rename(!!region_col := zip_region,
-                  !!zip_col := zip)
+  # remove any special characters (only keep numbers)
+  data$zip <- gsub("[^0-9]+", "", data$zip)
 
-  data1
+  # do some validation
+  max_zip_len <- max(nchar(data$zip))
+
+  if (max_zip_len > 5)  warning('Some zip codes are longer than 5 characters. These zip codes will be truncated to the first 5 characters.')
+
+  data$zip <- substr(data$zip, 1, 5)
+
+  # sort zip codes
+  data$zip_region <- ifelse(data$zip %in% c("94005", "94014", "94015", "94030", "94044", "94066", "94080"), "North",
+                            ifelse(data$zip %in% c("94002", "94010", "94065", "94070", "94401", "94402", "94403", "94404"), "Mid",
+                                   ifelse(data$zip %in% c("94025", "94027", "94028", "94061", "94062", "94063", "94303"), "South",
+                                          ifelse(data$zip %in% c("94018", "94019", "94020", "94021", "94038", "94060", "94074"), "Coast",
+                                                 ifelse(data$zip %in% c("94017", "94037", "94064", "94128"), "Not a residential zip", NA_character_)))))
+
+  # rename inputted column from zip back to original
+  names(data)[names(data) == 'zip'] <- zip_col
+
+  # rename zip region column from zip region to inputted value
+  names(data)[names(data) == 'zip_region'] <- region_col
+
+  return(data)
 
 }

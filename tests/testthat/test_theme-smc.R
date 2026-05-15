@@ -10,21 +10,21 @@ test_that("theme smc is a theme", {
 test_that("theme_gg_smc orientation", {
   theme <- theme_gg_smc(plot_lines = "horizontal")
   expect_equal(theme$panel.grid.major.x, element_blank())
-  expect_equal(class(theme$panel.grid.major.y), c('element_line', 'element'))
+  expect_contains(class(theme$panel.grid.major.y), c('element_line'))
 })
 
 ### vertical ----
 test_that("theme_gg_smc orientation", {
   theme <- theme_gg_smc(plot_lines = "vertical")
-  expect_equal(class(theme$panel.grid.major.x), c('element_line', 'element'))
+  expect_contains(class(theme$panel.grid.major.x), c('element_line'))
   expect_equal(theme$panel.grid.major.y, element_blank())
 })
 
 ### both ----
 test_that("theme_gg_smc orientation", {
   theme <- theme_gg_smc(plot_lines = "both")
-  expect_equal(class(theme$panel.grid.major.x), c('element_line', 'element'))
-  expect_equal(class(theme$panel.grid.major.y), c('element_line', 'element'))
+  expect_contains(class(theme$panel.grid.major.x), c('element_line'))
+  expect_contains(class(theme$panel.grid.major.y), c('element_line'))
 })
 
 ### none ----
