@@ -93,6 +93,9 @@ azure_connect <- function(creds_file = "", creds_position = 1, pwd = rstudioapi:
 #' # "varchar(255)" "varchar1000)"
 varchar_max <- function(data) {
 
+
+  var <- max_char_ct <- NULL
+
   varchar <- data %>%
     dplyr::select(tidyselect::where(is.character) | tidyselect::where(is.factor)) %>%
     dplyr::mutate(dplyr::across(tidyselect::where(is.factor), ~ as.character(.x))) %>%
@@ -101,14 +104,14 @@ varchar_max <- function(data) {
                         values_drop_na = T,
                         cols = tidyselect::everything()) %>%
     dplyr::mutate(char_ct = nchar(.data$val)) %>%
-    dplyr::group_by(.data$var) %>%
+    dplyr::group_by(var) %>%
     dplyr::summarize(max_char_ct = max(.data$char_ct),
                      .groups = "keep") %>%
     dplyr::ungroup() %>%
     dplyr::mutate(max_char_ct = dplyr::case_when(.data$max_char_ct <= 255 ~ 255,
                                                  TRUE ~ .data$max_char_ct),
            varchar = paste0("varchar(", .data$max_char_ct, ")")) %>%
-    dplyr::select(-.data$max_char_ct) %>%
+    dplyr::select(-max_char_ct) %>%
     tibble::deframe()
 
   return(varchar)
