@@ -42,10 +42,8 @@ test_that("smc_zip_region_sort", {
 test_that("smc_zip_region_sort", {
 
   test_df <- data.frame(
-    zip = c("94015-1000", "94403", "94303", "94019", "94128", "94110")
+    zip = c("94015-1000", "94403", "94303", "94019", "94128", "94110", "", "-", "abc", NA)
   )
 
   expect_warning(smc_zip_region_sort(test_df))
 })
-
-
