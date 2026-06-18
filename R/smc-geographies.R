@@ -116,6 +116,9 @@ smc_zip_region_sort <- function(data, zip_col = "zip", region_col = "zip_region"
   # rename inputted column to zip
   names(data)[names(data) == zip_col] <- 'zip'
 
+  # replace na's with blanks
+  data$zip <- ifelse(is.na(data$zip), "", data$zip)
+
   # remove any special characters (only keep numbers)
   data$zip <- gsub("[^0-9]+", "", data$zip)
 
