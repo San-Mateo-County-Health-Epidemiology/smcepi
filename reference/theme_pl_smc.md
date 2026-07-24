@@ -1,4 +1,4 @@
-# Using `theme_pl_smc`
+# Formatting `plotly` charts according to our SMC style guide
 
 This function is meant to be used with `plotly` charts to quickly format
 them according to the San Mateo County Office of Epidemiology and

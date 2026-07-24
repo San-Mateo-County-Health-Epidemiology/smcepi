@@ -1,4 +1,4 @@
-# Using `theme_ft_smc`
+# Formatting `flextable` tables according to our SMC style guide
 
 This function will format a flextable object according to the San Mateo
 County Office of Epidemiology and Evaluation's style guide.

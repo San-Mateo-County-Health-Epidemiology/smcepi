@@ -19,26 +19,25 @@ guide
 - [`theme_ft_smc()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/theme_ft_smc.md)
   :
 
-  Using `theme_ft_smc`
+  Formatting `flextable` tables according to our SMC style guide
 
 - [`theme_gg_smc()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/theme_gg_smc.md)
   :
 
-  Using `theme_gg_smc`
+  Formatting `ggplot2` charts according to our SMC style guide
 
 - [`theme_pl_smc()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/theme_pl_smc.md)
   :
 
-  Using `theme_pl_smc`
+  Formatting `plotly` charts according to our SMC style guide
 
 - [`load_smc_fonts()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/load_smc_fonts.md)
-  : Download SMC Fonts
+  : Download fonts needed to format charts with SMC style guide
 
 - [`gg_color_title()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/gg_color_title.md)
   :
 
-  Using
-  [`gg_color_title()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/gg_color_title.md)
+  Selectively color words in your `ggplot2` title
 
 ## Misc data processing
 
@@ -54,7 +53,7 @@ Other helpful functions for data processing
   Reading large tab separated files with `read_tsv_cr`
 
 - [`smc_city_clean()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/smc_city_clean.md)
-  : cleaning up San Mateo Cities in a data frame
+  : Cleaning up San Mateo Cities in a data frame
 
 - [`smc_zip_region_sort()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/smc_zip_region_sort.md)
   : Classify zip codes by region in San Mateo County
@@ -63,7 +62,11 @@ Other helpful functions for data processing
   : Remove all empty columns on the right end of a data set.
 
 - [`life_table()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/life_table.md)
-  : life table
+  :
+
+  Life table calculations to be used in
+  [`make_life_table()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/make_life_table.md).
+  This function isn't exported in the package.
 
 - [`make_life_table()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/make_life_table.md)
   : Creating life tables

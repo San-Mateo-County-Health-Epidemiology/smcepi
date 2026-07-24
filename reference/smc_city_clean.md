@@ -1,4 +1,4 @@
-# cleaning up San Mateo Cities in a data frame
+# Cleaning up San Mateo Cities in a data frame
 
 This function is meant to be used to clean up San Mateo cities in a
 dataframe. It will only look for San Mateo County cities - it doesn't

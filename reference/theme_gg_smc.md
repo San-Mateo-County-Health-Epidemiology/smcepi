@@ -1,4 +1,4 @@
-# Using `theme_gg_smc`
+# Formatting `ggplot2` charts according to our SMC style guide
 
 This function is meant to be used with `ggplot2` charts to quickly
 format them according to the San Mateo County Office of Epidemiology and

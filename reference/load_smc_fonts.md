@@ -1,4 +1,4 @@
-# Download SMC Fonts
+# Download fonts needed to format charts with SMC style guide
 
 This function uses the 'extrafont' package to download and enable Arial
 and Georgia which are the official fonts for the SMC style guide.

@@ -1,4 +1,4 @@
-# life table
+# Life table calculations to be used in `make_life_table()`. This function isn't exported in the package.
 
 this is the function called in the
 [`make_life_table()`](https://san-mateo-county-health-epidemiology.github.io/smcepi/reference/make_life_table.md).
