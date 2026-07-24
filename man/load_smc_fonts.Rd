@@ -2,7 +2,7 @@
 % Please edit documentation in R/load-smc-fonts.R
 \name{load_smc_fonts}
 \alias{load_smc_fonts}
-\title{Download SMC Fonts}
+\title{Download fonts needed to format charts with SMC style guide}
 \usage{
 load_smc_fonts()
 }

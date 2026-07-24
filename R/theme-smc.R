@@ -1,7 +1,6 @@
-#' Using `theme_gg_smc`
+#' Formatting `ggplot2` charts according to our SMC style guide
 #'
 #' `r lifecycle::badge('experimental')`
-#'
 #'
 #' @description
 #' This function is meant to be used with `ggplot2` charts to quickly format them according to the San Mateo County Office of Epidemiology and Evaluation's style guide.
@@ -130,7 +129,7 @@ theme_gg_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top", ti
 }
 
 
-#'  Using `theme_pl_smc`
+#' Formatting `plotly` charts according to our SMC style guide
 #'
 #' @description
 #' This function is meant to be used with `plotly` charts to quickly format them according to the San Mateo County Office of Epidemiology and Evaluation's style guide
@@ -312,7 +311,7 @@ theme_pl_smc <- function(plot, plot_lines = "horizontal", legend_loc = "top", ys
 
 }
 
-#' Using `theme_ft_smc`
+#' Formatting `flextable` tables according to our SMC style guide
 #'
 #' @description
 #' This function will format a flextable object according to the San Mateo County Office of Epidemiology and Evaluation's style guide.

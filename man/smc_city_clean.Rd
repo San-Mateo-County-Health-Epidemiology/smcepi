@@ -2,7 +2,7 @@
 % Please edit documentation in R/smc-geographies.R
 \name{smc_city_clean}
 \alias{smc_city_clean}
-\title{cleaning up San Mateo Cities in a data frame}
+\title{Cleaning up San Mateo Cities in a data frame}
 \usage{
 smc_city_clean(data,
       city_col = "city",

@@ -2,7 +2,7 @@
 % Please edit documentation in R/gg_color_title.R
 \name{gg_color_title}
 \alias{gg_color_title}
-\title{Using \code{gg_color_title()}}
+\title{Selectively color words in your \code{ggplot2} title}
 \usage{
 gg_color_title(title_text, highlight_words, highlight_colors)
 }
