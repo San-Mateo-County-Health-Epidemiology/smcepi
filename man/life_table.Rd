@@ -2,7 +2,7 @@
 % Please edit documentation in R/life-expectancy.R
 \name{life_table}
 \alias{life_table}
-\title{life table}
+\title{Life table calculations to be used in \code{make_life_table()}. This function isn't exported in the package.}
 \usage{
 life_table(data)
 }

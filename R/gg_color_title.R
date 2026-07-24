@@ -1,4 +1,4 @@
-#' Using `gg_color_title()`
+#' Selectively color words in your `ggplot2` title
 #'
 #' @description
 #' This function allows you to selectively color words in the text of your `ggplot2` plot. In order for this to work, you'll need to use the `gg_text::element_markdown()` in the `ggplot2::theme` for the text you want to color.

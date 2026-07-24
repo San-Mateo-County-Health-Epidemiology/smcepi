@@ -1,4 +1,4 @@
-#' life table
+#' Life table calculations to be used in `make_life_table()`. This function isn't exported in the package.
 #'
 #' this is the function called in the `make_life_table()`. It calculates the vectors required for creating life expectancy methods outlined in the Public Health England calculator that lives [here](https://fingertips.phe.org.uk/documents/phe%20life%20expectancy%20calculator.xlsm).
 #'

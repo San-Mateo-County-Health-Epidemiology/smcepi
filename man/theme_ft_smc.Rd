@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme-smc.R
 \name{theme_ft_smc}
 \alias{theme_ft_smc}
-\title{Using \code{theme_ft_smc}}
+\title{Formatting \code{flextable} tables according to our SMC style guide}
 \usage{
 theme_ft_smc(ft)
 }

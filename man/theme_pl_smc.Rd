@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme-smc.R
 \name{theme_pl_smc}
 \alias{theme_pl_smc}
-\title{Using \code{theme_pl_smc}}
+\title{Formatting \code{plotly} charts according to our SMC style guide}
 \usage{
 theme_pl_smc(plot,
    plot_lines = "horizontal",

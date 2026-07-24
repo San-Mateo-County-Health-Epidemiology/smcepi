@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme-smc.R
 \name{theme_gg_smc}
 \alias{theme_gg_smc}
-\title{Using \code{theme_gg_smc}}
+\title{Formatting \code{ggplot2} charts according to our SMC style guide}
 \usage{
 theme_gg_smc(plot,
   plot_lines = "horizontal",
